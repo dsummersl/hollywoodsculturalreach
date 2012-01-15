@@ -1,15 +1,9 @@
 Continent,Country|key
-Africa,Angola|portugal
 Africa,Egypt|egypt
 Africa,Ghana|ghana
 Africa,Kenya|kenya
-Africa,Morocco|france
 Africa,Nigeria|nigeria
-Africa,Somalia|kenya
 Africa,South Africa|southafrica
-Africa,Tanzania|kenya
-Africa,Tunisia|france
-Africa,Uganda|kenya
 Africa,Bahrain|bahrain
 Asia,China|china
 Asia,Hong Kong|hongkong
@@ -38,14 +32,9 @@ Europe,Germany|germany
 Europe,Greece|greece
 Europe,Hungary|hungary
 Europe,Iceland|iceland
-Europe,Ireland|uk
 Europe,Italy|italy
 Europe,Latvia|latvia
 Europe,Lithuania|lithuania
-Europe,Luxembourg|belgium
-Europe,Malta|uk
-Europe,Monaco|france
-Europe,Montenegro|serbia
 Europe,Netherlands|netherlands
 Europe,Norway|norway
 Europe,Poland|poland
@@ -71,5 +60,4 @@ Latin America,Peru|peru
 Latin America,Uruguay|uruguay
 Latin America,Venezuela|venezuela
 Oceana,Australia|australia
-Oceana,Fiji|newzealand
 Oceana,New Zealand|newzealand 
