@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset=utf-8>
-  <title>App</title>
+  <title>Hollywood's Reach</title>
+  <link rel="stylesheet" href="/bootstrap.min.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
   <script src="/application.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
@@ -13,10 +14,29 @@
       exports.app = new App({el: $("body")});      
     });
   </script>
-  
-  <!-- Getting started script - should be removed -->
-  <script src="http://maccman-spine.herokuapp.com/start.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+      <h1><center>Hollywood's Reach</center></h1>
+    </div>
+    <!--
+    <div class="row">
+      <div class="span8">Viz overview</div>
+      <div class="span8">Viz detail</div>
+      <hr/>
+    </div>
+    -->
+    <div class="row">
+      <div id="viz" class="span16"></div>
+    </div>
+    <div class="row">
+      <div class="span16" id="footer">
+        <hr/>
+        Copyright 2012 <a href="mailto:dsummersl@yahoo.com">Dane Summers</a>
+        <div id="websiteURL" style="float: right;">http://hollywood.pinedesk.biz</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
