@@ -1,3 +1,4 @@
+require('lib/setup')
 
 # mapping from the data ID's to the map IDs
 # no canada - no its 'domestic'
@@ -20,7 +21,7 @@ mapMappings =
   ecuador: '#m-ecuador'
   egypt: '#m-egypt'
   estonia: '#m-estonia'
-  finland: '#id'
+  finland: '#m-finland'
   #france: [ '#m-france', '#m-morocco', '#m-tunisia', '#m-monaco' ] TODO
   france: '#m-france'
   germany: '#m-germany'
@@ -42,7 +43,7 @@ mapMappings =
   malaysia: '#m-malaysia'
   mexico: '#m-mexico'
   netherlands: '#m-netherlands'
-  newzealand : '#m-new-zealand'
+  newzealand: '#m-new-zealand'
   nigeria: '#m-nigeria'
   norway: '#m-norway'
   peru: '#m-peru'
