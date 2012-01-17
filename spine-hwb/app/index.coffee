@@ -22,7 +22,7 @@ class App extends Spine.Controller
         #console.log "svg id = '#{id}'"
         if svgId
           for id in svgId
-            console.log "svg id = '#{id}'"
+            #console.log "#{c.name} = '#{id}'"
             d3.select("#{id}")
               .attr('fill','#555555')
               #.attr('style','#555555')

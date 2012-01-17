@@ -6,7 +6,7 @@ mapMappings =
   argentina: '#m-argentina'
   australia: '#m-australia'
   austria: '#m-austria'
-  #bahrain: '#id' # TODO need to put it on the map
+  bahrain: '#m-bahrain'
   belgium: '#m-belgium'
   bolivia: '#m-bolivia'
   brazil: '#m-brazil'
@@ -22,12 +22,11 @@ mapMappings =
   egypt: '#m-egypt'
   estonia: '#m-estonia'
   finland: '#m-finland'
-  #france: [ '#m-france', '#m-morocco', '#m-tunisia', '#m-monaco' ] TODO
-  france: '#m-france'
+  france: [ '#m-france', '#m-morocco', '#m-tunisia'] #monaco is practically IN france so I'll just leave the map as is
   germany: '#m-germany'
   ghana: '#m-ghana'
   greece: '#m-greece'
-  #hongkong: '#m-hong-kong' TODO not on map
+  hongkong: '#m-hong-kong'
   hungary: '#m-hungary'
   iceland: '#m-iceland'
   india: '#m-india'
@@ -52,7 +51,7 @@ mapMappings =
   portugal: '#m-portugal'
   romania: '#m-romania'
   serbia: '#m-serbia'
-  #singapore: '#m-singapore' #TODO not on map
+  singapore: '#m-singapore'
   slovakia: '#m-slovakia'
   slovenia: '#m-slovenia'
   southafrica: '#m-south-africa'
