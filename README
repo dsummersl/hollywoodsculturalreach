@@ -2,7 +2,7 @@ some of the country data is actually several countries (like tanzania/kenya). Lu
 
 To get international data:
 
-./bin/get_country_list.sh
+./bin/get_country_list.sh YEAR
 
 You have to manually edit the shell script to change the year.
 
