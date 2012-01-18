@@ -13,6 +13,6 @@ task 'fetchdata', 'Get all the data for countries from the website (use --year t
   exec "python get_country_list.sh #{options.year}", execHandler
 
 task 'makeJSON', 'Make all the existing data into JSON for the spine app', ->
-  exec 'mkdir spine-hwb/public/data', execHandler
+  exec 'mkdir public/data', execHandler
   console.log "building country data..."
   exec 'sh bin/convert_to_json.sh', execHandler
