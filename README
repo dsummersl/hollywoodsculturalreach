@@ -1,18 +1,5 @@
-some of the country data is actually several countries (like tanzania/kenya). Lump these together on the map too.
 
-To get international data:
+TODO
 
-./bin/get_country_list.sh YEAR
-
-You have to manually edit the shell script to change the year.
-
----
-Use the following script to regenerate data:
-
-### BEGIN
-
-#To convert all the countries to json:
-mkdir spine-hwb/public/data
-python ~/Documents/classes/vizlathon/testdata/CSVtoJSON.py data/countries.csv > spine-hwb/public/data/countries.json
-
-### END
+Rewrite CSVtoJSON.py so that it generates one header file and then uses arrays
+for all the row data (should make files significantly smaller as JSON).

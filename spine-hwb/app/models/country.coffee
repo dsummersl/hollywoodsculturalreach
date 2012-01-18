@@ -3,6 +3,8 @@ CountryMapping = require('lib/svgmap')
 
 class Country extends Spine.Model
   @configure 'Country', 'name', 'region', 'key'
+  @hasMany 'overviews', 'models/overview'
+
   # TODO population, languages
   
   getSVGIDs: ->

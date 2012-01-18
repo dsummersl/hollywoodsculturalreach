@@ -5,6 +5,7 @@
     "jqueryify", 
     "d3/d3", 
     "spine",
+    "spine/lib/relation",
     "spine/lib/local",
     "spine/lib/ajax",
     "spine/lib/route",

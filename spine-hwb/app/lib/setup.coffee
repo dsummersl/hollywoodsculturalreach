@@ -5,6 +5,7 @@ require('jqueryify')
 require('d3/d3')
 
 require('spine')
+require('spine/lib/relation')
 require('spine/lib/local')
 require('spine/lib/ajax')
 require('spine/lib/manager')
