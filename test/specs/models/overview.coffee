@@ -1,3 +1,7 @@
+require = window.require
+Spine = require 'spine'
+Spine.Model.Ajax = {}
+
 describe 'Overview', ->
   Overview = null
   
