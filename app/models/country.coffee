@@ -1,9 +1,10 @@
 Spine = require('spine')
 CountryMapping = require('lib/svgmap')
+Overview = require('models/overview')
 
 class Country extends Spine.Model
   @configure 'Country', 'name', 'region', 'key'
-  @hasMany 'overviews', 'models/overview'
+  @hasMany 'overviews', Overview
 
   # TODO population, languages
   

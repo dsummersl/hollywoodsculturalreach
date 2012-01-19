@@ -16,5 +16,3 @@ task 'makeJSON', 'Make all the existing data into JSON for the spine app', ->
   exec 'mkdir public/data', execHandler
   console.log "building country data..."
   exec 'sh bin/convert_to_json.sh', execHandler
-
-task 'test', 'Do test cases', ->

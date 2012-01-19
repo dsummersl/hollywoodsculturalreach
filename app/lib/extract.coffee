@@ -1,12 +1,62 @@
 require('lib/setup')
 
-extractDomesticMovies = (datafile,year,listener)->
+###
+# Parse a file and then give the listener the following information:
+#  - film = name of film
+#  - year = year film was released
+#  - story
+#  - genre
+###
+extractDomesticMovies = (data,key,year,listener)->
   # get the domestic tickets. I'm assuming these all need to be 'locally available'
   # for the spine app.
-  # "row1": {"exclude": "","Film ": "Average","Major Studio": "","Rotten Tomatoes": "51","Audience Score": "","Story": "","Genre": "","Number of Theatres in Opening Weekend": "","Box Office Average per Cinema": "","Domestic Gross": "86.10","Foreign Gross": "105.38","Worldwide Gross": "191.47","Budget": "62.93","Market Profitability": "360.82%","Opening Weekend": "25.78","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross": "","Foreign Gross": "","Worldwide": "","Budget": ""},
+  # first and second row is always a header:
+  firstrow = true
+  secondrow = true
+  for k,v of data
+    if not firstrow and not secondrow
+      listener(
+        film: v['Film ']
+        story: v['Story']
+        genre: v['Genre']
+        year: year
+        key: key
+      )
+    else
+      if firstrow
+        firstrow = false
+      else if secondrow
+        secondrow = false
  
-extractCountrySummary = (datafile,year,listener)->
-  # try to get the year, and then mush it out.
+###
+# generate a summary of a data file. Keys include:
+# - key:
+# - year:
+# - hollywoodfilms: total films from hollywood
+# - oldhollywoodfilms: total films from hollywood (but not this year)
+# - otherfilms: total films from we know not where
+# 
+# films = function that takes a title. returns a 'movie' like object:
+# - year, title, etc
+###
+extractCountrySummary = (data,movies,key,year)->
+  results =
+    key: key
+    year: year
+    otherfilms: 0
+    hollywoodfilms: 0
+    oldhollywoodfilms: 0
+  for k,v of data
+    title = v[' Movie Title']
+    f = movies.findByAttribute('title',title)
+    if f
+      if f.year == year
+        results.hollywoodfilms++
+      else
+        results.oldhollywoodfilms++
+    else
+      results.otherfilms++
+  return results
 
 module.exports =
   extractDomesticMovies: extractDomesticMovies
