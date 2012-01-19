@@ -1,5 +1,3 @@
-require('lib/setup')
-
 # mapping from the data ID's to the map IDs
 # no canada - no its 'domestic'
 mapMappings =

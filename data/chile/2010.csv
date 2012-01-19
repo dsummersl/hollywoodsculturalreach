@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Toy Story 3","Disney","$8,755,357","6/17"
 "Shrek Forever After","UIP","$6,218,841","7/8"
 "Tangled","Disney","$4,380,606","12/30"
@@ -12,7 +12,8 @@
 "The Chronicles of Narnia: The Voyage of the Dawn Treader","Fox","$1,474,774","12/9"
 "Iron Man 2","UIP","$1,454,137","4/29"
 "Despicable Me","UIP","$1,426,890","7/29"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$1,413,608","1/28"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$1,413,608","1/28"
 "Resident Evil: Afterlife","Sony","$1,353,662","9/15"
 "The Sorcerer's Apprentice","Disney","$1,305,967","7/15"
 "Prince of Persia: The Sands of Time","Disney","$1,269,138","5/27"
@@ -99,6 +100,7 @@
 "The Other Guys","Sony","$74,302","12/2"
 "Halloween II (2009)","n/a","$63,966","3/11"
 "Bad Lieutenant: Port of Call New Orleans","n/a","$60,802","5/20"
+" Movie Title"," Distributor"," Gross"," Release"
 "Mandrill","Andes Films","$59,395","9/2"
 "My Best Friend's Girl","Transeuropa","$59,152","3/18"
 "Dear John","Sony","$58,358","6/17"
@@ -111,7 +113,8 @@
 "Nine","Sony","$51,640","2/18"
 "The White Ribbon","n/a","$48,591","8/5"
 "Couples Retreat","UIP","$46,735","2/25"
-"Precious: Based on the Novel "Push" by Sapphire","n/a","$45,371","2/25"
+"Precious: Based on the Novel "Push" by
+Sapphire","n/a","$45,371","2/25"
 "Toy Story 2 (3D)","Disney","$44,163","2/18"
 "Oceans","n/a","$43,134","10/28"
 "The Men Who Stare at Goats","Sony","$42,713","4/1"

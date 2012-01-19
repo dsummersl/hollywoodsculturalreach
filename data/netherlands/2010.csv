@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Harry Potter and the Deathly Hallows (Part One)","WB","$13,790,585","11/17"
 "New Kids Turbo","Benelux","$12,094,545","12/9"
 "Inception","WB","$9,688,549","7/22"
@@ -99,6 +99,7 @@
 "The Switch","Paradiso","$562,109","10/21"
 "El secreto de sus ojos","Wild Bunch","$559,880","8/26"
 "The Spy Next Door","AFD","$531,321","2/4"
+" Movie Title"," Distributor"," Gross"," Release"
 "A Serious Man","UPI","$524,566","1/21"
 "I Am Love","Cineart","$514,339","8/26"
 "Potiche","Cineart","$508,221","12/16"
@@ -172,8 +173,7 @@
 "Crime d'amour (Love Crime)","Benelux","$23,910","8/19"
 "Le refuge","n/a","$20,864","8/12"
 "Action Replayy","n/a","$19,528","11/4"
-"Serge Gainsbourg, vie
-héroïque","n/a","$18,909","3/18"
+"Serge Gainsbourg, vie héroïque","n/a","$18,909","3/18"
 "La Rafle. (The Round-Up)","n/a","$18,679","9/2"
 "Lebanon","n/a","$17,323","3/18"
 "Casablanca (2010 re-issue)","n/a","$12,545","6/24"

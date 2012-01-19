@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","Fox","$1,460,086","12/17"
 "Thick as Thieves","n/a","$1,081,542","3/13"
 "Ice Age: Dawn of the Dinosaurs","Fox","$853,027","7/2"
@@ -12,7 +12,8 @@
 "Rachel Getting Married","Sony","$312,670","2/13"
 "Harry Potter and the Half Blood Prince","WB","$303,051","7/15"
 "Transformers: Revenge of the Fallen","UIP","$276,081","6/24"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$271,964","12/25"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$271,964","12/25"
 "G-Force","Disney","$246,764","7/30"
 "Angels & Demons","Sony","$239,530","5/14"
 "Terminator Salvation: The Future Begins","Sony","$229,665","6/3"
@@ -21,7 +22,8 @@
 "Surf Adventures 2","n/a","$206,620","3/27"
 "Michael Jackson's This Is It","Sony","$195,092","10/28"
 "Personal Effects","n/a","$152,093","4/3"
-"Night at the Museum: Battle of the Smithsonian","Fox","$150,284","5/21"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$150,284","5/21"
 "X-Men Origins: Wolverine","Fox","$147,666","4/30"
 "Crossing Over","n/a","$134,985","4/10"
 "Cloudy with a Chance of Meatballs","Sony","$132,893","11/26"
@@ -69,7 +71,8 @@
 "Frozen River","Sony","$39,501","2/20"
 "The Uninvited","PPI","$38,553","11/26"
 "The Proposal","Disney","$35,307","7/16"
-"El delfín: La historia de un soñador (The Dolphin: Story of a Dreamer)","Fox","$34,978","11/12"
+"El delfín: La historia de un soñador
+(The Dolphin: Story of a Dreamer)","Fox","$34,978","11/12"
 "Knowing","Manfer","$33,784","9/17"
 "Fly Me to the Moon","n/a","$33,209","2/19"
 "Que Paso? (2009)","n/a","$33,204","11/19"
@@ -99,6 +102,7 @@
 "Donkey Xote","Trade Int.","$20,713","4/30"
 "Watchmen","UIP","$20,437","6/11"
 "Public Enemies","UIP","$20,406","10/8"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Pink Panther 2","Sony","$20,220","4/23"
 "Land of the Lost","UPI","$20,061","12/25"
 "Urmel aus dem Eis","Trade Int.","$19,886","10/22"

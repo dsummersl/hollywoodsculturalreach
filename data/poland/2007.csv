@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek the Third","UIP","$18,014,551","6/29"
 "Katyn","ITI","$13,558,634","9/21"
 "Testosteron","ITI","$7,325,461","3/2"
@@ -71,7 +71,8 @@
 "Charlotte's Web","UIP","$429,668","1/19"
 "Michael Clayton","Plus","$426,505","11/23"
 "Love in the Time of Cholera","Monolith","$416,210","11/16"
-"Obsluhoval jsem anglického krále (I Served the King of England)","Gutek","$406,602","5/18"
+"Obsluhoval jsem anglického krále (I
+Served the King of England)","Gutek","$406,602","5/18"
 "7 Zwerge - Der Wald ist nicht genug","Kino S'Wiat","$396,264","8/24"
 "Hors de prix (Priceless)","Kino S'Wiat","$391,890","2/14"
 "Taxi 4","SPI Int'l","$374,933","4/27"
@@ -98,7 +99,9 @@
 "Dragon Hill. La colina del dragón","Kemus","$238,107","1/26"
 "The Last King of Scotland","n/a","$233,837","2/9"
 "A Mighty Heart","UIP","$221,702","11/2"
-"Fantastic Four: Rise of the Silver Surfer","Cinepix","$215,935","6/15"
+"Fantastic Four: Rise of the Silver
+Surfer","Cinepix","$215,935","6/15"
+" Movie Title"," Distributor"," Gross"," Release"
 "Sunshine","Cinepix","$215,490","4/13"
 "The Brave One","WB","$208,680","10/5"
 "Evening","SPInka","$205,509","11/2"
@@ -131,8 +134,7 @@
 "The Good Shepherd","Monolith","$80,613","2/23"
 "Korowod","Polski","$72,497","11/9"
 "Becoming Jane","n/a","$71,302","9/14"
-"Ensemble, c'est tout (Hunting and
-Gathering)","Gutek","$68,177","9/28"
+"Ensemble, c'est tout (Hunting and Gathering)","Gutek","$68,177","9/28"
 "Thank You for Smoking","n/a","$65,169","5/11"
 "Epic Movie","n/a","$61,047","3/16"
 "Little Miss Sunshine","n/a","$60,682","1/12"

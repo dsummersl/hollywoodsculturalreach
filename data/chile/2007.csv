@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Simpsons Movie","Fox","$3,680,384","7/26"
 "Harry Potter and the Order of the Phoenix","WB","$3,223,184","7/12"
 "Shrek the Third","UIP","$3,004,543","6/14"
@@ -17,7 +17,8 @@
 "The Golden Compass","WB","$849,398","12/13"
 "Babel","UIP","$819,422","1/18"
 "Alvin and the Chipmunks","Fox","$791,693","12/20"
-"Fantastic Four: Rise of the Silver Surfer","Fox","$773,574","6/28"
+"Fantastic Four: Rise of the Silver
+Surfer","Fox","$773,574","6/28"
 "Beowulf","WB","$675,440","11/22"
 "Surf's Up","Sony","$647,465","8/2"
 "Bee Movie","UIP","$641,175","12/6"
@@ -99,6 +100,7 @@
 "The Science of Sleep","Four Films","$80,023","4/19"
 "The Magic Roundabout (Doogal)","Bazuca","$76,664","10/11"
 "Cry Wolf","Bazuca","$72,485","2/1"
+" Movie Title"," Distributor"," Gross"," Release"
 "Fauteuils d'orchestre (Avenue Montaigne)","Transeuropa","$72,103","11/8"
 "Shutter (2004)","Transeuropa","$67,570","10/4"
 "The Invasion","WB","$65,354","11/15"
@@ -114,7 +116,8 @@
 "The Contract","Bazuca","$56,258","9/13"
 "The Assassination of Jesse James by the Coward Robert Ford","WB","$55,512","12/27"
 "Fearless (Huo Jian Jia)","n/a","$55,301","9/6"
-"La Tigre e la neve (The Tiger and the Snow)","Bazuca","$55,130","2/22"
+"La Tigre e la neve (The Tiger and the
+Snow)","Bazuca","$55,130","2/22"
 "The Wind That Shakes the Barley","Four Films","$54,407","8/30"
 "Normal con alas","n/a","$52,171","11/22"
 "Shoot 'Em Up","WB","$46,065","11/8"
@@ -135,8 +138,7 @@
 "Tsotsi","Bazuca","$21,325","6/21"
 "Copying Beethoven","Transeuropa","$20,402","11/29"
 "Man About Town","Andes Films","$19,885","5/10"
-"Ricordati di me (Remember Me, My
-Love)","CDI","$15,842","11/29"
+"Ricordati di me (Remember Me, My Love)","CDI","$15,842","11/29"
 "C.R.A.Z.Y.","n/a","$15,171","9/13"
 "Inland Empire","n/a","$15,059","11/29"
 "Vers le sud (Heading South)","Andes Films","$14,909","2/1"

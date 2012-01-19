@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Percy Jackson & The Olympians: The Lightning Thief","Odeon","$1,679,627","2/12"
 "Alice in Wonderland (2010)","Prooptiki","$1,323,181","3/5"
 "Inception","InterCom","$1,096,340","7/30"
@@ -99,6 +99,7 @@
 "Charlie St. Cloud","Ro Image 2000","$46,139","10/28"
 "Daybreakers","Prorom/Ro Im.","$45,191","3/12"
 "The Lovely Bones","Ro Image 2000","$44,254","3/11"
+" Movie Title"," Distributor"," Gross"," Release"
 "Splice","Ro Image 2000","$43,895","8/19"
 "Kick Ass","MediaPro","$42,315","4/22"
 "Invictus","InterCom","$37,372","3/4"
@@ -125,8 +126,7 @@
 "Flickan som lekte med elden","Independenta Film","$9,562","10/15"
 "Capitalism: A Love Story","Transilvania","$9,196","1/15"
 "Soul Kitchen","Independenta Film","$8,784","6/10"
-"Felicia inainte de toate (First of All,
-Felicia)","n/a","$8,399","6/10"
+"Felicia inainte de toate (First of All, Felicia)","n/a","$8,399","6/10"
 "The Last Word","New Films","$7,974","4/29"
 "Micmacs à tire-larigot","Odeon","$7,603","2/25"
 "A Prophet (Un prophète)","Independenta Film","$6,950","3/11"

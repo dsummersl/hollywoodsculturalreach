@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek Forever After","Paramount","$710,999","7/9"
 "Toy Story 3","Disney","$708,029","6/18"
 "Alice in Wonderland (2010)","Disney","$509,177","3/5"
@@ -14,7 +14,8 @@
 "Grown Ups","Sony","$198,914","9/17"
 "Cats & Dogs: Revenge of Kitty Galore","WB","$189,716","8/20"
 "It's Complicated","UIP","$175,658","1/15"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$174,663","1/1"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$174,663","1/1"
 "Due Date","WB","$166,766","11/5"
 "Resident Evil: Afterlife","Sony","$161,693","9/10"
 "Despicable Me","UPI","$159,938","7/30"
@@ -74,7 +75,8 @@
 "Sin Retorno","n/a","$49,622","11/5"
 "Legend of the Guardians: The Owls of Ga'Hoole","WB","$46,565","10/8"
 "Le Code a changé","n/a","$46,311","4/30"
-"Precious: Based on the Novel "Push" by Sapphire","n/a","$46,212","2/12"
+"Precious: Based on the Novel "Push" by
+Sapphire","n/a","$46,212","2/12"
 "Dear John","Sony","$45,829","5/7"
 "Percy Jackson & The Olympians: The Lightning Thief","Fox","$45,739","2/12"
 "Nanny McPhee and The Big Bang","UPI","$45,319","9/24"
@@ -99,6 +101,7 @@
 "Case 39","Paramount","$30,616","7/23"
 "Astro Boy","n/a","$30,546","1/29"
 "El hombre de al lado (The Man Next Door)","n/a","$30,098","10/29"
+" Movie Title"," Distributor"," Gross"," Release"
 "Remember Me","n/a","$28,265","7/23"
 "Love Happens","n/a","$27,695","5/21"
 "Leo's Room","WB","$26,719","7/16"
@@ -192,7 +195,8 @@
 "Por Tu Culpa (It's Your Fault)","n/a","$1,377","12/17"
 "A Thousand Good Years of Prayers","n/a","$1,325","1/15"
 "Lo que sé de Lola","n/a","$1,068","4/9"
-"Pax Americana and the Weaponization of Space","n/a","$857","10/8"
+"Pax Americana and the Weaponization of
+Space","n/a","$857","10/8"
 "Emmas Glück","n/a","$775","1/29"
 "Redacted","n/a","$661","11/12"
 "Em Teu Nome (In Your Name)","n/a","$504","10/8"

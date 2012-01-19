@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","Fox","$10,648,534","12/17"
 "2012","Sony","$6,100,075","11/12"
 "Nisos","Roadshow","$5,696,912","12/29"
@@ -49,7 +49,8 @@
 "Orphan","WB","$819,189","9/24"
 "G.I. Joe","UIP","$807,493","9/17"
 "Julie & Julia","Sony","$782,907","10/22"
-"Night at the Museum: Battle of the Smithsonian","Fox","$777,243","5/21"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$777,243","5/21"
 "Valkyrie","Odeon","$770,132","2/19"
 "Law Abiding Citizen","Roadshow","$734,045","10/29"
 "Marley and Me","Odeon","$730,545","3/5"
@@ -99,6 +100,7 @@
 "17 Again","Roadshow","$241,295","5/7"
 "Vals Im Bashir (Waltz with Bashir)","Seven","$235,425","1/1"
 "Hotel for Dogs","UIP","$226,450","4/16"
+" Movie Title"," Distributor"," Gross"," Release"
 "Easy Virtue","Aud. Vis.","$220,142","7/23"
 "Bride Wars","Odeon","$212,200","1/22"
 "Bad Lieutenant: Port of Call New Orleans","Odeon","$210,887","9/17"
@@ -149,7 +151,8 @@
 "The Brothers Bloom","Odeon","$54,372","6/11"
 "How to Lose Friends and Alienate People","Village","$52,560","2/5"
 "Brothers","Spentzos","$50,639","12/10"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$50,258","12/31"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$50,258","12/31"
 "Kynodontas (Dogtooth)","n/a","$49,082","10/22"
 "My Sister's Keeper","Roadshow","$48,647","7/9"
 "OceanWorld 3D","n/a","$47,523","10/22"
@@ -186,7 +189,8 @@
 "Home (2009)","Rosebud","$10,363","7/9"
 "Okuribito (Departures)","Videorama","$10,162","3/12"
 "Sanguepazzo","Spentzos","$10,060","9/3"
-"Le Fils de l'épicier (The Grocer's Son)","Master","$8,452","1/1"
+"Le Fils de l'épicier (The Grocer's
+Son)","Master","$8,452","1/1"
 "The Brøken","Odeon","$8,145","5/21"
 "Isovites","EKK","$6,570","3/5"
 "Comme les autres","Filmtrade","$6,510","1/8"

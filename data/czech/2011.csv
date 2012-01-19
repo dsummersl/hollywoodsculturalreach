@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Harry Potter and the Deathly Hallows (Part Two)","WB","$5,599,132","7/14"
 "Muži v nadìji","Falcon","$4,911,711","8/26"
 "Pirates of the Caribbean: On Stranger Tides (3D)","Falcon","$3,876,389","5/19"
@@ -99,6 +99,7 @@
 "Contagion","Warner Bros.","$97,687","10/20"
 "Hop","Sony","$97,302","3/31"
 "Green Lantern","Warner Bros.","$94,635","8/18"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Skin I Live In","35 Milim","$94,272","9/8"
 "Larry Crowne","Bioscop","$90,216","10/27"
 "Unknown","Warner Bros.","$89,660","4/14"

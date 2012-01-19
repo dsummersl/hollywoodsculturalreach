@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Ice Age: Dawn of the Dinosaurs","Fox","$11,644,527","7/3"
 "2012","Sony","$8,046,572","11/13"
 "Up","Disney","$7,249,646","6/5"
@@ -7,7 +7,8 @@
 "Avatar","Fox","$5,125,939","12/18"
 "Fast and Furious","UIP","$4,604,144","4/3"
 "Angels & Demons","Sony","$4,444,803","5/15"
-"Night at the Museum: Battle of the Smithsonian","Fox","$4,372,866","5/22"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$4,372,866","5/22"
 "Transformers: Revenge of the Fallen","UIP","$4,030,620","6/26"
 "Bedtime Stories","Disney","$3,556,942","2/13"
 "Yes Man","WB","$3,356,562","1/23"
@@ -29,7 +30,8 @@
 "Race to Witch Mountain","Disney","$1,838,367","5/1"
 "A Christmas Carol (2009)","Disney","$1,835,471","11/6"
 "The Curious Case of Benjamin Button","n/a","$1,822,504","2/6"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$1,748,845","12/25"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$1,748,845","12/25"
 "Slumdog Millionaire","n/a","$1,748,182","2/27"
 "Surrogates","Disney","$1,637,609","10/2"
 "The Unborn (2009)","UIP","$1,620,599","6/12"
@@ -74,7 +76,8 @@
 "He's Just Not That Into You","n/a","$513,899","5/1"
 "The Accidental Husband","Disney","$505,288","5/15"
 "The Uninvited","UIP","$500,110","10/16"
-"El delfín: La historia de un soñador (The Dolphin: Story of a Dreamer)","Fox","$495,092","10/9"
+"El delfín: La historia de un soñador
+(The Dolphin: Story of a Dreamer)","Fox","$495,092","10/9"
 "Gran Torino","WB","$486,735","3/20"
 "The Strangers","n/a","$485,189","4/24"
 "Planet 51","n/a","$452,778","12/11"
@@ -99,6 +102,7 @@
 "Captivity","n/a","$296,357","3/27"
 "Role Models","UIP","$277,708","4/24"
 "Righteous Kill","n/a","$275,208","7/31"
+" Movie Title"," Distributor"," Gross"," Release"
 "Elegy","n/a","$273,952","8/7"
 "Vicky Cristina Barcelona","n/a","$266,897","2/13"
 "Mad Money","n/a","$253,888","1/30"

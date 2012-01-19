@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Harry Potter and the Deathly Hallows (Part Two)","InterCom","$3,379,099","7/15"
 "Pirates of the Caribbean: On Stranger Tides (3D)","Forum","$2,665,375","5/19"
 "Transformers 3","UIP","$2,184,687","6/29"
@@ -99,6 +99,7 @@
 "Scream 4","Forum","$53,605","4/14"
 "Hanna","InterCom","$45,556","6/23"
 "Paul","InterCom","$37,360","5/12"
+" Movie Title"," Distributor"," Gross"," Release"
 "Chloe","n/a","$36,095","4/28"
 "Sanctum (3D)","Budapest","$33,847","3/17"
 "127 Hours","Budapest","$32,475","3/3"

@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek Forever After","UIP","$499,121","6/4"
 "Alice in Wonderland (2010)","Disney","$435,445","3/5"
 "Despicable Me","UIP","$319,405","10/15"
@@ -99,6 +99,7 @@
 "Chloe","n/a","$12,322","5/21"
 "The Fourth Kind","n/a","$11,693","1/1"
 "Centurion","n/a","$11,451","10/1"
+" Movie Title"," Distributor"," Gross"," Release"
 "Kick Ass","n/a","$10,439","7/2"
 "Scott Pilgrim vs. the World","UIP","$9,755","9/24"
 "Furry Vengeance","n/a","$9,399","7/2"
@@ -115,8 +116,7 @@
 "The Fantastic Mr. Fox","n/a","$4,260","3/12"
 "It Might Get Loud","n/a","$4,126","2/5"
 "The Crazies","n/a","$3,368","4/23"
-"Hexe Lilli, der Drache und das magische
-Buch","n/a","$3,335","3/19"
+"Hexe Lilli, der Drache und das magische Buch","n/a","$3,335","3/19"
 "The Cove","n/a","$2,962","1/8"
 "Agora (Mists of Time)","n/a","$2,525","10/22"
 "The Losers","n/a","$2,274","5/21"

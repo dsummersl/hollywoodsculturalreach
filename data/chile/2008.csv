@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Wall-E","Disney","$3,312,890","6/26"
 "The Dark Knight","WB","$3,239,830","7/17"
 "Kung Fu Panda","UIP","$3,061,178","7/10"
@@ -9,7 +9,8 @@
 "The Mummy: Tomb of the Dragon Emperor","UIP","$1,434,116","7/31"
 "Iron Man","UIP","$1,383,728","4/30"
 "Hancock","Sony","$1,377,748","7/3"
-"Indiana Jones and the Kingdom of the Crystal Skull","UIP","$1,324,464","5/22"
+"Indiana Jones and the Kingdom of the Crystal
+Skull","UIP","$1,324,464","5/22"
 "I Am Legend","WB","$1,294,576","1/17"
 "10,000 B.C.","WB","$1,222,724","3/6"
 "31 minutos","MC Films","$1,065,000","3/27"
@@ -29,7 +30,8 @@
 "Mirrors","Fox","$563,687","10/2"
 "You Don't Mess with the Zohan","Sony","$527,900","9/11"
 "The Bucket List","WB","$518,715","1/31"
-"Sweeney Todd: The Demon Barber of Fleet Street","WB","$492,673","2/7"
+"Sweeney Todd: The Demon Barber of Fleet
+Street","WB","$492,673","2/7"
 "The Spiderwick Chronicles","UIP","$439,982","3/20"
 "Wanted","UIP","$418,922","8/14"
 "Mamma Mia!","UIP","$417,860","10/16"
@@ -99,6 +101,7 @@
 "Irma Vap - O Retorno","Bazuca","$77,262","11/13"
 "The Darjeeling Limited","Fox","$74,146","4/3"
 "El Brindis","Bazuca","$73,283","8/7"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Return","n/a","$72,798","11/13"
 "88 Minutes","Bazuca","$71,011","10/23"
 "Awake","Bazuca","$70,689","10/16"
@@ -151,8 +154,7 @@
 "The Black Pimpernel","Andes Films","$19,628","9/18"
 "Kirikou et les bêtes sauvages","Four Films","$19,209","2/7"
 "The Hunting Party","Bazuca","$19,099","6/19"
-"4 luni, 3 saptamâni si 2 zile (4 Months, 3
-Weeks, 2 Days)","MC Films","$17,330","7/31"
+"4 luni, 3 saptamâni si 2 zile (4 Months, 3 Weeks, 2 Days)","MC Films","$17,330","7/31"
 "Prohibido Prohibir","Arcadia","$17,103","11/13"
 "199 recetas para ser feliz","MC Films","$15,915","9/25"
 "Lars and the Real Girl","Impacto","$15,190","11/27"

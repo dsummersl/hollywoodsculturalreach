@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Bathory","Tatrafilm","$1,941,259","7/10"
 "Madagascar: Escape 2 Africa","Tatrafilm","$1,072,395","11/13"
 "Astérix aux jeux olympiques","SPI Int'l","$492,390","1/31"
@@ -7,7 +7,8 @@
 "Step Up 2 the Streets","SPI Int'l","$394,685","4/3"
 "Kung Fu Panda","Tatrafilm","$390,351","7/3"
 "Gympl","Continental","$385,415","1/10"
-"Indiana Jones and the Kingdom of the Crystal Skull","Tatrafilm","$371,478","5/22"
+"Indiana Jones and the Kingdom of the Crystal
+Skull","Tatrafilm","$371,478","5/22"
 "Quantum of Solace","Itafilm","$338,578","11/6"
 "Hancock","Itafilm","$329,279","7/3"
 "The Chronicles of Narnia: Prince Caspian","Saturn","$310,743","6/26"
@@ -47,7 +48,8 @@
 "Václav","Continental","$80,064","2/28"
 "Fool's Gold","Continental","$76,748","4/17"
 "21","Itafilm","$74,475","5/8"
-"Sweeney Todd: The Demon Barber of Fleet Street","Continental","$74,371","2/7"
+"Sweeney Todd: The Demon Barber of Fleet
+Street","Continental","$74,371","2/7"
 "Winx club - Il segreto del regno perduto (Winx Club: The Secret of the Lost Kingdom)","SPI Int'l","$72,909","2/28"
 "Jumper","Tatrafilm","$70,301","3/6"
 "Saw IV","Continental","$69,691","1/17"
@@ -99,6 +101,7 @@
 "Okruchy nieba","Continental","$23,150","4/10"
 "Paris (2008)","SPI Int'l","$23,109","4/24"
 "Forgetting Sarah Marshall","Tatrafilm","$22,034","6/19"
+" Movie Title"," Distributor"," Gross"," Release"
 "Die Welle (The Wave)","SPI Int'l","$20,865","10/30"
 "Enchanted","Saturn","$20,565","2/14"
 "Taken","Magic Box","$20,498","12/11"

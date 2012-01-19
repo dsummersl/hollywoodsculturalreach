@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Crni Gruja i kamen mudrosti (Black Gruja)","Mirius","$452,981","2/1"
 "Cetvrti covek (The Fourth Man)","Mirius","$341,488","11/1"
 "The Simpsons Movie","Tuck","$296,136","7/26"
@@ -18,7 +18,8 @@
 "Hadersfild (Huddersfield International)","Mirius","$66,300","12/6"
 "Ghost Rider","Tuck","$63,502","2/15"
 "Beowulf","Tuck","$62,045","11/29"
-"Fantastic Four: Rise of the Silver Surfer","Tuck","$55,100","6/14"
+"Fantastic Four: Rise of the Silver
+Surfer","Tuck","$55,100","6/14"
 "Music and Lyrics","Tuck","$51,450","3/15"
 "Babel","Mirius","$50,508","3/1"
 "Elizabeth: The Golden Age","Taramount","$49,390","12/20"
@@ -99,13 +100,13 @@
 "Wild Hogs","Taramount","$5,968","6/14"
 "The Science of Sleep","n/a","$5,774","3/30"
 "Odbacen (Reject)","Mirius","$5,305","10/17"
+" Movie Title"," Distributor"," Gross"," Release"
 "Taxidermia","Cinears","$5,106","10/4"
 "Red Road","First Prod","$4,836","1/11"
 "Bridge to Terabithia","Mirius","$4,373","4/26"
 "Le Héros de la famille","Mirius","$4,158","7/5"
 "Zwartboek (Black Book)","Pro Vision","$4,105","5/11"
-"Crónica de una fuga (Buenos Aires,
-1977)","n/a","$4,028","4/18"
+"Crónica de una fuga (Buenos Aires, 1977)","n/a","$4,028","4/18"
 "Stranger Than Fiction","Taramount","$3,823","5/31"
 "La Stella che non c'è","n/a","$3,792","12/6"
 "Disturbia","Taramount","$3,778","9/13"
@@ -132,4 +133,5 @@
 "Truands","n/a","$725","12/6"
 "La Educación de las hadas","n/a","$327","5/18"
 "Les Amours d'Astrée et de Céladon","n/a","$122","12/13"
-"L'Étoile du soldat (Soldier's Star)","n/a","$98","5/3"
+"L'Étoile du soldat (Soldier's
+Star)","n/a","$98","5/3"

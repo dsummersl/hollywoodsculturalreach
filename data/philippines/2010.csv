@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Twilight Saga: Eclipse","Pioneer","$6,317,882","6/30"
 "Iron Man 2","UIP","$6,252,102","4/30"
 "Clash of the Titans (2010)","WB","$4,736,074","4/3"
@@ -37,7 +37,8 @@
 "Sa 'yo lamang","Star Cin.","$1,151,277","9/1"
 "Legion (2010)","Sony","$1,136,978","1/22"
 "Sherlock Holmes","WB","$1,136,300","1/8"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$1,112,086","1/8"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$1,112,086","1/8"
 "I Do (2010)","Star Cin.","$985,402","9/29"
 "I'll Be There","Star Cin.","$928,937","6/16"
 "The Spy Next Door","Viva Int.","$842,162","1/15"
@@ -99,6 +100,7 @@
 "Letters to Juliet","Pioneer","$170,633","6/16"
 "Takers","Sony","$165,512","11/24"
 "The Hole (2010)","Pioneer","$141,880","10/15"
+" Movie Title"," Distributor"," Gross"," Release"
 "You Again","Disney","$141,433","11/3"
 "Did You Hear About the Morgans?","Sony","$141,307","2/3"
 "Little Big Soldier","Viva Int.","$140,505","5/19"
@@ -109,8 +111,7 @@
 "Edge of Darkness","Pioneer","$123,170","2/17"
 "Buried","Viva Int.","$122,814","10/27"
 "Old Dogs","Disney","$117,343","1/20"
-"Les aventures extraordinaires d'Adèle Blanc-Sec (The Extraordinary Adventures of Adèle
-Blanc-Sec)","Pioneer","$114,502","11/3"
+"Les aventures extraordinaires d'Adèle Blanc-Sec (The Extraordinary Adventures of Adèle Blanc-Sec)","Pioneer","$114,502","11/3"
 "Extraordinary Measures","Sony","$109,091","3/10"
 "Avatar: Special Edition","WB","$106,952","8/27"
 "Armored","Sony","$106,158","2/24"

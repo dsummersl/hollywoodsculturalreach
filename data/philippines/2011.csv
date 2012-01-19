@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Transformers 3","UIP","$9,770,818","6/29"
 "The Unkabogable Praybeyt Benjamin","Star Cin.","$7,654,855","10/26"
 "Harry Potter and the Deathly Hallows (Part Two)","WB","$6,955,628","7/14"
@@ -99,6 +99,7 @@
 "Zookeeper","Sony","$176,706","9/21"
 "Mars Needs Moms","Disney","$175,037","3/16"
 "Hereafter","WB","$173,317","1/19"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Sorcerer and the White Snake","Viva Int.","$163,718","9/28"
 "Colombiana","Viva Int.","$159,109","8/26"
 "Scream 4","Pioneer","$152,525","5/4"

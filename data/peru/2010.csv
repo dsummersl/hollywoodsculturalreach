@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek Forever After","PPI","$4,111,292","7/8"
 "Toy Story 3","Disney","$3,753,051","6/17"
 "Clash of the Titans (2010)","WB","$2,949,559","4/15"
@@ -11,7 +11,8 @@
 "Prince of Persia: The Sands of Time","Disney","$1,845,122","5/27"
 "Alice in Wonderland (2010)","Disney","$1,825,228","3/4"
 "How to Train Your Dragon","PPI","$1,640,894","3/25"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$1,393,474","1/1"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$1,393,474","1/1"
 "Legend of the Guardians: The Owls of Ga'Hoole","WB","$1,330,099","10/7"
 "Cats & Dogs: Revenge of Kitty Galore","WB","$1,304,761","8/12"
 "The Sorcerer's Apprentice","Disney","$1,290,696","7/22"
@@ -99,6 +100,7 @@
 "All About Steve","Fox","$148,844","3/11"
 "Ninja Assassin","WB","$147,390","1/21"
 "Låt den rätte komma in (Let the Right One In)","n/a","$145,018","4/1"
+" Movie Title"," Distributor"," Gross"," Release"
 "La Véritable histoire du chat botte","n/a","$144,875","2/25"
 "Dear John","Sony","$142,444","4/22"
 "All the Boys Love Mandy Lane","n/a","$136,342","2/4"
@@ -119,7 +121,8 @@
 "The Imaginarium of Doctor Parnassus","Sony","$113,367","1/28"
 "Green Zone","PPI","$113,241","6/24"
 "Thick as Thieves","n/a","$109,350","1/14"
-"Precious: Based on the Novel "Push" by Sapphire","n/a","$106,931","2/25"
+"Precious: Based on the Novel "Push" by
+Sapphire","n/a","$106,931","2/25"
 "Mitos y leyendas: La nueva alianza","n/a","$106,569","11/11"
 "The Echo","n/a","$105,781","7/8"
 "Spread","n/a","$97,928","4/29"

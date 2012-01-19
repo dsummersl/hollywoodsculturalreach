@@ -12,6 +12,9 @@ class App extends Spine.Controller
     Country.create(name: v['Country|key'][0],region: v['Continent'],key: v['Country|key'][1]) for k,v of d
     # plus the domestic market:
     Country.create(name: 'US & Canada',region: 'North America',key: 'unitedstates')
+    $.getJSON "data/2007.json", (d) =>
+      usa = Country.findByAttribute('key','unitedstates')
+      Extractor.extractDomesticMovies(d,'unitedstates',2007,(d) => usa.movies.create({title: d.film, year:d.year, story:d.story,genre:d.genre}))
 
     d3.xml "img/World_map_-_low_resolution.svg", "image/svg+xml", (xml)=>
       importNode = document.importNode(xml.documentElement, true)

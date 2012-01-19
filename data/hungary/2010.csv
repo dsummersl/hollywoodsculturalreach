@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek Forever After","UIP","$3,255,213","7/8"
 "Inception","InterCom","$2,418,217","7/22"
 "Harry Potter and the Deathly Hallows (Part One)","InterCom","$2,174,361","11/25"
@@ -99,6 +99,7 @@
 "L'immortel (22 Bullets)","Forum","$50,193","10/7"
 "Kick Ass","InterCom","$50,188","6/17"
 "Chasseurs de dragons (Dragon Hunters)","InterCom","$46,019","3/11"
+" Movie Title"," Distributor"," Gross"," Release"
 "Jackass 3-D","UIP","$42,452","11/18"
 "Män som hatar kvinnor (The Girl with the Dragon Tattoo)","Budapest","$38,796","7/8"
 "An Education","Budapest","$37,561","4/8"
@@ -111,8 +112,7 @@
 "Splice","Budapest","$21,262","9/23"
 "Devil","UIP","$20,813","11/18"
 "Agora (Mists of Time)","Budapest","$19,962","2/18"
-"Les aventures extraordinaires d'Adèle Blanc-Sec (The Extraordinary Adventures of Adèle
-Blanc-Sec)","Forum","$19,821","9/9"
+"Les aventures extraordinaires d'Adèle Blanc-Sec (The Extraordinary Adventures of Adèle Blanc-Sec)","Forum","$19,821","9/9"
 "Garfield's Pet Force","Palace","$18,329","8/19"
 "Daybreakers","Budapest","$16,898","4/1"
 "Le Premier cercle","MOKEP","$15,270","9/16"

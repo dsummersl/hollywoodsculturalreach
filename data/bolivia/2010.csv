@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Toy Story 3","Disney","$1,100,757","6/17"
 "Alice in Wonderland (2010)","Disney","$676,994","3/4"
 "Shrek Forever After","PPI","$644,133","7/8"
@@ -99,6 +99,7 @@
 "Remember Me","Manfer","$13,246","7/8"
 "La Sconosciuta (The Unknown Woman)","n/a","$12,780","7/15"
 "The Forbidden Kingdom","Trade Int.","$12,429","9/16"
+" Movie Title"," Distributor"," Gross"," Release"
 "Sorority Row","Manfer","$12,324","2/25"
 "Ninja Assassin","WB","$11,662","2/18"
 "Letters to Juliet","Manfer","$11,575","9/9"
@@ -119,7 +120,8 @@
 "Flawless (2007)","Trade Int.","$4,738","2/18"
 "Be Kind, Rewind","Trade Int.","$4,645","6/10"
 "Gud Bisnes (Good Business)","n/a","$4,483","11/11"
-"Precious: Based on the Novel "Push" by Sapphire","Trade Int.","$4,326","6/10"
+"Precious: Based on the Novel "Push" by
+Sapphire","Trade Int.","$4,326","6/10"
 "Faubourg 36 (Paris 36)","n/a","$3,764","9/30"
 "Fame (2009)","Trade Int.","$3,082","12/30"
 "Transsiberian","n/a","$2,641","6/10"
@@ -128,7 +130,8 @@
 "Happy-Go-Lucky","n/a","$2,408","5/6"
 "Love Happens","Trade Int.","$1,978","9/16"
 "Two Brothers","n/a","$1,958","7/15"
-"My Mom's New Boyfriend (a.k.a. Homeland Security)","Trade Int.","$1,605","8/26"
+"My Mom's New Boyfriend (a.k.a. Homeland
+Security)","Trade Int.","$1,605","8/26"
 "Gwoemul (The Host)","n/a","$1,546","2/25"
 "An Education","Sony","$1,448","3/25"
 "Diario de una ninfómana","Trade Int.","$1,416","8/12"

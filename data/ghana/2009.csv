@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","WB","$59,590","12/18"
 "2012","Sony","$43,802","11/13"
 "Angels & Demons","Sony","$43,414","5/13"
@@ -12,13 +12,15 @@
 "The Hangover","WB","$22,365","8/14"
 "Michael Jackson's This Is It","Sony","$22,224","10/28"
 "X-Men Origins: Wolverine","Fox","$17,010","5/1"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$16,019","12/23"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$16,019","12/23"
 "The Ugly Truth","Sony","$15,948","10/9"
 "G-Force","Disney","$15,654","10/1"
 "The Taking of Pelham One, Two, Three","Sony","$14,370","9/25"
 "Ice Age: Dawn of the Dinosaurs","Disney","$13,817","7/3"
 "Surrogates","Disney","$13,471","10/2"
-"Night at the Museum: Battle of the Smithsonian","Fox","$13,090","5/22"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$13,090","5/22"
 "Marley and Me","Fox","$12,957","3/20"
 "The International","n/a","$12,463","3/13"
 "Seven Pounds","n/a","$11,302","2/13"

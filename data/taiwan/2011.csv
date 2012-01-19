@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Transformers 3","UIP","$37,667,064","6/29"
 "You Are the Apple of My Eye","Fox","$17,925,128","8/19"
 "Harry Potter and the Deathly Hallows (Part Two)","WB","$14,539,174","7/16"
@@ -86,7 +86,8 @@
 "Gantz","n/a","$100,342","3/19"
 "Don't Be Afraid of the Dark","n/a","$98,671","9/3"
 "The Way Back","n/a","$96,712","6/25"
-"Sien nui yau wan (Chinese Ghost Story)","n/a","$91,928","5/7"
+"Sien nui yau wan (Chinese Ghost
+Story)","n/a","$91,928","5/7"
 "Last Night","n/a","$91,879","2/19"
 "Mother's Day","n/a","$82,825","5/14"
 "Eiga Doraemon Shin Nobita to tetsujin heidan: Habatake tenshitachi","n/a","$80,781","8/26"
@@ -99,6 +100,7 @@
 "Hanamizuki","Long Shong","$56,268","1/1"
 "Melancholia","n/a","$54,421","8/25"
 "Gantz: Perfect Answer","n/a","$53,036","5/21"
+" Movie Title"," Distributor"," Gross"," Release"
 "Sound of Noise","n/a","$49,059","5/21"
 "Jackass 3-D","UIP","$47,339","1/22"
 "My Name is Khan","n/a","$46,909","5/28"
@@ -114,7 +116,7 @@
 "Black Butterflies","n/a","$32,522","8/26"
 "B+ jing taam (The Detective 2)","n/a","$32,007","6/11"
 "Arthur et la guerre des deux mondes","n/a","$27,212","1/29"
-"San kei hap lui (Mr. and Mrs. Incredible)","n/a","$26,858","2/12"
+"San kei hap lui (Mr. and Mrs.  Incredible)","n/a","$26,858","2/12"
 "Blue Valentine","n/a","$26,658","3/12"
 "Mine vaganti (Loose Cannons)","n/a","$26,127","7/9"
 "Xi Yang Yang 2 (Please Goat and Big Wolf 2)","n/a","$24,234","4/2"
@@ -126,8 +128,7 @@
 "Kyatapirâ (Caterpillar)","n/a","$13,220","1/8"
 "Boku to tsuma no 1778 no monogatari (1,778
 Stories of Me and My Wife)","n/a","$12,764","4/30"
-"Yves Saint Laurent - Pierre Bergé, l'amour
-fou","n/a","$12,727","7/15"
+"Yves Saint Laurent - Pierre Bergé, l'amour fou","n/a","$12,727","7/15"
 "Io, Don Giovanni","n/a","$12,595","2/5"
 "Cairo Time","n/a","$11,386","7/1"
 "Ranwei bîto (Runway Beat)","n/a","$11,098","6/17"

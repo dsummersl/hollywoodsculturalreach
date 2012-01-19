@@ -1,5 +1,3 @@
-require('lib/setup')
-
 ###
 # Parse a file and then give the listener the following information:
 #  - film = name of film

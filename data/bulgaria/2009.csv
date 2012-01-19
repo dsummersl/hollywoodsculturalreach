@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","Fox","$3,406,100","12/18"
 "Ice Age: Dawn of the Dinosaurs","Alexandra","$1,911,760","7/3"
 "2012","Alexandra","$856,915","11/13"
@@ -35,7 +35,8 @@
 "Law Abiding Citizen","Tandem","$149,691","10/25"
 "Planet 51","Forum Films","$149,540","12/11"
 "Duplicity","UIP","$145,263","3/20"
-"Night at the Museum: Battle of the Smithsonian","Alexandra","$144,281","5/22"
+"Night at the Museum: Battle of the
+Smithsonian","Alexandra","$144,281","5/22"
 "Spread","Tandem","$137,773","9/6"
 "The Pink Panther 2","Alexandra","$135,405","2/13"
 "The Curious Case of Benjamin Button","WB","$127,731","2/20"
@@ -99,6 +100,7 @@
 "The Women (2008)","Forum Films","$29,493","5/1"
 "Palermo Shooting","Art Fest","$27,994","6/12"
 "Julie & Julia","Alexandra","$27,613","10/16"
+" Movie Title"," Distributor"," Gross"," Release"
 "Zombieland","Alexandra","$26,509","11/20"
 "Friday the 13th (2009)","Prooptiki","$25,871","2/13"
 "I Love You Man","UIP","$24,430","4/24"
@@ -131,12 +133,10 @@
 "Vals Im Bashir (Waltz with Bashir)","Art Fest","$5,687","12/4"
 "The Wrestler","Radivision","$5,061","5/15"
 "El Greco","Prooptiki","$3,723","1/30"
-"Joheunnom nabbeunnom isanghannom (The Good, the
-Bad, and the Weird)","Radivision","$3,337","10/11"
+"Joheunnom nabbeunnom isanghannom (The Good, the Bad, and the Weird)","Radivision","$3,337","10/11"
 "Home","Forum Films","$3,081","8/2"
 "Midsummer Madness","Art Fest","$2,524","4/3"
 "Home (2009)","n/a","$2,316","6/5"
 "Guerilla (Che: Part Two)","Alexandra","$1,748","5/8"
-"Edinstvenata lyubovna istoriya, koyato Hemingway
-ne opisa (A Farewell to Hemingway)","BDK","$1,563","3/20"
+"Edinstvenata lyubovna istoriya, koyato Hemingway ne opisa (A Farewell to Hemingway)","BDK","$1,563","3/20"
 "Delta","Art Fest","$1,133","4/3"

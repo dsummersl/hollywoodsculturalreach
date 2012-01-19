@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Shrek Forever After","Forum","$688,295","6/4"
 "Alice in Wonderland (2010)","Forum","$545,457","3/5"
 "Despicable Me","Forum","$531,998","10/15"
@@ -99,6 +99,7 @@
 "Devil","Forum","$28,336","10/22"
 "Män som hatar kvinnor (The Girl with the Dragon Tattoo)","Incognito","$27,477","8/20"
 "Legion (2010)","Sony","$26,802","3/12"
+" Movie Title"," Distributor"," Gross"," Release"
 "L'arnacoeur (Heartbreaker)","A-One","$25,248","12/17"
 "Nanny McPhee and The Big Bang","Forum","$24,573","4/30"
 "Tortuga - Die unglaubliche Reise der Meeresschildkröte (Turtle: The Incredible Journey)","n/a","$24,352","7/23"
@@ -139,8 +140,7 @@
 "The White Ribbon","Planetos","$4,389","11/26"
 "In the Loop","n/a","$4,352","1/15"
 "Anarchija Zirmunuose","n/a","$4,085","9/10"
-"Wszystko, co kocham (All That I
-Love)","Lenkijos","$3,794","9/22"
+"Wszystko, co kocham (All That I Love)","Lenkijos","$3,794","9/22"
 "Kick Ass","ACME","$3,622","6/25"
 "A Serious Man","ACME","$3,521","4/9"
 "Mikro eglima (Small Crime)","n/a","$3,395","5/14"

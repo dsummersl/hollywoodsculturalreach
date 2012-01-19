@@ -1,5 +1,6 @@
-" Movie Title","Distributor","Gross","Release"
-"Indiana Jones and the Kingdom of the Crystal Skull","Prooptiki","$744,379","5/23"
+" Movie Title"," Distributor"," Gross"," Release"
+"Indiana Jones and the Kingdom of the Crystal
+Skull","Prooptiki","$744,379","5/23"
 "Sex and the City","Alexandra","$487,698","6/6"
 "The Mummy: Tomb of the Dragon Emperor","Prooptiki","$410,175","8/8"
 "Quantum of Solace","Alexandra","$364,191","11/7"
@@ -74,8 +75,10 @@
 "Nights in Rodanthe","Alexandra","$52,688","11/14"
 "High School Musical 3: Senior Year","Sunny","$51,983","11/21"
 "Los Borgia","Profilms","$51,090","2/8"
-"My Mom's New Boyfriend (a.k.a. Homeland Security)","Tandem","$47,910","8/15"
-"Sweeney Todd: The Demon Barber of Fleet Street","Alexandra","$46,689","2/8"
+"My Mom's New Boyfriend (a.k.a. Homeland
+Security)","Tandem","$47,910","8/15"
+"Sweeney Todd: The Demon Barber of Fleet
+Street","Alexandra","$46,689","2/8"
 "Atonement","Prooptiki","$45,036","1/4"
 "Pineapple Express","Alexandra","$44,254","10/24"
 "Forgetting Sarah Marshall","Prooptiki","$43,689","4/25"
@@ -99,6 +102,7 @@
 "Frontière(s)","Alexandra","$21,354","11/7"
 "Hindemidth","BDK","$20,414","11/21"
 "Shutter","Alexandra","$20,263","6/27"
+" Movie Title"," Distributor"," Gross"," Release"
 "Astérix aux jeux olympiques","Alexandra","$20,087","8/22"
 "Definitely, Maybe","Prooptiki","$19,232","4/11"
 "Le Renard et l'enfant (The Fox and the Child)","Profilms","$18,820","9/19"

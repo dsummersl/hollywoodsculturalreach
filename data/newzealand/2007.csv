@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Transformers","PPI","$5,410,155","6/28"
 "Shrek the Third","PPI","$5,391,262","6/7"
 "Harry Potter and the Order of the Phoenix","WB","$4,753,514","7/12"
@@ -16,7 +16,8 @@
 "Wild Hogs","BVI","$1,553,813","3/8"
 "Stomp the Yard","Sony","$1,468,746","4/5"
 "Live Free or Die Hard","Fox","$1,432,389","8/9"
-"Fantastic Four: Rise of the Silver Surfer","Fox","$1,420,435","6/21"
+"Fantastic Four: Rise of the Silver
+Surfer","Fox","$1,420,435","6/21"
 "Ocean's Thirteen","Roadshow","$1,396,154","6/14"
 "Bee Movie","PPI","$1,393,248","12/6"
 "Miss Potter","Hoyts","$1,391,383","3/15"
@@ -99,6 +100,7 @@
 "Zwartboek (Black Book)","Sony","$211,678","10/11"
 "Fracture","Roadshow","$209,828","10/25"
 "Grindhouse: Death Proof","Roadshow","$209,577","11/8"
+" Movie Title"," Distributor"," Gross"," Release"
 "Prête-moi ta main (I Do)","Hopscotch","$202,683","9/13"
 "Waitress","Fox","$195,503","9/6"
 "Bobby","Hoyts","$195,112","5/3"
@@ -160,7 +162,8 @@
 "Sweet Land","Rialto","$48,156","12/26"
 "The Dead Girl","Hoyts","$47,654","11/22"
 "Romulus, My Father","Dendy","$45,024","9/6"
-"Quand j'étais chanteur (The Singer)","Palace","$43,690","8/2"
+"Quand j'étais chanteur (The
+Singer)","Palace","$43,690","8/2"
 "Black Snake Moan","PPI","$39,293","8/2"
 "Infamous","Hoyts","$38,835","8/9"
 "The Secret Life of Words","Dendy","$38,412","11/8"

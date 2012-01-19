@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Toy Story 3","Disney","$10,637,930","6/18"
 "Alice in Wonderland (2010)","Disney","$6,768,771","3/5"
 "Shrek Forever After","UIP","$6,688,109","7/9"
@@ -23,7 +23,8 @@
 "The Karate Kid","Sony","$1,559,943","6/18"
 "Paranormal Activity 2","UIP","$1,513,758","10/29"
 "A Nightmare on Elm Street (2010)","WB","$1,406,599","5/14"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$1,398,967","1/1"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$1,398,967","1/1"
 "Robin Hood","UIP","$1,329,717","5/14"
 "Iron Man 2","UIP","$1,275,996","4/30"
 "Paranormal Activity","Cine","$1,261,145","1/1"
@@ -60,7 +61,8 @@
 "Red","Cine","$347,545","12/31"
 "Män som hatar kvinnor (The Girl with the Dragon Tattoo)","Cine","$333,553","4/30"
 "Devil","UIP","$326,586","11/12"
-"Precious: Based on the Novel "Push" by Sapphire","Cine","$307,036","2/19"
+"Precious: Based on the Novel "Push" by
+Sapphire","Cine","$307,036","2/19"
 "Going the Distance","WB","$305,525","9/17"
 "It's Complicated","UIP","$290,615","4/16"
 "The Collector","Venus","$283,518","10/15"
@@ -99,6 +101,7 @@
 "Killers","Cineplex","$99,421","11/26"
 "Rabia","Cine","$86,988","11/5"
 "Astro Boy","Cine","$77,549","1/15"
+" Movie Title"," Distributor"," Gross"," Release"
 "Dear John","Sony","$75,910","4/23"
 "Carriers","Cine","$70,668","5/21"
 "The Spy Next Door","Cineplex","$70,271","7/2"

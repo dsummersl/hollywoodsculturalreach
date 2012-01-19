@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","Fox","$1,128,859","12/18"
 "Bjarnfreðarson","n/a","$608,508","12/26"
 "The Hangover","WB","$409,414","6/10"
@@ -16,7 +16,8 @@
 "Transformers: Revenge of the Fallen","UIP","$213,912","6/24"
 "Algjor Sveppi","n/a","$211,833","9/25"
 "Brüno","n/a","$184,024","7/10"
-"Alvin and the Chipmunks: The Squeakquel","Fox","$173,660","12/26"
+"Alvin and the Chipmunks: The
+Squeakquel","Fox","$173,660","12/26"
 "Monsters Vs. Aliens","UIP","$160,780","4/3"
 "A Christmas Carol (2009)","Disney","$148,749","11/20"
 "Fast and Furious","UIP","$145,551","4/3"
@@ -35,7 +36,8 @@
 "Solskinsdrengurinn (The Sunshine Boy)","Sena","$98,823","1/9"
 "Marley and Me","Fox","$96,672","3/6"
 "My Bloody Valentine 3-D","Myndform","$95,533","1/30"
-"Night at the Museum: Battle of the Smithsonian","Fox","$92,573","5/20"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$92,573","5/20"
 "My Sister's Keeper","n/a","$92,493","7/8"
 "District 9","n/a","$92,214","9/18"
 "Paul Blart: Mall Cop","Sony","$92,203","3/27"
@@ -99,6 +101,7 @@
 "Duplicity","UIP","$27,041","3/20"
 "Defiance","Samfilm","$25,543","2/20"
 "Arthur et la vengeance de Maltazard","WB","$25,462","12/4"
+" Movie Title"," Distributor"," Gross"," Release"
 "Orphan","WB","$24,985","10/9"
 "New in Town","n/a","$24,833","5/1"
 "The Wrestler","Sena","$24,761","2/13"
@@ -131,7 +134,8 @@
 "Funny Games","n/a","$10,930","8/5"
 "The Haunting in Connecticut","n/a","$10,775","9/25"
 "Gary the Tennis Coach","n/a","$10,215","7/15"
-"Unstable Fables: Goldilocks & 3 Bears Show","n/a","$10,080","6/12"
+"Unstable Fables: Goldilocks & 3 Bears
+Show","n/a","$10,080","6/12"
 "Pandorum","n/a","$10,042","11/20"
 "Push","n/a","$9,681","4/8"
 "The Boy in the Striped Pajamas","Disney","$9,240","3/27"

@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Avatar","Fox","$1,646,183","12/17"
 "Fly Me to the Moon","n/a","$1,004,708","1/15"
 "Slumdog Millionaire","Bontonfilm","$800,872","2/26"
@@ -33,7 +33,8 @@
 "The Rebound","n/a","$180,949","12/31"
 "The Final Destination","WB","$173,335","10/8"
 "Couples Retreat","UIP","$163,400","12/10"
-"Night at the Museum: Battle of the Smithsonian","Fox","$159,298","5/21"
+"Night at the Museum: Battle of the
+Smithsonian","Fox","$159,298","5/21"
 "Public Enemies","UIP","$158,667","8/13"
 "The Tale of Despereaux","n/a","$130,263","1/1"
 "Niko - Lentäjän poika (Niko & The Way to the Stars)","n/a","$129,976","11/12"
@@ -99,6 +100,7 @@
 "Zombieland","Sony","$35,498","11/26"
 "Hannah Montana The Movie","Disney","$34,968","6/18"
 "The Unborn (2009)","UIP","$33,909","5/21"
+" Movie Title"," Distributor"," Gross"," Release"
 "District 9","n/a","$32,035","9/24"
 "L'ennemi public n° 1","n/a","$29,703","4/16"
 "Pandorum","n/a","$28,359","11/26"

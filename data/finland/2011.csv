@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Harry Potter and the Deathly Hallows (Part Two)","FS Film","$5,308,968","7/13"
 "Pirates of the Caribbean: On Stranger Tides (3D)","Disney","$5,149,281","5/18"
 "Cars 2","Disney","$3,230,314","8/12"
@@ -99,6 +99,7 @@
 "Risto","Scanbox","$154,855","11/25"
 "Oceans","Atlantic","$142,859","4/8"
 "Arthur et la guerre des deux mondes","Scanbox","$140,522","3/25"
+" Movie Title"," Distributor"," Gross"," Release"
 "What's Your Number?","FS Film","$140,072","10/28"
 "Klovn: The Movie","BioRex","$133,660","6/17"
 "Hanna","Dis./Sony","$132,751","6/3"
@@ -147,7 +148,8 @@
 "The Italian Key","Nordisk","$40,720","12/16"
 "Krtek","Futurefilm","$40,547","12/23"
 "The Eagle","Nordisk","$40,479","2/18"
-"Jodaeiye Nader az Simin (A Seperation)","Mondo","$38,840","11/18"
+"Jodaeiye Nader az Simin (A
+Seperation)","Mondo","$38,840","11/18"
 "The Resident","Nordisk","$37,236","6/26"
 "Alamar (To The Sea)","Mondo","$36,981","7/22"
 "Trespass (2011)","Futurefilm","$29,857","12/9"

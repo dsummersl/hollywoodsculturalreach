@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "Clash of the Titans (2010)","WB","$4,714,447","4/4"
 "Inception","WB","$4,196,236","8/24"
 "I Love Karditsa","Odeon","$4,100,754","1/14"
@@ -99,6 +99,7 @@
 "Baarìa - La porta del vento","Odeon","$189,286","7/29"
 "Nord","Rosebud","$189,286","9/2"
 "Dorian Gray","Odeon","$188,325","1/28"
+" Movie Title"," Distributor"," Gross"," Release"
 "A Single Man","Roadshow","$185,789","2/18"
 "The Last Station","n/a","$182,986","7/29"
 "Arthur et la guerre des deux mondes","Odeon","$179,075","11/4"

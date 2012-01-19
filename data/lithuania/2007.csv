@@ -1,4 +1,4 @@
-" Movie Title","Distributor","Gross","Release"
+" Movie Title"," Distributor"," Gross"," Release"
 "The Simpsons Movie","Forum","$879,995","7/27"
 "Ironiya sudby. Prodolzhenie (The Irony of Fate 2)","ACME","$697,775","12/21"
 "Ratatouille","Forum","$636,521","8/17"
@@ -66,7 +66,8 @@
 "Fracture","GPI","$59,807","8/10"
 "1612","ACME","$58,426","11/9"
 "The Kingdom","Forum","$57,988","11/23"
-"Sluga Gosudarev (The Sovereign's Servant)","n/a","$57,288","3/9"
+"Sluga Gosudarev (The Sovereign's
+Servant)","n/a","$57,288","3/9"
 "A Mighty Heart","Forum","$56,422","9/21"
 "Elizabeth: The Golden Age","Forum","$53,308","12/7"
 "I Could Never Be Your Woman","ACME","$50,553","12/7"
@@ -87,7 +88,8 @@
 "Breaking and Entering","n/a","$37,946","1/26"
 "Boy s tenyu 2 (Shadow Boxing 2)","ACME","$37,766","11/2"
 "The Seeker: The Dark Is Rising","Forum","$37,002","10/26"
-"Fantastic Four: Rise of the Silver Surfer","Forum","$36,883","8/31"
+"Fantastic Four: Rise of the Silver
+Surfer","Forum","$36,883","8/31"
 "White Noise 2: The Light","ACME","$36,652","7/13"
 "Dreamgirls","n/a","$35,626","2/23"
 "Rocky Balboa","n/a","$35,118","2/23"
@@ -99,6 +101,7 @@
 "Zodiac","GPI","$31,329","6/1"
 "Hairspray (2007)","GPI","$31,222","8/24"
 "Because I Said So","n/a","$29,153","5/25"
+" Movie Title"," Distributor"," Gross"," Release"
 "Sunshine","n/a","$29,152","4/20"
 "Rendition","GPI","$28,244","10/26"
 "Alpha Dog","n/a","$27,297","4/13"
@@ -120,8 +123,7 @@
 "Lions for Lambs","Forum","$20,145","11/9"
 "Notes on a Scandal","n/a","$19,852","3/9"
 "Letters from Iwo Jima","n/a","$19,354","3/9"
-"Azul oscuro, casi negro
-(DarkBlueAlmostBlack)","Planetos","$19,162","5/4"
+"Azul oscuro, casi negro (DarkBlueAlmostBlack)","Planetos","$19,162","5/4"
 "Goya's Ghosts","ACME","$18,787","6/22"
 "The Good Shepherd","n/a","$18,674","3/16"
 "Exterminating Angels","ACME","$17,494","8/24"
@@ -143,7 +145,8 @@
 "Derzkie Dni","n/a","$7,013","4/20"
 "Ja ostajus","n/a","$6,969","4/29"
 "Vikaren (The Substitute)","Planetos","$6,409","12/28"
-"Obsluhoval jsem anglického krále (I Served the King of England)","Lietuvos","$6,363","11/23"
+"Obsluhoval jsem anglického krále (I
+Served the King of England)","Lietuvos","$6,363","11/23"
 "Angel (2007)","Lietuvos","$6,083","10/5"
 "Miss Potter","n/a","$5,312","4/6"
 "Man of the Year","n/a","$5,287","1/26"
