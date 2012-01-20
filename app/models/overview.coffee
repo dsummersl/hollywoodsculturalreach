@@ -8,9 +8,11 @@ class Overview extends Spine.Model
   @belongsTo 'country', Country
 
   # if year is supplied then do a specific year, otherwise do all years
-  @totalHollyWoodRatio: (year=null) =>
-    if year
-      @log "totalHollyWoodRatio for year is not defined"
-    else
+  @totalHollyWoodRatio: (collection,year=null) =>
+    all = collection.all() if not year
+    all = collection.findByAttribute('year',year) if year
+    total = 0
+    total+=o.hollywood+o.oldhollywood for o in all
+    return total
 
 module.exports = Overview
