@@ -1,13 +1,12 @@
 require = window.require
 Spine = require 'spine'
 Spine.Model.Ajax = {}
+Overview = require('models/overview')
 
 describe 'Overview', ->
-  Overview = null
-  
   beforeEach ->
-    class Overview extends Spine.Model
-      @configure 'Overview'
+    Overview.
   
-  it 'can noop', ->
+  it 'can compute totalHollyWoodRatio', ->
+    Overview.
     
