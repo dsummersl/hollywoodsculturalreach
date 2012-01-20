@@ -13,8 +13,10 @@ extractDomesticMovies = (data,key,year,listener)->
   secondrow = true
   for k,v of data
     if not firstrow and not secondrow
+      title = v['Film ']
+      title = v['Film'] if not title
       listener(
-        film: v['Film ']
+        film: title
         story: v['Story']
         genre: v['Genre']
         year: year
@@ -47,7 +49,9 @@ extractCountrySummary = (data,movies,key,year)->
   for k,v of data
     title = v[' Movie Title']
     f = movies.findByAttribute('title',title)
+    #console.log "looking for '#{title}' and found '#{f?.title}'"
     if f
+      #console.log " -  year info '#{f?.year}' == '#{year}' ? #{f?.year == year}"
       if f.year == year
         results.hollywoodfilms++
       else

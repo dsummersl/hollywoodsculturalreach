@@ -17,6 +17,8 @@ describe 'Extract', ->
   "row9": {"exclude": "","Film ": "Knocked Up","Major Studio": "Universal","Rotten Tomatoes": "91","Audience Score": "83","Story": "Love","Genre": "Comedy","Number of Theatres in Opening Weekend": "2871","Box Office Average per Cinema": "10690","Domestic Gross": "148.77","Foreign Gross": "70.23","Worldwide Gross": "219.00","Budget": "33.00","Market Profitability": "663.64%","Opening Weekend": "30.7","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross": "148768917","Foreign Gross": "70232344","Worldwide": "219001261","Budget": "33000000"},
   "row10": {"exclude": "","Film ": "No Country for Old Men","Major Studio": "Paramount","Rotten Tomatoes": "95","Audience Score": "84","Story": "Pursuit","Genre": "Drama","Number of Theatres in Opening Weekend": "860","Box Office Average per Cinema": "9042","Domestic Gross": "74.28","Foreign Gross": "86.72","Worldwide Gross": "161.00","Budget": "25.00","Market Profitability": "644.00%","Opening Weekend": "7.8","Oscar": "Best Picture, Director, Supporting Actor, Adapted Screenplay","Bafta": "Supporting Actor, Director","Source": "","": "","Domestic Gross": "74283625","Foreign Gross": "86715832","Worldwide": "160999457","Budget": "25000000"},
   "row11": {"exclude": "","Film ": "Harry Potter and the Order of the Phoenix","Major Studio": "Warner Bros.","Rotten Tomatoes": "78","Audience Score": "82","Story": "Quest","Genre": "Adventure","Number of Theatres in Opening Weekend": "4285","Box Office Average per Cinema": "17998","Domestic Gross": "292","Foreign Gross": "647.88","Worldwide Gross": "939.88","Budget": "150","Market Profitability": "626.59%","Opening Weekend": "77.1","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross": "","Foreign Gross": "","Worldwide": "","Budget": ""}
+  "row12": {"exclude": "y","Film": "88 Minutes","Major Studio": "","Rotten Tomatoes": "5","Audience Score": "51","Story": "The Riddle","Genre": "Drama","Number of Theatres in Opening Weekend": "2168","Box Office Average per Cinema": "3209","Domestic Gross": "16.93","Foreign Gross": "","Worldwide Gross": "32.30","Budget ": "30.00","Market Profitability": "1.08","Opening Weekend": "7","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross": "16930884","Foreign Gross": "","worldwide": "32.3","Budget": "30000000","budget ": "30"},
+  "row13": {"exclude": "y","Film": "Appaloosa","Major Studio": "","Rotten Tomatoes": "77","Audience Score": "55","Story": "Rescue","Genre": "Action","Number of Theatres in Opening Weekend": "","Box Office Average per Cinema": "","Domestic Gross": "20.07","Foreign Gross": "","Worldwide Gross": "25.90","Budget ": "20.00","Market Profitability": "1.30","Opening Weekend": "5","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross": "20070952","Foreign Gross": "","worldwide": "25.9","Budget": "20000000","budget ": "20"},
   }
 
   countryData = {"row0": {" Movie Title": "Pirates of the Caribbean: At World's End","Distributor": "BVI","Gross": "$91,119,039","Release": "5/25"},
@@ -40,10 +42,11 @@ describe 'Extract', ->
       expect(d.film).toEqual('Waitress') if cnt == 2
       expect(d.film).toEqual('Superbad') if cnt == 3
       expect(d.film).toEqual('The Simpsons Movie') if cnt == 4
+      expect(d.film).toEqual('Appaloosa') if cnt == 11
       cnt++
 
     Extract.extractDomesticMovies(yearlyData,'us',2010,l)
-    expect(cnt).toEqual(10)
+    expect(cnt).toEqual(12)
 
   it 'can load country data', ->
     l = (d) => Movie.create({title: d.film, year:d.year, story:d.story,genre:d.genre,country:null})
