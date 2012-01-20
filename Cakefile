@@ -36,8 +36,8 @@ task 'makeJSON', 'Make all the existing data into JSON for the spine app - you m
   console.log "\nbuilding overview data..."
   countries = JSON.parse(fs.readFileSync('public/data/countries.json'))
   summaryData = {}
-  #for k,c of countries
-  for k,c of {"row": {'Country|key': [0,'china']}}
+  for k,c of countries
+  #for k,c of {"row": {'Country|key': [0,'china']}}
     country = c['Country|key'][1]
     summaryData[country] = {} if country not in summaryData
     console.log "#{country}"

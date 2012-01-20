@@ -46,7 +46,7 @@ do
 
       # I had a lot of trouble getting VIM to do this command line w/o complaining - I had to pipe in, and then use the - at the end.
       rm t.csv
-      cat data/$key/$year.csv | vim +"filetype off" +"g/^[^S][^T][^A]/norm kJ" +"%s/^START//" +"g/OPENING WEEKENDS/del" +"w t.csv" +"q" -u NONE -
+      cat data/$key/$year.csv | vim +"filetype off" +"v/^START/norm kJ" +"%s/^START//" +"g/OPENING WEEKENDS/del" +"2,\$g/^.*Movie Title/del" +"w t.csv" +"q" -u NONE -
       mv t.csv data/$key/$year.csv
     fi
   fi
