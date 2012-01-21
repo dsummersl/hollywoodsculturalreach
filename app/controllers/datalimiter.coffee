@@ -1,4 +1,5 @@
 Spine = require('spine')
+Appdata = require 'models/appdata'
 
 # controls the filtering of the data (ie, only 2008 data).
 class Datalimiter extends Spine.Controller
@@ -15,11 +16,14 @@ class Datalimiter extends Spine.Controller
     <select id="dl-story"></select>
     """)
     $("#dl-year").append("<option>#{y}</option>") for y in [2007..2011]
+    $("#dl-year").append("<option>all</option>")
+    $("#dl-year").val('all')
     $("#dl-year").change(@yearchanged)
     $("#dl-genre").change(@genrechanged)
     $("#dl-story").change(@storychanged)
   
-  yearchanged: (e) => @log 'new year'
+  yearchanged: (e) => Appdata.set('years',$(e.target).val())
+
   genrechanged: (e) => @log "new genre"
   storychanged: (e) => @log "new story"
     

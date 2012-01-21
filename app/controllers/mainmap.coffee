@@ -26,10 +26,9 @@ class Mainmap extends Spine.Controller
       for c in Country.all()
         svgId = c.getSVGIDs()
         if r.data[c.key] and svgId
-          for id in svgId
-            #@log "#{c.key} of '#{id}' = #{colors(r.data[c.key])}"
-            #@log "d3.select(#{id}).attr('fill',#{colors(r.data[c.key])})"
-            d3.select(id).attr('fill',colors(r.data[c.key]))
+          d3.select(id).attr('fill',colors(r.data[c.key])) for id in svgId
+        else if svgId
+          d3.select(id).attr('fill','#555555') for id in svgId
         else
           @log "No mapping for #{c.name} (#{c.key})."
 

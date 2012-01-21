@@ -8,9 +8,19 @@ Appdata = require 'models/appdata'
 class Measurepicker extends Spine.Controller
   constructor: ->
     super
+    @computeHollyWood()
+    
+  computeHollyWood: =>
     data = {}
-    data[c.key] = Overview.totalHollyWoodRatio(c.overviews()) for c in Country.all()
+    year = null
+    year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
+    data[c.key] = Overview.totalHollyWoodRatio(c.overviews(),year) for c in Country.all()
     Appdata.set('measure','totalHollyWoodRatio')
     Appdata.set('measuredata',data)
-    
+    Appdata.bind('update',@appupdate)
+
+  appupdate: (r) =>
+    @computeHollyWood() if r.key == 'years'
+
+
 module.exports = Measurepicker

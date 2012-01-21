@@ -27,10 +27,10 @@ class App extends Spine.Controller
       $.getJSON "data/#{year}.json", fn(year)
     @currentRMIs++
     $.getJSON "data/countrysummaries.json", (d) =>
-      for c,year of d
+      for c,yearData of d
         country = Country.findByAttribute('key',c)
-        for k,v of year
-          country.overviews().create({year: year, other:v.otherfilms,hollywood:v.hollywoodfilms,oldhollywood:v.oldhollywoodfilms})
+        for k,v of yearData
+          country.overviews().create({year: v.year, other:v.otherfilms,hollywood:v.hollywoodfilms,oldhollywood:v.oldhollywoodfilms})
       @currentRMIs--
       @log 'loaded all the summary data'
     @checkData(@rmiIsZero,1000,@dataloaded)

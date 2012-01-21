@@ -9,8 +9,11 @@ class Overview extends Spine.Model
 
   # if year is supplied then do a specific year, otherwise do all years
   @totalHollyWoodRatio: (collection,year=null) =>
-    all = collection.all() if not year
-    all = collection.findByAttribute('year',year) if year
+    if year
+      all = collection.select((el)=> el.year == year and collection.record.id == el.country_id)
+    else
+      all = collection.all()
+    all = [] if not all
     total = 0
     total+=o.hollywood+o.oldhollywood for o in all
     return total
