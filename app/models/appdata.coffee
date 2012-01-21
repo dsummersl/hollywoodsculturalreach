@@ -1,18 +1,15 @@
 Spine = require('spine')
 
 class Appdata extends Spine.Model
-  @configure 'Appdata','data'
+  @configure 'Appdata','key','data'
 
   @set: (k,v) ->
-    el = @first()
-    el = @create({data: {}}) if not el
-    el.data[k] = v
+    el = @findByAttribute('key',k)
+    el = @create({key: k, data: v}) if not el
+    el.data = v
     el.save()
     return null
 
-  @get: (k) ->
-    el = @first()
-    el = @create({data: {}}) if not el
-    return el.data[k]
+  @get: (k) -> @findByAttribute('key',k)?.data
 
 module.exports = Appdata

@@ -10,7 +10,7 @@ class Measurepicker extends Spine.Controller
     super
     data = {}
     data[c.key] = Overview.totalHollyWoodRatio(c.overviews()) for c in Country.all()
-    Appdata.set('data',data)
-    @log "computed all the hollywood ratios"
+    Appdata.set('measure','totalHollyWoodRatio')
+    Appdata.set('measuredata',data)
     
 module.exports = Measurepicker
