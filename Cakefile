@@ -27,20 +27,28 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
   Spine = require 'spine'
   Spine.Model.Ajax = {}
   console.log "building domestic data..."
+  summaryData =
+    unitedstates: {}
   for year in [2007..2011]
     console.log "#{year}"
+    summaryData.unitedstates[year] =
+      key: 'unitedstates'
+      year: year
+      otherfilms: 0
+      hollywoodfilms: 0
+      oldhollywoodfilms: 0
     l = (d) =>
       Movie.create({title: d.film?.replace('"',''), year:d.year, story:d.story?.replace('"',''),genre:d.genre?.replace('"',''),country:null})
-      console.log "Made movie for '#{d.film}' #{d.year}"
+      summaryData.unitedstates[year].hollywoodfilms++
+      #console.log "Made movie for '#{d.film}' #{d.year}"
     console.log " - going to parse JSON"
     yearlyData = JSON.parse(fs.readFileSync("public/data/#{year}.json"))
     console.log " - parsed JSON"
     Extractor.extractDomesticMovies(yearlyData,'us',year,l)
     console.log " - extracted movies"
-  console.log "\nbuilding overview data..."
+  console.log "\nbuilding INTERNATIONAL data..."
   countries = JSON.parse(fs.readFileSync('public/data/countries.json'))
   #countries = {"row0": {"Continent": "Africa","Country|key": ["Egypt","egypt"]}}
-  summaryData = {}
   for k,c of countries
     country = c['Country|key'][1]
     summaryData[country] = {} if country not in summaryData

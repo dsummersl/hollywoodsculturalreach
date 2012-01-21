@@ -22,13 +22,21 @@ class Mainmap extends Spine.Controller
     if @maploaded and r.key == 'measuredata'
       #max = @findMaxKey(r.data)
       max = @findMaxKey(r.data)
-      colors = d3.scale.linear().domain([0,r.data[max]]).range(['blue','red'])
+      colors = d3.scale.linear().domain([0,r.data[max]]).range(['#0000aa','#dd0000'])
       for c in Country.all()
         svgId = c.getSVGIDs()
         if r.data[c.key] and svgId
-          d3.select(id).attr('fill',colors(r.data[c.key])) for id in svgId
+          for id in svgId
+            d3.select(id)
+              .transition()
+              .duration(600)
+              .attr('fill',colors(r.data[c.key]))
         else if svgId
-          d3.select(id).attr('fill','#555555') for id in svgId
+          for id in svgId
+            d3.select(id)
+              .transition()
+              .duration(600)
+              .attr('fill','#555555')
         else
           @log "No mapping for #{c.name} (#{c.key})."
 
