@@ -2,6 +2,8 @@ require('lib/setup')
 Country = require('models/country')
 Spine = require('spine')
 Extractor = require('lib/extract')
+Mainmap = require 'controllers/mainmap'
+Datalimiter = require 'controllers/datalimiter'
 
 class App extends Spine.Controller
   constructor: ->
@@ -20,7 +22,7 @@ class App extends Spine.Controller
         return (d) =>
           Extractor.extractDomesticMovies(d,'unitedstates',year,(d) => usa.movies().create({title: d.film, year:d.year, story:d.story,genre:d.genre}))
           @currentRMIs--
-          @log "loaded all the country data for #{year}"
+          #@log "loaded all the country data for #{year}"
       $.getJSON "data/#{year}.json", fn(year)
     @currentRMIs++
     $.getJSON "data/countrysummaries.json", (d) =>
@@ -36,24 +38,8 @@ class App extends Spine.Controller
   rmiIsZero: => @currentRMIs == 0
 
   dataloaded: =>
-    d3.xml "img/World_map_-_low_resolution.svg", "image/svg+xml", (xml)=>
-      importNode = document.importNode(xml.documentElement, true)
-      d3.select('#viz').node().appendChild(importNode)
-      country = d3.select('#m-antarctica')
-        .attr('fill','#ffffff')
-      for c in Country.all()
-        svgId = c.getSVGIDs()
-        #console.log "svg id = '#{id}'"
-        if svgId
-          for id in svgId
-            #console.log "#{c.name} = '#{id}'"
-            d3.select("#{id}")
-              .attr('fill','#555555')
-              #.attr('style','#555555')
-              #.on 'mousedown',(d,i)=>
-              #  console.log "mouse down on #{country.name}"
-        else
-          @log "No mapping for #{c.name} (#{c.key})."
+    @mainmap = new Mainmap()
+    @datalimiter = new Datalimiter()
 
   ###
   # Checks an array of data for existance called via function. when they all exist the
