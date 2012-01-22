@@ -5,6 +5,7 @@ Extractor = require('lib/extract')
 Mainmap = require 'controllers/mainmap'
 Datalimiter = require 'controllers/datalimiter'
 Measurepicker = require 'controllers/measurepicker'
+Detailsection = require 'controllers/detailsection'
 
 class App extends Spine.Controller
   constructor: ->
@@ -42,6 +43,7 @@ class App extends Spine.Controller
     @mainmap = new Mainmap()
     @datalimiter = new Datalimiter()
     @measurepicker = new Measurepicker()
+    @detailsection = new Detailsection()
 
   ###
   # Checks an array of data for existance called via function. when they all exist the

@@ -8,8 +8,19 @@ Appdata = require 'models/appdata'
 class Measurepicker extends Spine.Controller
   constructor: ->
     super
-    @computeHollyWood()
+    @measures =
+      percenthollywood:
+        compute: @computeHollyWood
+        viz: @hollywoodviz
+    @changeMeasure('percenthollywood')
+
+  changeMeasure: (m) =>
+    @measures[m].compute()
+    @measures[m].viz()
     
+  hollywoodviz: =>
+    # block.
+
   computeHollyWood: =>
     data = {}
     year = null
