@@ -56,29 +56,34 @@ class Mapkey
       .attr('dx', ".35em")
       .attr('fill', "black")
       .attr('text-anchor', "start")
-      .text("% match")
+      .text("% match") # TODO make it match the current match type.
  
   refresh: (data) ->
-    sep = 2
+    sep = 1
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
     max = 0
     max = v for k,v of data when v > max
-    colors = d3.scale.linear().domain([0,max]).range(Options.colors)
+    colors = d3.scale.linear().domain([0,@numBuckets]).range(Options.colors)
     bucketX = d3.scale.linear().domain([0,max]).range([0,@numBuckets-1])
-    buckets[parseInt(bucketX(v))] += Country.findByAttribute('key',k).getSVGIDs().length for k,v of data
+    nodatabucket = 0
+    for c in Country.all()
+      if data[c.key]
+        buckets[parseInt(bucketX(data[c.key]))] += c.getSVGIDs().length
+      else
+        nodatabucket++
     bucketY = d3.scale.linear().domain([0,d3.max(buckets)]).range([0,@h])
     bucketYH = (d) => @h - bucketY(d)
     bucketWidth = parseInt(@w / @numBuckets)
     keyx = d3.scale.linear().domain([0,1]).range([0,@w])
-    #console.log "bucket width = #{bucketWidth} for total width = #{@w} max is #{max}"
-    #console.log "the buckets = #{JSON.stringify(buckets)}"
+    console.log "bucket width = #{bucketWidth} for total width = #{@w} max is #{max}"
+    console.log "the buckets = #{JSON.stringify(buckets)}"
     groups = d3.select('#m-keygroup')
       .selectAll('rect')
       .data(buckets)
     groups.enter()
       .append('svg:rect')
-      .attr('fill', (d,i) => colors(max*(i+1)/10.0))
+      .attr('fill', (d,i) => colors(i))
       .attr('fill-opacity',1.0)
       .attr('x', (d,i)=> i*bucketWidth+sep)
       .attr('width', bucketWidth-2*sep)
@@ -94,7 +99,6 @@ class Mapkey
       .append('svg:text')
       .attr('class','keytext')
       .attr('x', (d,i)=> i*bucketWidth+bucketWidth/2.0)
-      .attr('dy', ".35em")
       .attr('fill', "white")
       .attr('text-anchor', "middle")
     groups

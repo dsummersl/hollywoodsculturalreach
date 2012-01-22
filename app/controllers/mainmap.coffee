@@ -16,7 +16,7 @@ class Mainmap extends Spine.Controller
       d3.select('#m-antarctica')
         .attr('fill','#ffffff')
         #.attr('style','#555555')
-      @mapkey = new Mapkey('#m-key',10)
+      @mapkey = new Mapkey('#m-key',20)
       @maploaded = true
       @measureUpdated({key:'measuredata', data: Appdata.get('measuredata')})
     Appdata.bind('update',@measureUpdated)
