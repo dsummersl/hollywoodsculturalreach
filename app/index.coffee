@@ -43,7 +43,7 @@ class App extends Spine.Controller
     @mainmap = new Mainmap()
     @datalimiter = new Datalimiter()
     @measurepicker = new Measurepicker()
-    @detailsection = new Detailsection()
+    #@detailsection = new Detailsection()
 
   ###
   # Checks an array of data for existance called via function. when they all exist the

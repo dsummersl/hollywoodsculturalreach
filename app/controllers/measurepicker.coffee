@@ -2,17 +2,22 @@ Spine = require('spine')
 Country = require 'models/country'
 Overview = require 'models/overview'
 Appdata = require 'models/appdata'
+Options = require 'lib/options'
 
 # the logic that controls which measures (hollywood %) should be shown on screen.
 # Also intended to control the 'key' view (color of the answer key)
 class Measurepicker extends Spine.Controller
   constructor: ->
     super
+    Appdata.bind('update',@appupdate)
     @measures =
-      percenthollywood:
+      percentcounthollywood: # the percent of # of movies that are hollywood movies
         compute: @computeHollyWood
         viz: @hollywoodviz
-    @changeMeasure('percenthollywood')
+      percentmoneyhollywood: # the percent of box office $s that are from hollywood movies
+        compute: null
+        viz: null
+    @changeMeasure('percentcounthollywood')
 
   changeMeasure: (m) =>
     @measures[m].compute()
@@ -26,16 +31,10 @@ class Measurepicker extends Spine.Controller
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
     data[c.key] = Overview.totalHollyWoodRatio(c.overviews(),year) for c in Country.all()
-    #@log "US is here" for c in Country.all() when c.key == 'unitedstates'
-    #@log "us overview datas: #{JSON.stringify(Country.findByAttribute('key','unitedstates').overviews().all())}"
-    #@log "us would be: #{Overview.totalHollyWoodRatio(Country.findByAttribute('key','unitedstates').overviews(),year)}"
-    #@log "got US data: #{JSON.stringify(data.unitedstates)}" if data.unitedstates
     Appdata.set('measure','totalHollyWoodRatio')
     Appdata.set('measuredata',data)
-    Appdata.bind('update',@appupdate)
 
   appupdate: (r) =>
     @computeHollyWood() if r.key == 'years'
-
 
 module.exports = Measurepicker
