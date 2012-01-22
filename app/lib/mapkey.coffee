@@ -10,8 +10,6 @@ class Mapkey
     # So the data should be equal to the number of buckets I want for the
     # percentages
     @numBuckets = numBuckets
-    @h = parseFloat($('#m-key').attr('height'))
-    @w = parseFloat($('#m-key').attr('width'))
     d3.select(id)
       .attr('style','') # clear away any style that might have already been there
       .attr('fill','#000000')
@@ -19,9 +17,49 @@ class Mapkey
     d3.select('#mainmap svg')
       .append('svg:g')
       .attr('transform',"translate(#{$(id).attr('x')},#{$(id).attr('y')})")
+      .attr('id','m-keyarea')
+    d3.select('#m-keyarea')
+      .append('svg:g')
+      .attr('transform',"translate(10,10)")
       .attr('id','m-keygroup')
+    # height/width of the histogram area
+    @h = parseFloat($('#m-key').attr('height')) - 20
+    @w = parseFloat($('#m-key').attr('width')) - 10
+    d3.select('#m-keyarea')
+      .append('svg:line')
+      .attr('stroke','#000')
+      .attr('x1', 10)
+      .attr('y1', 10)
+      .attr('x2', 10)
+      .attr('y2', 10+@h)
+    d3.select('#m-keyarea')
+      .append('svg:line')
+      .attr('stroke','#000')
+      .attr('x1', 10)
+      .attr('y1', 10+@h)
+      .attr('x2', 10+@w)
+      .attr('y2', 10+@h)
+    d3.select('#m-keyarea')
+      .append('svg:text')
+      .attr('class','keytext')
+      .attr('x', 10)
+      .attr('dy', ".35em")
+      .attr('fill', "black")
+      .attr('text-anchor', "middle")
+      .text("Countries")
+    d3.select('#m-keyarea')
+      .append('svg:text')
+      .attr('class','keytext')
+      .attr('x', 10+@w)
+      .attr('y', 10+@h)
+      .attr('dy', ".35em")
+      .attr('dx', ".35em")
+      .attr('fill', "black")
+      .attr('text-anchor', "start")
+      .text("% match")
  
   refresh: (data) ->
+    sep = 2
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
     max = 0
@@ -42,8 +80,8 @@ class Mapkey
       .append('svg:rect')
       .attr('fill', (d,i) => colors(max*(i+1)/10.0))
       .attr('fill-opacity',1.0)
-      .attr('x', (d,i)=> i*bucketWidth)
-      .attr('width', bucketWidth)
+      .attr('x', (d,i)=> i*bucketWidth+sep)
+      .attr('width', bucketWidth-2*sep)
     groups
       .transition()
       .duration(600)
@@ -54,8 +92,11 @@ class Mapkey
       .data(buckets)
     groups.enter()
       .append('svg:text')
-      .attr('x', (d,i)=> i*bucketWidth+bucketWidth/2.0-8)
+      .attr('class','keytext')
+      .attr('x', (d,i)=> i*bucketWidth+bucketWidth/2.0)
       .attr('dy', ".35em")
+      .attr('fill', "white")
+      .attr('text-anchor', "middle")
     groups
       .transition()
       .duration(600)
