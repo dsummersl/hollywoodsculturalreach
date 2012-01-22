@@ -2,6 +2,7 @@ Spine = require('spine')
 Country = require('models/country')
 Appdata = require 'models/appdata'
 Options = require 'lib/options'
+Mapkey = require "lib/mapkey"
 
 # responsible for controlling the main map.
 class Mainmap extends Spine.Controller
@@ -15,14 +16,7 @@ class Mainmap extends Spine.Controller
       d3.select('#m-antarctica')
         .attr('fill','#ffffff')
         #.attr('style','#555555')
-      d3.select('#m-key')
-        .attr('style','') # clear away any style that might have already been there
-        .attr('fill','#000000')
-        .attr('fill-opacity',0.5)
-      d3.select('#mainmap svg')
-        .append('svg:g')
-        .attr('transform',"translate(#{$('#m-key').attr('x')},#{$('#m-key').attr('y')})")
-        .attr('id','m-keygroup')
+      @mapkey = new Mapkey('#m-key',10)
       @maploaded = true
       @measureUpdated({key:'measuredata', data: Appdata.get('measuredata')})
     Appdata.bind('update',@measureUpdated)
@@ -30,23 +24,11 @@ class Mainmap extends Spine.Controller
   measureUpdated: (r) =>
     if @maploaded and r.key == 'measuredata'
       max = r.data[@findMaxKey(r.data)]
-      h = parseFloat($('#m-key').attr('height'))
-      w = parseFloat($('#m-key').attr('width'))
       colors = d3.scale.linear().domain([0,max]).range(Options.colors)
-      # what kind of data am I using on the map key?
-      # Along the X axis I should the percent of the data (% hollywood movies)
-      # Along the Y axis I show the country count.
-      # So the data should be equal to the number of buckets I want for the
-      # percentages
-      numBuckets = 10
-      bucketX = d3.scale.linear().domain([0,max]).range([0,numBuckets-1])
-      buckets = []
-      buckets.push(0) for nothing in [1..10]
+      @mapkey.refresh(r.data)
       for c in Country.all()
         svgIds = c.getSVGIDs()
         if r.data[c.key] and svgIds
-          #@log "bucket of #{r.data[c.key]} is #{bucketX(r.data[c.key])}"
-          buckets[parseInt(bucketX(r.data[c.key]))] += svgIds.length
           for id in svgIds
             d3.select(id)
               .transition()
@@ -60,38 +42,6 @@ class Mainmap extends Spine.Controller
               .attr('fill','#555555')
         else
           @log "No mapping for #{c.name} (#{c.key})."
-      bucketY = d3.scale.linear().domain([0,d3.max(buckets)]).range([0,h])
-      bucketYH = (d) => h - bucketY(d)
-      bucketWidth = parseInt(w / numBuckets)
-      keyx = d3.scale.linear().domain([0,1]).range([0,w])
-      @log "bucket width = #{bucketWidth} for total width = #{w}"
-      @log "the buckets = #{JSON.stringify(buckets)}"
-      groups = d3.select('#m-keygroup')
-        .selectAll('rect')
-        .data(buckets)
-      groups.enter()
-        .append('svg:rect')
-        .attr('fill', (d,i) => colors(max*(i+1)/10.0))
-        .attr('fill-opacity',1.0)
-        .attr('x', (d,i)=> i*bucketWidth)
-        .attr('width', bucketWidth)
-      groups
-        .transition()
-        .duration(600)
-        .attr('y', bucketYH)
-        .attr('height', bucketY)
-      groups = d3.select('#m-keygroup')
-        .selectAll('text')
-        .data(buckets)
-      groups.enter()
-        .append('svg:text')
-        .attr('x', (d,i)=> i*bucketWidth+bucketWidth/2.0-8)
-        .attr('dy', ".35em")
-      groups
-        .transition()
-        .duration(600)
-        .attr('y', (d) => bucketYH(d)+10)
-        .text(String)
 
   findMaxKey: (d) ->
     maxKey = null
