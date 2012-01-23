@@ -31,6 +31,7 @@ class Measurepicker extends Spine.Controller
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
     data[c.key] = Overview.totalHollyWoodRatio(c.overviews(),year) for c in Country.all()
+    Appdata.set('measureDesc','% Hollywood Movies')
     Appdata.set('measure','totalHollyWoodRatio')
     Appdata.set('measuredata',data)
 

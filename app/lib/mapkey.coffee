@@ -1,5 +1,6 @@
 Options = require 'lib/options'
 Country = require('models/country')
+Appdata = require 'models/appdata'
 
 # A histogram based map - each value is stored in a bucket, and you provide some coloring information.
 class Mapkey
@@ -17,49 +18,48 @@ class Mapkey
     d3.select('#mainmap svg')
       .append('svg:g')
       .attr('transform',"translate(#{$(id).attr('x')},#{$(id).attr('y')})")
-      .attr('id','m-keyarea')
-    d3.select('#m-keyarea')
-      .append('svg:g')
-      .attr('transform',"translate(10,10)")
       .attr('id','m-keygroup')
-    # height/width of the histogram area
-    @h = parseFloat($('#m-key').attr('height')) - 20
-    @w = parseFloat($('#m-key').attr('width')) - 10
-    d3.select('#m-keyarea')
-      .append('svg:line')
-      .attr('stroke','#000')
-      .attr('x1', 10)
-      .attr('y1', 10)
-      .attr('x2', 10)
-      .attr('y2', 10+@h)
-    d3.select('#m-keyarea')
-      .append('svg:line')
-      .attr('stroke','#000')
-      .attr('x1', 10)
-      .attr('y1', 10+@h)
-      .attr('x2', 10+@w)
-      .attr('y2', 10+@h)
-    d3.select('#m-keyarea')
+    d3.select('#mainmap svg')
+      .append('svg:g')
+      .attr('transform',"translate(#{$(id).attr('x')},#{$(id).attr('y')})")
+      .attr('id','m-keygroup')
+    d3.select('#mainmap svg')
+      .append('svg:g')
+      .attr('transform',"translate(#{$('#m-nodataavailable').attr('x')},#{$('#m-nodataavailable').attr('y')})")
+      .attr('id','m-keynodataavail')
+    @h = parseFloat($(id).attr('height'))
+    @w = parseFloat($(id).attr('width'))
+    d3.select('#m-nodataatall')
+      .attr('style',Options.disabledcountries)
+      .attr('rx', 2)
+    d3.select('#m-nodataavailable')
+      .attr('style','') # clear away any style that might have already been there
+      .attr('fill','#000000')
+      .attr('fill-opacity',0.0)
+    d3.select('#m-yaxislabel')
+      .text('# Countries')
+    @sep = 1
+    @bucketWidth = parseInt(@w / @numBuckets)
+    groups = d3.select('#m-keynodataavail')
+      .selectAll('rect')
+      .data([0])
+      .enter()
+      .append('svg:rect')
+      .attr('fill', Options.nodatacountries)
+      .attr('fill-opacity',1.0)
+      .attr('x',0)
+      .attr('width', @bucketWidth-2*@sep)
+    groups = d3.select('#m-keynodataavail')
+      .selectAll('text')
+      .data([0])
+      .enter()
       .append('svg:text')
       .attr('class','keytext')
-      .attr('x', 10)
-      .attr('dy', ".35em")
-      .attr('fill', "black")
+      .attr('x', (d,i)=> @bucketWidth/2.0)
+      .attr('fill', "white")
       .attr('text-anchor', "middle")
-      .text("Countries")
-    d3.select('#m-keyarea')
-      .append('svg:text')
-      .attr('class','keytext')
-      .attr('x', 10+@w)
-      .attr('y', 10+@h)
-      .attr('dy', ".35em")
-      .attr('dx', ".35em")
-      .attr('fill', "black")
-      .attr('text-anchor', "start")
-      .text("% match") # TODO make it match the current match type.
  
   refresh: (data) ->
-    sep = 1
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
     max = 0
@@ -74,10 +74,10 @@ class Mapkey
         nodatabucket++
     bucketY = d3.scale.linear().domain([0,d3.max(buckets)]).range([0,@h])
     bucketYH = (d) => @h - bucketY(d)
-    bucketWidth = parseInt(@w / @numBuckets)
     keyx = d3.scale.linear().domain([0,1]).range([0,@w])
-    console.log "bucket width = #{bucketWidth} for total width = #{@w} max is #{max}"
-    console.log "the buckets = #{JSON.stringify(buckets)}"
+    #console.log "bucket width = #{@bucketWidth} for total width = #{@w} max is #{max}"
+    #console.log "the buckets = #{JSON.stringify(buckets)}"
+    # TODO improve this transition by putting all the 'enter' stuff into my constuctor (like I did for the 'data unavailable' section).
     groups = d3.select('#m-keygroup')
       .selectAll('rect')
       .data(buckets)
@@ -85,8 +85,8 @@ class Mapkey
       .append('svg:rect')
       .attr('fill', (d,i) => colors(i))
       .attr('fill-opacity',1.0)
-      .attr('x', (d,i)=> i*bucketWidth+sep)
-      .attr('width', bucketWidth-2*sep)
+      .attr('x', (d,i)=> i*@bucketWidth+@sep)
+      .attr('width', @bucketWidth-2*@sep)
     groups
       .transition()
       .duration(600)
@@ -98,7 +98,7 @@ class Mapkey
     groups.enter()
       .append('svg:text')
       .attr('class','keytext')
-      .attr('x', (d,i)=> i*bucketWidth+bucketWidth/2.0)
+      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
       .attr('fill', "white")
       .attr('text-anchor', "middle")
     groups
@@ -106,5 +106,22 @@ class Mapkey
       .duration(600)
       .attr('y', (d) => bucketYH(d)+10)
       .text(String)
+
+    groups = d3.select('#m-keynodataavail')
+      .selectAll('rect')
+      .data([0])
+      .transition()
+      .duration(600)
+      .attr('y', bucketYH(nodatabucket))
+      .attr('height', bucketY(nodatabucket))
+    groups = d3.select('#m-keynodataavail')
+      .selectAll('text')
+      .data([0])
+      .transition()
+      .duration(600)
+      .attr('y', bucketYH(nodatabucket)+10)
+      .text(nodatabucket)
+    d3.select('#m-xaxislabel')
+      .text(Appdata.get('measureDesc'))
 
 module.exports = Mapkey

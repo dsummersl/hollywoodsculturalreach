@@ -12,7 +12,7 @@ class Mainmap extends Spine.Controller
     d3.xml "img/World_map_-_low_resolution.svg", "image/svg+xml", (xml)=>
       importNode = document.importNode(xml.documentElement, true)
       d3.select('#mainmap').node().appendChild(importNode)
-      d3.select('#mainmap svg').attr('fill','#999999')
+      d3.select('#mainmap svg').attr('fill',Options.nodatacountries)
       d3.select('#m-antarctica')
         .attr('fill','#ffffff')
         #.attr('style','#555555')
@@ -39,7 +39,7 @@ class Mainmap extends Spine.Controller
             d3.select(id)
               .transition()
               .duration(600)
-              .attr('fill','#555555')
+              .attr('fill',Options.disabledcountries)
         else
           @log "No mapping for #{c.name} (#{c.key})."
 
