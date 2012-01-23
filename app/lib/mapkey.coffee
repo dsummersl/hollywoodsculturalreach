@@ -78,6 +78,7 @@ class Mapkey
     #console.log "bucket width = #{@bucketWidth} for total width = #{@w} max is #{max}"
     #console.log "the buckets = #{JSON.stringify(buckets)}"
     # TODO improve this transition by putting all the 'enter' stuff into my constuctor (like I did for the 'data unavailable' section).
+    # TODO put the percent numbers underneath the key
     groups = d3.select('#m-keygroup')
       .selectAll('rect')
       .data(buckets)
