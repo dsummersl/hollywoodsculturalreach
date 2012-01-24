@@ -21,8 +21,8 @@ class Mapkey
       .attr('id','m-keygroup')
     d3.select('#mainmap svg')
       .append('svg:g')
-      .attr('transform',"translate(#{$(id).attr('x')},#{$(id).attr('y')})")
-      .attr('id','m-keygroup')
+      .attr('transform',"translate(#{$('#m-keyunderxaxis').attr('x')},#{$('#m-keyunderxaxis').attr('y')})")
+      .attr('id','m-keygroupaxis')
     d3.select('#mainmap svg')
       .append('svg:g')
       .attr('transform',"translate(#{$('#m-nodataavailable').attr('x')},#{$('#m-nodataavailable').attr('y')})")
@@ -36,10 +36,15 @@ class Mapkey
       .attr('style','') # clear away any style that might have already been there
       .attr('fill','#000000')
       .attr('fill-opacity',0.0)
+    d3.select('#m-keyunderxaxis')
+      .attr('style','') # clear away any style that might have already been there
+      .attr('fill','#000000')
+      .attr('fill-opacity',0.0)
     d3.select('#m-yaxislabel')
       .text('# Countries')
     @sep = 1
     @bucketWidth = parseInt(@w / @numBuckets)
+    colors = d3.scale.linear().domain([0,@numBuckets]).range(Options.colors)
     groups = d3.select('#m-keynodataavail')
       .selectAll('rect')
       .data([0])
@@ -58,13 +63,43 @@ class Mapkey
       .attr('x', (d,i)=> @bucketWidth/2.0)
       .attr('fill', "white")
       .attr('text-anchor', "middle")
+    groups = d3.select('#m-keygroup')
+      .selectAll('rect')
+      .data(0 for i in [1..@numBuckets])
+      .enter()
+      .append('svg:rect')
+      .attr('fill', (d,i) => colors(i))
+      .attr('fill-opacity',1.0)
+      .attr('x', (d,i)=> i*@bucketWidth+@sep)
+      .attr('width', @bucketWidth-2*@sep)
+    groups = d3.select('#m-keygroup')
+      .selectAll('text')
+      .data(0 for i in [1..@numBuckets])
+      .enter()
+      .append('svg:text')
+      .attr('class','keytext')
+      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
+      .attr('fill', "white")
+      .attr('text-anchor', "middle")
+    groups = d3.select('#m-keygroupaxis')
+      .selectAll('text')
+      .data(0 for i in [1..@numBuckets])
+      .enter()
+      .append('svg:text')
+      .attr('class','keyxaxistext')
+      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
+      .attr('y', 10)
+      .attr('fill', "black")
+      #.attr('transform', 'matrix(0,-1,1,0,0,0)')
+      .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0} 10)")
+      .attr('text-anchor', "middle")
+      .text((d,i)=> "#{parseInt((i+1)/@numBuckets*100)}%")
  
   refresh: (data) ->
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
     max = 0
     max = v for k,v of data when v > max
-    colors = d3.scale.linear().domain([0,@numBuckets]).range(Options.colors)
     bucketX = d3.scale.linear().domain([0,max]).range([0,@numBuckets-1])
     nodatabucket = 0
     for c in Country.all()
@@ -82,13 +117,6 @@ class Mapkey
     groups = d3.select('#m-keygroup')
       .selectAll('rect')
       .data(buckets)
-    groups.enter()
-      .append('svg:rect')
-      .attr('fill', (d,i) => colors(i))
-      .attr('fill-opacity',1.0)
-      .attr('x', (d,i)=> i*@bucketWidth+@sep)
-      .attr('width', @bucketWidth-2*@sep)
-    groups
       .transition()
       .duration(600)
       .attr('y', bucketYH)
@@ -96,18 +124,10 @@ class Mapkey
     groups = d3.select('#m-keygroup')
       .selectAll('text')
       .data(buckets)
-    groups.enter()
-      .append('svg:text')
-      .attr('class','keytext')
-      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
-      .attr('fill', "white")
-      .attr('text-anchor', "middle")
-    groups
       .transition()
       .duration(600)
       .attr('y', (d) => bucketYH(d)+10)
       .text(String)
-
     groups = d3.select('#m-keynodataavail')
       .selectAll('rect')
       .data([0])
@@ -124,5 +144,13 @@ class Mapkey
       .text(nodatabucket)
     d3.select('#m-xaxislabel')
       .text(Appdata.get('measureDesc'))
+    groups = d3.select('#m-keygroupaxis')
+      .selectAll('text')
+      .data(buckets)
+      .transition()
+      .attr('fill', (d)=>
+        return "black" if d > 0
+        return "white"
+      )
 
 module.exports = Mapkey
