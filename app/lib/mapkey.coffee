@@ -87,10 +87,10 @@ class Mapkey
       .enter()
       .append('svg:text')
       .attr('class','keyxaxistext')
-      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0-2)
+      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0-3)
       .attr('y', 5)
       .attr('fill', "black")
-      .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0-2} 5)")
+      .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0-3} 5)")
       .attr('text-anchor', "start")
       .text((d,i)=> "#{parseInt((i+1)/@numBuckets*100)}%")
  
@@ -147,9 +147,11 @@ class Mapkey
       .selectAll('text')
       .data(buckets)
       .transition()
-      .attr('fill', (d)=>
-        return "black" if d > 0
-        return "white"
+      .duration(600)
+      # TODO text transition?
+      .attr('class', (d)=>
+        return "keyxaxistext" if d > 0
+        return "keytext-invisible"
       )
 
 module.exports = Mapkey
