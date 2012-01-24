@@ -46,18 +46,26 @@ extractCountrySummary = (data,movies,key,year)->
     otherfilms: 0
     hollywoodfilms: 0
     oldhollywoodfilms: 0
+    otherfilmmoney: 0
+    hollywoodfilmmoney: 0
+    oldhollywoodfilmmoney: 0
   for k,v of data
     title = v[' Movie Title']
+    money = v.Gross.replace(/\$/,'').replace(/,/g,'')
     f = movies.findByAttribute('title',title)
-    #console.log "looking for '#{title}' and found '#{f?.title}'"
+    #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
+    money = parseInt(money)
     if f
       #console.log " -  year info '#{f?.year}' == '#{year}' ? #{f?.year == year}"
       if f.year == year
         results.hollywoodfilms++
+        results.hollywoodfilmmoney += money
       else
         results.oldhollywoodfilms++
+        results.oldhollywoodfilmmoney += money
     else
       results.otherfilms++
+      results.otherfilmmoney += money
   return results
 
 module.exports =

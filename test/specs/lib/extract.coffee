@@ -46,6 +46,7 @@ describe 'Extract', ->
       cnt++
 
     Extract.extractDomesticMovies(yearlyData,'us',2010,l)
+    # TODO and expect it to return country summary information
     expect(cnt).toEqual(12)
 
   it 'can load country data', ->
@@ -58,3 +59,6 @@ describe 'Extract', ->
     expect(results.otherfilms).toEqual(4)
     expect(results.hollywoodfilms).toEqual(3)
     expect(results.oldhollywoodfilms).toEqual(0)
+    expect(results.otherfilmmoney).toEqual(91119039 + 73109846 + 42238454 + 42235940)
+    expect(results.hollywoodfilmmoney).toEqual(80564009 + 58320289 + 40268674)
+    expect(results.oldhollywoodfilmmoney).toEqual(0)
