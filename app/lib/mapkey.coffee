@@ -87,12 +87,11 @@ class Mapkey
       .enter()
       .append('svg:text')
       .attr('class','keyxaxistext')
-      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
-      .attr('y', 10)
+      .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0-2)
+      .attr('y', 5)
       .attr('fill', "black")
-      #.attr('transform', 'matrix(0,-1,1,0,0,0)')
-      .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0} 10)")
-      .attr('text-anchor', "middle")
+      .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0-2} 5)")
+      .attr('text-anchor', "start")
       .text((d,i)=> "#{parseInt((i+1)/@numBuckets*100)}%")
  
   refresh: (data) ->
