@@ -31,20 +31,13 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
     unitedstates: {}
   for year in [2007..2011]
     console.log "#{year}"
-    summaryData.unitedstates[year] =
-      key: 'unitedstates'
-      year: year
-      otherfilms: 0
-      hollywoodfilms: 0
-      oldhollywoodfilms: 0
     l = (d) =>
-      Movie.create({title: d.film?.replace('"',''), year:d.year, story:d.story?.replace('"',''),genre:d.genre?.replace('"',''),country:null})
-      summaryData.unitedstates[year].hollywoodfilms++
+      Movie.create({title: d.film?.replace(/"/g,''), year:d.year, story:d.story?.replace(/"/g,''),genre:d.genre?.replace(/"/g,''),country:null})
       #console.log "Made movie for '#{d.film}' #{d.year}"
     console.log " - going to parse JSON"
     yearlyData = JSON.parse(fs.readFileSync("public/data/#{year}.json"))
     console.log " - parsed JSON"
-    Extractor.extractDomesticMovies(yearlyData,'us',year,l)
+    summaryData.unitedstates[year] = Extractor.extractDomesticMovies(yearlyData,'unitedstates',year,l)
     console.log " - extracted movies"
   console.log "\nbuilding INTERNATIONAL data..."
   countries = JSON.parse(fs.readFileSync('public/data/countries.json'))

@@ -9,12 +9,25 @@ extractDomesticMovies = (data,key,year,listener)->
   # get the domestic tickets. I'm assuming these all need to be 'locally available'
   # for the spine app.
   # first and second row is always a header:
+  results =
+    key: key
+    year: year
+    otherfilms: 0
+    hollywoodfilms: 0
+    oldhollywoodfilms: 0
+    otherfilmmoney: 0
+    hollywoodfilmmoney: 0
+    oldhollywoodfilmmoney: 0
   firstrow = true
-  secondrow = true
   for k,v of data
-    if not firstrow and not secondrow
+    if not firstrow
       title = v['Film ']
       title = v['Film'] if not title
+      title = title.trim()
+      results.hollywoodfilms++
+      val = parseFloat(v['Domestic Gross'])*1000000
+      results.hollywoodfilmmoney += val if val
+      #console.log "hollywood = #{results.hollywoodfilmmoney} for #{v['Domestic Gross']}"
       listener(
         film: title
         story: v['Story']
@@ -25,8 +38,7 @@ extractDomesticMovies = (data,key,year,listener)->
     else
       if firstrow
         firstrow = false
-      else if secondrow
-        secondrow = false
+  return results
  
 ###
 # generate a summary of a data file. Keys include:
@@ -50,8 +62,9 @@ extractCountrySummary = (data,movies,key,year)->
     hollywoodfilmmoney: 0
     oldhollywoodfilmmoney: 0
   for k,v of data
-    title = v[' Movie Title']
-    money = v.Gross.replace(/\$/,'').replace(/,/g,'')
+    title = v[' Movie Title'].trim()
+    money = 0
+    money = v.Gross.replace(/\$/,'').replace(/,/g,'') if v.Gross
     f = movies.findByAttribute('title',title)
     #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
     money = parseInt(money)
