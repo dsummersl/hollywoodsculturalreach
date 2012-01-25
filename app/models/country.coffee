@@ -1,14 +1,12 @@
 Spine = require('spine')
 CountryMapping = require('lib/svgmap')
-Overview = require('models/overview')
-Movie = require('models/movie')
+Movieshowing = require('models/movieshowing')
 
 class Country extends Spine.Model
   @configure 'Country', 'name', 'region', 'key'
-  @hasMany 'overviews', Overview
-  @hasMany 'movies', Movie
+  @hasMany 'showings', Movieshowing
 
-  # TODO population, languages
+  # TODO population, languages spoken in the country
   
   getSVGIDs: ->
     val = CountryMapping[@key]

@@ -34,12 +34,41 @@ extractDomesticMovies = (data,key,year,listener)->
         genre: v['Genre']
         year: year
         key: key
+        domestic: val
+        distributor: v['Major Studio']
       )
     else
       if firstrow
         firstrow = false
   return results
  
+###
+# Extract movies for a country
+###
+extractCountryMovies = (data,movies,key,year)->
+  results = []
+  for k,v of data
+    title = v[' Movie Title']
+    # see if any years are embedded in the title and if so extract them:
+    matches = title.match(/^.*\((\d\d\d\d)\).*/)
+    if matches and matches.length > 1
+      title = title.replace(/\(\d\d\d\d\)/,'')
+      year = parseInt(matches[1])
+    title = title.trim()
+    money = 0
+    money = v.Gross.replace(/\$/,'').replace(/,/g,'') if v.Gross
+    f = movies.findByAttribute('title',title)
+    #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
+    money = parseInt(money)
+    hollywood = false
+    hollywood = f.hollywood if f != null
+    exists = f != null
+    distributor = v['Distributor']
+    distributor = f.distributor if f != null
+    year = f.year if f != null
+    results.push({title: title, money:money,hollywood:hollywood,exists:exists,distributor:distributor,year:year})
+  return results
+
 ###
 # generate a summary of a data file. Keys include:
 # - key:
@@ -84,3 +113,4 @@ extractCountrySummary = (data,movies,key,year)->
 module.exports =
   extractDomesticMovies: extractDomesticMovies
   extractCountrySummary: extractCountrySummary
+  extractCountryMovies: extractCountryMovies

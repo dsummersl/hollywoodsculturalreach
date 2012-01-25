@@ -34,13 +34,13 @@ class Measurepicker extends Spine.Controller
     data = {}
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    data[c.key] = Overview.totalHollyWoodRatio(c.overviews(),year) for c in Country.all()
+    data[c.key] = Overview.totalHollyWoodRatio(c,year) for c in Country.all()
     Appdata.set('measuredata',data)
   computeHollyWoodMoney: =>
     data = {}
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    data[c.key] = Overview.totalHollyWoodRatio(c.overviews(),year) for c in Country.all()
+    data[c.key] = Overview.totalHollyWoodRatio(c,year) for c in Country.all()
     Appdata.set('measuredata',data)
 
   appupdate: (r) =>

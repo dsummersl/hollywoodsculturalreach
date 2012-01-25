@@ -1,5 +1,7 @@
 require('lib/setup')
 Country = require('models/country')
+Movie = require 'models/movie'
+Movieshowing = require 'models/movieshowing'
 Spine = require('spine')
 Extractor = require('lib/extract')
 Mainmap = require 'controllers/mainmap'
@@ -22,10 +24,14 @@ class App extends Spine.Controller
       @currentRMIs++
       fn = (year) =>
         return (d) =>
-          Extractor.extractDomesticMovies(d,'unitedstates',year,(d) => usa.movies().create({title: d.film, year:d.year, story:d.story,genre:d.genre}))
+          mkmov = (d) =>
+            m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre})
+            ms = usa.showings().create({year:d.year, boxoffice:d.domestic, movie:m})
+          Extractor.extractDomesticMovies(d,'unitedstates',year,mkmov)
           @currentRMIs--
           #@log "loaded all the country data for #{year}"
       $.getJSON "data/#{year}.json", fn(year)
+    ###
     @currentRMIs++
     $.getJSON "data/countrysummaries.json", (d) =>
       for c,yearData of d
@@ -34,10 +40,23 @@ class App extends Spine.Controller
           country.overviews().create({year: v.year, other:v.otherfilms,hollywood:v.hollywoodfilms,oldhollywood:v.oldhollywoodfilms})
       @currentRMIs--
       @log 'loaded all the summary data'
-    @checkData(@rmiIsZero,1000,@dataloaded)
+    ###
+    @checkData(@rmiIsZero,1000,@domesticmoviesloaded)
 
 
   rmiIsZero: => @currentRMIs == 0
+
+  domesticmoviesloaded: =>
+    for year in [2007..2011]
+      for c in Country.all()
+        @currentRMIs++
+        fn = (year,country) =>
+          return (d) =>
+            #Extractor.extractDomesticMovies(d,country.key,year,(d) => country.movies().create({title: d.film, year:d.year, story:d.story,genre:d.genre}))
+            @currentRMIs--
+            #@log "loaded all the country data for #{year} #{country.key}"
+        $.getJSON("data/#{c.key}/#{year}.json", fn(year,c)).error(=> @currentRMIs--)
+    @checkData(@rmiIsZero,1000,@dataloaded)
 
   dataloaded: =>
     @mainmap = new Mainmap()

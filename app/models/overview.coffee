@@ -8,11 +8,15 @@ class Overview extends Spine.Model
   @belongsTo 'country', Country
 
   # if year is supplied then do a specific year, otherwise do all years
-  @totalHollyWoodRatio: (collection,year=null) =>
+  # filters = {
+  #   year: [2007,2008] etc... or just year: 2007
+  #   genre: [...,...] etc genre: 'love'
+  #   story: [...,...] etc
+  @totalHollyWoodRatio: (country,year=null) =>
     if year
-      all = collection.select((el)=> el.year == year and collection.record.id == el.country_id)
+      all = movies.select((el)=> el.year == year and movies.record.id == el.country_id)
     else
-      all = collection.all()
+      all = movies.all()
     all = [] if not all
     total = 0
     total+=o.hollywood+o.oldhollywood for o in all

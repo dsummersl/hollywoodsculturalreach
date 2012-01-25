@@ -1,8 +1,6 @@
 Spine = require('spine')
-Country = require('models/country')
 
 class Movie extends Spine.Model
-  @configure 'Movie', 'title', 'story', 'genre', 'year'
-  @belongsTo 'country', Country
-  
+  @configure 'Movie', 'title', 'hollywood', 'story', 'genre', 'year', 'distributor'
+ 
 module.exports = Movie

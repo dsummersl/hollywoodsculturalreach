@@ -30,6 +30,9 @@ describe 'Extract', ->
   "row6": {" Movie Title": "Knocked Up ","Distributor": "Universal","Gross": "$40,268,674","Release": "12/14"}
   }
 
+  l = (d) => Movie.create({title: d.film, year:d.year, story:d.story,genre:d.genre,country:null,hollywood:true,distributor:d.distributor})
+  Extract.extractDomesticMovies(yearlyData,'us',2007,l)
+
   it 'can load domestic data', ->
     cnt = 0
     l = (d) =>
@@ -58,9 +61,6 @@ describe 'Extract', ->
     expect(results.hollywoodfilmmoney).toEqual((86.10 + 143.50 + 63.30 + 19.07 + 121.46 + 183.14 + 210.61 + 90.64 + 148.77 + 74.28 + 292 + 16.93 + 20.07)*1000000)
 
   it 'can load country data', ->
-    l = (d) => Movie.create({title: d.film, year:d.year, story:d.story,genre:d.genre,country:null})
-    Extract.extractDomesticMovies(yearlyData,'us',2007,l)
-
     results = Extract.extractCountrySummary(countryData,Movie,'japan',2007)
     expect(results.key).toEqual('japan')
     expect(results.year).toEqual(2007)
@@ -69,4 +69,11 @@ describe 'Extract', ->
     expect(results.oldhollywoodfilms).toEqual(0)
     expect(results.otherfilmmoney).toEqual(91119039 + 73109846 + 42238454 + 42235940)
     expect(results.hollywoodfilmmoney).toEqual(80564009 + 58320289 + 40268674)
-    expect(results.oldhollywoodfilmmoney).toEqual(0)
+
+  it 'can extra country movies', ->
+    results = Extract.extractCountryMovies(countryData,Movie,'japan',2005)
+    expect(results.length).toEqual(7)
+    expect(results[0]).toEqual({title: "Pirates of the Caribbean: At World's End", money:91119039,hollywood:false,exists:false,distributor:'BVI',year:2005})
+    expect(results[1]).toEqual({title: "Harry Potter and the Order of the Phoenix", money:80564009,hollywood:true,exists:true,distributor:'Warner Bros.',year:2007})
+    expect(results[2]).toEqual({title: "Hero", money:73109846,hollywood:false,exists:false,distributor:'Toho',year:2007})
+    expect(results[3]).toEqual({title: "Superbad", money:58320289,hollywood:true,exists:true,distributor:'Sony',year:2007})
