@@ -71,7 +71,7 @@ describe 'Extract', ->
     expect(results.hollywoodfilmmoney).toEqual(80564009 + 58320289 + 40268674)
 
   it 'can extra country movies', ->
-    results = Extract.extractCountryMovies(countryData,Movie,'japan',2005)
+    results = Extract.extractCountryMovies(countryData,Movie,2005)
     expect(results.length).toEqual(7)
     expect(results[0]).toEqual({title: "Pirates of the Caribbean: At World's End", money:91119039,hollywood:false,exists:false,distributor:'BVI',year:2005})
     expect(results[1]).toEqual({title: "Harry Potter and the Order of the Phoenix", money:80564009,hollywood:true,exists:true,distributor:'Warner Bros.',year:2007})

@@ -3,7 +3,6 @@
     "es5-shimify", 
     "json2ify", 
     "jqueryify", 
-    "d3/d3", 
     "spine",
     "spine/lib/relation",
     "spine/lib/local",

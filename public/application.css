@@ -1,0 +1,15 @@
+/*
+#mainmap svg
+  border: 1px solid black
+*/
+.keytext {
+  font-size: 8pt;
+}
+.keyxaxistext {
+  font-size: 7pt;
+  fill: #aaa;
+}
+.keytext-invisible {
+  font-size: 2pt;
+  fill: #fff;
+}

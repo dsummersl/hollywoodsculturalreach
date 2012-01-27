@@ -3,6 +3,7 @@ Country = require 'models/country'
 Overview = require 'models/overview'
 Appdata = require 'models/appdata'
 Options = require 'lib/options'
+Movieshowing = require 'models/movieshowing'
 
 # the logic that controls which measures (hollywood %) should be shown on screen.
 # Also intended to control the 'key' view (color of the answer key)
@@ -34,7 +35,10 @@ class Measurepicker extends Spine.Controller
     data = {}
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    data[c.key] = Overview.totalHollyWoodRatio(c,year) for c in Country.all()
+    for c in Country.all()
+      data[c.key] = 0
+      showings = Movieshowing.select((el)=> el.country_id == c.id and el.hollywood)
+      data[c.key] += showings.length if showings is not null
     Appdata.set('measuredata',data)
   computeHollyWoodMoney: =>
     data = {}

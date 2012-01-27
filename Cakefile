@@ -10,7 +10,7 @@ option '-y','--year [YEAR]', 'Year to build fetchdata with'
 
 task 'fetchdata', 'Get all the data for countries from the website (use --year to specify year).', (options) ->
   if not options.year
-    console.log "You need to specify the year: --year=2011"
+    console.log "You need to specify the year: --year 2011"
     return
   console.log "running get_country_list"
   exec "sh bin/get_country_list.sh #{options.year}", execHandler
@@ -21,15 +21,24 @@ task 'makeJSON', 'Make all the existing data into JSON', ->
   exec 'sh bin/convert_to_json.sh', execHandler
   # TODO verify that the data is actually good standing JSON
 
+task 'compressCSV', 'Probably no', ->
+  deflate = require 'deflate-js'
+  map = {}
+  for year in [2007..2011]
+    map[year] = deflate.deflate(fs.readFileSync("public/data/#{year}.csv"))
+  fs.createWriteStream("years.csv.deflate").write(JSON.stringify(map))
+
 task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE_PATH="app" cake makeJSON', ->
   Extractor = require('lib/extract')
   Movie = require 'models/movie'
   Spine = require 'spine'
   Spine.Model.Ajax = {}
+  years = [2007..2011]
+
   console.log "building domestic data..."
   summaryData =
     unitedstates: {}
-  for year in [2007..2011]
+  for year in years
     console.log "#{year}"
     l = (d) =>
       Movie.create({title: d.film?.replace(/"/g,''), year:d.year, story:d.story?.replace(/"/g,''),genre:d.genre?.replace(/"/g,''),country:null})
@@ -39,6 +48,7 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
     console.log " - parsed JSON"
     summaryData.unitedstates[year] = Extractor.extractDomesticMovies(yearlyData,'unitedstates',year,l)
     console.log " - extracted movies"
+
   console.log "\nbuilding INTERNATIONAL data..."
   countries = JSON.parse(fs.readFileSync('public/data/countries.json'))
   #countries = {"row0": {"Continent": "Africa","Country|key": ["Egypt","egypt"]}}
@@ -46,7 +56,7 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
     country = c['Country|key'][1]
     summaryData[country] = {} if country not in summaryData
     console.log "#{country}"
-    for year in [2007..2011]
+    for year in years
       console.log "  #{year}"
       movieFile = null
       try

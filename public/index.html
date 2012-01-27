@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="application.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="bootstrap.min.css" type="text/css" charset="utf-8">
   <script src="/application.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/d3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lib/d3.csv.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     var jQuery  = require("jqueryify");
     var exports = this;
@@ -46,6 +48,11 @@
         <div id="websiteURL" style="float: right;">http://hollywood.pinedesk.biz</div>
       </div>
     </div>
+  </div>
+  <div class="modal" id="startupdialog">
+    <div class="modal-header"><h3>Loading...</h3></div>
+    <div class="modal-body"><p id="startuptext">Please wait while some data is loaded...</p></div>
+    <div class="modal-footer"></div>
   </div>
 </body>
 </html>

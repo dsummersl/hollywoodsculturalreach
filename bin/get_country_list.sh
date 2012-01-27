@@ -43,14 +43,15 @@ do
 
       mkdir -p data/$key
 
-      tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=5' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[3],'\",\"',./td[4],'\",\"',./td[5],'\"')" -n > data/$key/$year.csv
-      tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=4' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",,\"',./td[3],'\",\"',./td[4],'\"')" -n >> data/$key/$year.csv
+      # only get the title,gross
+      tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=5' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[4],'\"')" -n > data/$key/$year.csv
+      tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=4' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[3],'\"')" -n >> data/$key/$year.csv
 
       while read additionalpage
       do
         curl "$baseurl/$additionalpage" > list.html
-        tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=5' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[3],'\",\"',./td[4],'\",\"',./td[5],'\"')" -n >> data/$key/$year.csv
-        tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=4' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",,\"',./td[3],'\",\"',./td[4],'\"')" -n >> data/$key/$year.csv
+        tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=5' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[4],'\"')" -n >> data/$key/$year.csv
+        tidy list.html | xml fo -H | xml sel -T -t -m '//table/tr' -i 'count(./td)=4' -v "concat('START\"',str:replace(./td[2],'&#10;',''),'\",\"',./td[3],'\"')" -n >> data/$key/$year.csv
       done < additionalpages.txt
 
       # cleanup files
@@ -65,3 +66,6 @@ do
     fi
   fi
 done < data/countries.csv
+cd public
+echo "file" > data/countryfiles.csv
+find data -name \*csv | grep -v "^[0-9]" >> data/countryfiles.csv

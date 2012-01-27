@@ -5,6 +5,7 @@ Movieshowing = require('models/movieshowing')
 class Country extends Spine.Model
   @configure 'Country', 'name', 'region', 'key'
   @hasMany 'showings', Movieshowing
+  @extend Spine.Model.Local
 
   # TODO population, languages spoken in the country
   

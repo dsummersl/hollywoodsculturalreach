@@ -45,7 +45,7 @@ extractDomesticMovies = (data,key,year,listener)->
 ###
 # Extract movies for a country
 ###
-extractCountryMovies = (data,movies,key,year)->
+extractCountryMovies = (data,movies,year)->
   results = []
   for k,v of data
     title = v[' Movie Title']

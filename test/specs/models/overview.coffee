@@ -3,6 +3,7 @@ Spine = require 'spine'
 Spine.Model.Ajax = {}
 Country = require('models/country')
 Overview = require('models/overview')
+Movieshowing = require('models/movieshowing')
 
 describe 'Overview', ->
   beforeEach ->
@@ -11,10 +12,10 @@ describe 'Overview', ->
   
   it 'can compute totalHollyWoodRatio', ->
     c = Country.create({name: 'test',region:'everywhere',key:'test'})
-    c.overviews().create({year:2010,other:1,hollywood:2,oldhollywood:3})
-    c.overviews().create({year:2011,other:1,hollywood:4,oldhollywood:0})
+    c.showings().create({year:2010,other:1,hollywood:2,oldhollywood:3})
+    c.showings().create({year:2011,other:1,hollywood:4,oldhollywood:0})
     c2 = Country.create({name: 'test2',region:'everywhere',key:'test2'})
-    c2.overviews().create({year:2010,other:1,hollywood:2,oldhollywood:8})
+    c2.showings().create({year:2010,other:1,hollywood:2,oldhollywood:8})
     c3 = Country.create({name: 'test3',region:'everywhere',key:'test3'})
     #jasmine.log "the dat looks like #{JSON.stringify(Overview.all())}"
     #jasmine.log "c2 looks like #{JSON.stringify(c2.overviews())}"
