@@ -1,3 +1,14 @@
+makeEmptyOverview = (k,y,g) ->
+  key: k
+  year: y
+  genre: g
+  other: 0
+  hollywood: 0
+  oldhollywood: 0
+  othermoney: 0
+  hollywoodmoney: 0
+  oldhollywoodmoney: 0
+
 ###
 # Parse a file and then give the listener the following information:
 #  - film = name of film
@@ -9,29 +20,29 @@ extractDomesticMovies = (data,key,year,listener)->
   # get the domestic tickets. I'm assuming these all need to be 'locally available'
   # for the spine app.
   # first and second row is always a header:
-  results =
-    key: key
-    year: year
-    otherfilms: 0
-    hollywoodfilms: 0
-    oldhollywoodfilms: 0
-    otherfilmmoney: 0
-    hollywoodfilmmoney: 0
-    oldhollywoodfilmmoney: 0
+  results = []
   firstrow = true
+  secondrow = true
   for k,v of data
-    if not firstrow
+    if not firstrow and not secondrow
       title = v['Film ']
       title = v['Film'] if not title
       title = title.trim()
-      results.hollywoodfilms++
+      genre = v['Genre']
+      overview = null
+      for o in results when o.year == year and o.genre == genre
+        overview = o
+      if overview == null
+        overview = makeEmptyOverview(key,year,genre)
+        results.push overview
+      overview.hollywood++
       val = parseFloat(v['Domestic Gross'])*1000000
-      results.hollywoodfilmmoney += val if val
-      #console.log "hollywood = #{results.hollywoodfilmmoney} for #{v['Domestic Gross']}"
+      overview.hollywoodmoney += val if val
+      #console.log "hollywood = #{overview.hollywoodmoney} for #{v['Domestic Gross']}"
       listener(
         film: title
         story: v['Story']
-        genre: v['Genre']
+        genre: genre
         year: year
         key: key
         domestic: val
@@ -40,6 +51,8 @@ extractDomesticMovies = (data,key,year,listener)->
     else
       if firstrow
         firstrow = false
+      else if secondrow
+        secondrow = false
   return results
  
 ###
@@ -73,23 +86,17 @@ extractCountryMovies = (data,movies,year)->
 # generate a summary of a data file. Keys include:
 # - key:
 # - year:
-# - hollywoodfilms: total films from hollywood
-# - oldhollywoodfilms: total films from hollywood (but not this year)
-# - otherfilms: total films from we know not where
+# - hollywood: total films from hollywood
+# - oldhollywood: total films from hollywood (but not this year)
+# - other: total films from we know not where
 # 
 # films = function that takes a title. returns a 'movie' like object:
 # - year, title, etc
 ###
 extractCountrySummary = (data,movies,key,year)->
-  results =
-    key: key
-    year: year
-    otherfilms: 0
-    hollywoodfilms: 0
-    oldhollywoodfilms: 0
-    otherfilmmoney: 0
-    hollywoodfilmmoney: 0
-    oldhollywoodfilmmoney: 0
+  results = []
+  results.push makeEmptyOverview(key,year,'Unknown')
+  unknownO = results[0]
   for k,v of data
     title = v[' Movie Title'].trim()
     money = 0
@@ -98,16 +105,22 @@ extractCountrySummary = (data,movies,key,year)->
     #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
     money = parseInt(money)
     if f
+      overview = null
+      for o in results when o.year == year and o.genre == f.genre
+        overview = o
+      if overview == null
+        overview = makeEmptyOverview(key,year,f.genre)
+        results.push overview
       #console.log " -  year info '#{f?.year}' == '#{year}' ? #{f?.year == year}"
       if f.year == year
-        results.hollywoodfilms++
-        results.hollywoodfilmmoney += money
+        overview.hollywood++
+        overview.hollywoodmoney += money
       else
-        results.oldhollywoodfilms++
-        results.oldhollywoodfilmmoney += money
+        overview.oldhollywood++
+        overview.oldhollywoodmoney += money
     else
-      results.otherfilms++
-      results.otherfilmmoney += money
+      unknownO.other++
+      unknownO.othermoney += money
   return results
 
 module.exports =

@@ -29,15 +29,16 @@ task 'compressCSV', 'Probably no', ->
   fs.createWriteStream("years.csv.deflate").write(JSON.stringify(map))
 
 task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE_PATH="app" cake makeJSON', ->
-  Extractor = require('lib/extract')
-  Movie = require 'models/movie'
   Spine = require 'spine'
+  Spine.Model.Local = {}
   Spine.Model.Ajax = {}
+  Extractor = require 'lib/extract'
+  Movie = require 'models/movie'
   years = [2007..2011]
 
   console.log "building domestic data..."
   summaryData =
-    unitedstates: {}
+    unitedstates: []
   for year in years
     console.log "#{year}"
     l = (d) =>
@@ -46,7 +47,8 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
     console.log " - going to parse JSON"
     yearlyData = JSON.parse(fs.readFileSync("public/data/#{year}.json"))
     console.log " - parsed JSON"
-    summaryData.unitedstates[year] = Extractor.extractDomesticMovies(yearlyData,'unitedstates',year,l)
+    results = Extractor.extractDomesticMovies(yearlyData,'unitedstates',year,l)
+    summaryData.unitedstates.push(s) for s in results
     console.log " - extracted movies"
 
   console.log "\nbuilding INTERNATIONAL data..."
@@ -54,7 +56,7 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
   #countries = {"row0": {"Continent": "Africa","Country|key": ["Egypt","egypt"]}}
   for k,c of countries
     country = c['Country|key'][1]
-    summaryData[country] = {} if country not in summaryData
+    summaryData[country] = [] if country not in summaryData
     console.log "#{country}"
     for year in years
       console.log "  #{year}"
@@ -68,7 +70,8 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
       if movieFile
         movies = JSON.parse(movieFile)
         console.log "    - parsed JSON"
-        summaryData[country][year] = Extractor.extractCountrySummary(movies,Movie,country,year)
+        results = Extractor.extractCountrySummary(movies,Movie,country,year)
+        summaryData[country].push(s) for s in results
         console.log "    - read summary data"
   fs.createWriteStream('public/data/countrysummaries.json').write(JSON.stringify(summaryData))
   #console.log "Summary: #{JSON.stringify(summaryData)}"

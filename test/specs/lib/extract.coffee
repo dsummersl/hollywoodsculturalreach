@@ -1,8 +1,10 @@
 require = window.require
 Spine = require 'spine'
-Movie = require 'models/movie'
-Extract = require('lib/extract')
 Spine.Model.Ajax = {}
+Spine.Model.Local = {}
+
+Movie = require 'models/movie'
+Extract = require 'lib/extract'
 
 describe 'Extract', ->
   yearlyData = {"row0": {"exclude": "","Film ": "","Major Studio": "","Rotten Tomatoes": "","Audience Score": "","Story": "","Genre": "","Number of Theatres in Opening Weekend": "","Box Office Average per Cinema": "($)","Domestic Gross": "($m)","Foreign Gross": "($m)","Worldwide Gross": "($m)","Budget": "($m)","Market Profitability": "% of budget recovered","Opening Weekend": "($m)","Oscar": "","Bafta": "","Source": "all the-numbers.com","": "","Domestic Gross-2": "($)","Foreign Gross": "($)","Worldwide": "($)","Budget": "($)"},
@@ -38,37 +40,45 @@ describe 'Extract', ->
     l = (d) =>
       expect(d.key).toEqual('us')
       expect(d.year).toEqual(2010)
-      expect(d.film).toEqual('Juno') if cnt == 1
-      expect(d.story).toEqual('Maturation') if cnt == 1
-      expect(d.genre).toEqual('Comedy') if cnt == 1
-      expect(d.film).toEqual('Saw IV') if cnt == 2
-      expect(d.film).toEqual('Waitress') if cnt == 3
-      expect(d.film).toEqual('Superbad') if cnt == 4
-      expect(d.film).toEqual('The Simpsons Movie') if cnt == 5
-      expect(d.film).toEqual('Appaloosa') if cnt == 12
+      expect(d.film).toEqual('Juno') if cnt == 0
+      expect(d.story).toEqual('Maturation') if cnt == 0
+      expect(d.genre).toEqual('Comedy') if cnt == 0
+      expect(d.film).toEqual('Saw IV') if cnt == 1
+      expect(d.film).toEqual('Waitress') if cnt == 2
+      expect(d.film).toEqual('Superbad') if cnt == 3
+      expect(d.film).toEqual('The Simpsons Movie') if cnt == 4
+      expect(d.film).toEqual('Appaloosa') if cnt == 11
       cnt++
 
     results = Extract.extractDomesticMovies(yearlyData,'us',2010,l)
-    expect(cnt).toEqual(13)
-    # and expect it to return country summary information
-    expect(results.key).toEqual('us')
-    expect(results.year).toEqual(2010)
-    expect(results.otherfilms).toEqual(0)
-    expect(results.hollywoodfilms).toEqual(13)
-    expect(results.oldhollywoodfilms).toEqual(0)
-    expect(results.otherfilmmoney).toEqual(0)
-    expect(results.oldhollywoodfilmmoney).toEqual(0)
-    expect(results.hollywoodfilmmoney).toEqual((86.10 + 143.50 + 63.30 + 19.07 + 121.46 + 183.14 + 210.61 + 90.64 + 148.77 + 74.28 + 292 + 16.93 + 20.07)*1000000)
+    expect(cnt).toEqual(12)
+    expect(results.length).toEqual(6)
+    expect(o.key).toEqual('us') for o in results
+    expect(o.year).toEqual(2010) for o in results
+    expect(o.other).toEqual(0) for o in results
+    expect(o.oldhollywood).toEqual(0) for o in results
+    expect(o.othermoney).toEqual(0) for o in results
+    expect(o.oldhollywoodmoney).toEqual(0) for o in results
+    expect(results[0].genre).toEqual('Comedy')
+    expect(results[0].hollywood).toEqual(5)
+    expect(results[0].hollywoodmoney).toEqual((143.5 + 121.46 + 183.14 + 90.64 + 148.77)*1000000)
+    expect(results[1].genre).toEqual('Horror')
+    expect(results[1].hollywood).toEqual(1)
+    expect(results[1].hollywoodmoney).toEqual(63300000)
 
   it 'can load country data', ->
     results = Extract.extractCountrySummary(countryData,Movie,'japan',2007)
-    expect(results.key).toEqual('japan')
-    expect(results.year).toEqual(2007)
-    expect(results.otherfilms).toEqual(4)
-    expect(results.hollywoodfilms).toEqual(3)
-    expect(results.oldhollywoodfilms).toEqual(0)
-    expect(results.otherfilmmoney).toEqual(91119039 + 73109846 + 42238454 + 42235940)
-    expect(results.hollywoodfilmmoney).toEqual(80564009 + 58320289 + 40268674)
+    expect(results.length).toEqual(3)
+    expect(o.year).toEqual(2007) for o in results
+    expect(o.key).toEqual('japan') for o in results
+    expect(results[0].hollywood).toEqual(0)
+    expect(results[0].hollywoodmoney).toEqual(0)
+    expect(results[1].genre).toEqual('Adventure')
+    expect(results[1].hollywood).toEqual(1)
+    expect(results[1].hollywoodmoney).toEqual(80564009)
+    expect(results[2].genre).toEqual('Comedy')
+    expect(results[2].hollywood).toEqual(2)
+    expect(results[2].hollywoodmoney).toEqual(98588963)
 
   it 'can extra country movies', ->
     results = Extract.extractCountryMovies(countryData,Movie,2005)

@@ -1,11 +1,10 @@
 Spine = require('spine')
 CountryMapping = require('lib/svgmap')
-Movieshowing = require('models/movieshowing')
+Overview = require('models/overview')
 
 class Country extends Spine.Model
   @configure 'Country', 'name', 'region', 'key'
-  @hasMany 'showings', Movieshowing
-  @extend Spine.Model.Local
+  @hasMany 'overviews', Overview
 
   # TODO population, languages spoken in the country
   
