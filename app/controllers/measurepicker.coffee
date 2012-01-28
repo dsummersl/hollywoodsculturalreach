@@ -34,16 +34,21 @@ class Measurepicker extends Spine.Controller
     data = {}
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    data[c.key] = Overview.totalHollyWoodRatio(c,year) for c in Country.all()
+    genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
+    @log "filtering by #{year} and #{genre}"
+    data[c.key] = Overview.totalHollyWoodRatio(c,{year:year,genre:genre}) for c in Country.all()
+    #@log "DATA = #{JSON.stringify(data)}"
     Appdata.set('measuredata',data)
+
   computeHollyWoodMoney: =>
     data = {}
     year = null
     year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    data[c.key] = Overview.totalHollyWoodRatio(c,year) for c in Country.all()
+    data[c.key] = Overview.totalHollyWoodRatio(c,{year:year}) for c in Country.all()
     Appdata.set('measuredata',data)
 
   appupdate: (r) =>
     @computeHollyWood() if r.key == 'years'
+    @computeHollyWood() if r.key == 'genres'
 
 module.exports = Measurepicker

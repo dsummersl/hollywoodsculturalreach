@@ -16,6 +16,12 @@ class Mainmap extends Spine.Controller
       d3.select('#m-antarctica')
         .attr('fill','#ffffff')
         #.attr('style','#555555')
+      for c in Country.all()
+        svgIds = c.getSVGIDs()
+        if svgIds
+          for id in svgIds
+            fn = (key) => return => Appdata.set('country',key)
+            d3.select(id).on('click', fn(c.key))
       @mapkey = new Mapkey('#m-key',20)
       @maploaded = true
       @measureUpdated({key:'measuredata', data: Appdata.get('measuredata')})
