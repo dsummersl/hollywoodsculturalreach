@@ -9,6 +9,7 @@ class Detailsection extends Spine.Controller
     super
     Appdata.bind('update',@appupdate)
     $('#detailsection').append("""
+    <hr/>
     <div class="span4">
       <h2 id="ds-title">Title</h2>
       <div id="ds-summary"></div>
@@ -18,13 +19,9 @@ class Detailsection extends Spine.Controller
     """)
     
   appupdate: (r) =>
-    @log "updating details"
     if r.key == 'country'
       country = Country.findByAttribute('key',r.data)
       $('#ds-title').text(country.name)
-      # TODO What to show...for #ds-summary
-      $('#ds-summary').text('')
-      $('#ds-summary').append("Some summary information...")
       $('#ds-movies').text('')
       showings = country.showings().all()
       if showings.length == 0
@@ -36,9 +33,14 @@ class Detailsection extends Spine.Controller
             # TODO money looks likeit might be zero for everybody
             ms = country.showings().create({year:d.year, boxoffice:d.money, movie_id:m.id})
           $('#startupdialog').fadeOut()
-          @updateDetails(country.showings().all())
-      else
-        @updateDetails(showings)
+          showings = country.showings().all()
+      # TODO filter
+      @updateDetails(showings)
+      # TODO What to show...for #ds-summary
+      # - show a pie chart breaking down the genre's and the distributors
+      # - show the money amounts for total american exports. show non american.
+      $('#ds-summary').text('')
+      $('#ds-summary').append("Some summary information...")
 
   updateDetails: (showings) =>
     # TODO filter by the current filters

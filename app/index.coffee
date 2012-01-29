@@ -12,7 +12,6 @@ Appdata = require 'models/appdata'
 Datalimiter = require 'controllers/datalimiter'
 Detailsection = require 'controllers/detailsection'
 Mainmap = require 'controllers/mainmap'
-Measurepicker = require 'controllers/measurepicker'
 
 class App extends Spine.Controller
   constructor: ->
@@ -111,7 +110,6 @@ class App extends Spine.Controller
     @log "Overviews: #{Overview.count()}"
     @mainmap = new Mainmap()
     @datalimiter = new Datalimiter()
-    @measurepicker = new Measurepicker()
     @detailsection = new Detailsection()
     Appdata.set('country','unitedstates')
 
