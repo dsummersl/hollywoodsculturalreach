@@ -24,6 +24,11 @@ class Detailsection extends Spine.Controller
       $('#ds-title').text(country.name)
       $('#ds-movies').text('')
       showings = country.showings().all()
+      # TODO What to show...for #ds-summary
+      # - show a pie chart breaking down the genre's and the distributors
+      # - show the money amounts for total american exports. show non american.
+      $('#ds-summary').text('')
+      $('#ds-summary').append("Some summary information...")
       if showings.length == 0
         $('#startuptext').text("Loading #{country.name} data...")
         $('#startupdialog').fadeIn()
@@ -34,13 +39,9 @@ class Detailsection extends Spine.Controller
             ms = country.showings().create({year:d.year, boxoffice:d.money, movie_id:m.id})
           $('#startupdialog').fadeOut()
           showings = country.showings().all()
-      # TODO filter
-      @updateDetails(showings)
-      # TODO What to show...for #ds-summary
-      # - show a pie chart breaking down the genre's and the distributors
-      # - show the money amounts for total american exports. show non american.
-      $('#ds-summary').text('')
-      $('#ds-summary').append("Some summary information...")
+          @updateDetails(showings)
+      else
+        @updateDetails(showings)
 
   updateDetails: (showings) =>
     # TODO filter by the current filters
