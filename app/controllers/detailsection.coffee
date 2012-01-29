@@ -41,7 +41,17 @@ class Detailsection extends Spine.Controller
         @updateDetails(showings)
 
   updateDetails: (showings) =>
+    # TODO filter by the current filters
     # TODO short by movie title 
-    $('#ds-movies').append("<span class='ds-#{s.movie().hollywood}-hollywood'>#{s.movie().title}</span><span class='ds-dash'>&mdash;</span>") for s in showings
+    hollywoods = []
+    nothollywoods = []
+    for s in showings
+      m = s.movie()
+      if m.hollywood
+        hollywoods.push m
+      else
+        nothollywoods.push m
+    $('#ds-movies').append("<span class='ds-hollywood'>#{m.title}</span><span class='ds-dash'>&mdash;</span>") for m in hollywoods
+    $('#ds-movies').append("<span class='ds-nothollywood'>#{m.title}</span><span class='ds-dash'>&mdash;</span>") for m in nothollywoods
 
 module.exports = Detailsection

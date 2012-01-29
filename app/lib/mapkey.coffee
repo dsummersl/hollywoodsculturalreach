@@ -54,6 +54,7 @@ class Mapkey
       .attr('fill-opacity',0.9)
       .attr('x',0)
       .attr('width', @bucketWidth-2*@sep)
+    ### don't like the look of this:
     groups = d3.select('#m-keynodataavail')
       .selectAll('text')
       .data([0])
@@ -63,6 +64,7 @@ class Mapkey
       .attr('x', (d,i)=> @bucketWidth/2.0)
       .attr('fill', "white")
       .attr('text-anchor', "middle")
+    ###
     groups = d3.select('#m-keygroup')
       .selectAll('rect')
       .data(0 for i in [1..@numBuckets])
@@ -72,6 +74,7 @@ class Mapkey
       .attr('fill-opacity',1.0)
       .attr('x', (d,i)=> i*@bucketWidth+@sep)
       .attr('width', @bucketWidth-2*@sep)
+    ###
     groups = d3.select('#m-keygroup')
       .selectAll('text')
       .data(0 for i in [1..@numBuckets])
@@ -81,6 +84,7 @@ class Mapkey
       .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0)
       .attr('fill', "white")
       .attr('text-anchor', "middle")
+    ###
     groups = d3.select('#m-keygroupaxis')
       .selectAll('text')
       .data(0 for i in [1..@numBuckets])
@@ -120,6 +124,7 @@ class Mapkey
       .duration(600)
       .attr('y', bucketYH)
       .attr('height', bucketY)
+    ###
     groups = d3.select('#m-keygroup')
       .selectAll('text')
       .data(buckets)
@@ -127,6 +132,7 @@ class Mapkey
       .duration(600)
       .attr('y', (d) => bucketYH(d)+10)
       .text(String)
+    ###
     groups = d3.select('#m-keynodataavail')
       .selectAll('rect')
       .data([0])
@@ -134,6 +140,7 @@ class Mapkey
       .duration(600)
       .attr('y', bucketYH(nodatabucket))
       .attr('height', bucketY(nodatabucket))
+    ###
     groups = d3.select('#m-keynodataavail')
       .selectAll('text')
       .data([0])
@@ -141,6 +148,7 @@ class Mapkey
       .duration(600)
       .attr('y', bucketYH(nodatabucket)+10)
       .text(nodatabucket)
+    ###
     d3.select('#m-xaxislabel')
       .text(Appdata.get('measureDesc'))
     groups = d3.select('#m-keygroupaxis')

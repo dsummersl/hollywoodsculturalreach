@@ -84,7 +84,7 @@ class App extends Spine.Controller
         m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre,distributor:d.distributor})
         ms = usa.showings().create({year:d.year, boxoffice:d.domestic, movie_id:m.id})
       Extractor.extractDomesticMovies(d,'unitedstates',year,mkmov)
-      console.log "Loaded #{year} Hollywood movies (count: #{Movie.count()})..."
+      #console.log "Loaded #{year} Hollywood movies (count: #{Movie.count()})..."
       if year < 2011
         $('#startuptext').text("Loading #{year+1} Hollywood movies...")
         d3.csv("data/#{year+1}.csv", @loadmovies(year+1))
