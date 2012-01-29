@@ -21,15 +21,17 @@ describe 'Extract', ->
   "row11": {"exclude": "","Film ": "Harry Potter and the Order of the Phoenix","Major Studio": "Warner Bros.","Rotten Tomatoes": "78","Audience Score": "82","Story": "Quest","Genre": "Adventure","Number of Theatres in Opening Weekend": "4285","Box Office Average per Cinema": "17998","Domestic Gross": "292","Foreign Gross": "647.88","Worldwide Gross": "939.88","Budget": "150","Market Profitability": "626.59%","Opening Weekend": "77.1","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross-2": "","Foreign Gross": "","Worldwide": "","Budget": ""}
   "row12": {"exclude": "y","Film": "88 Minutes","Major Studio": "","Rotten Tomatoes": "5","Audience Score": "51","Story": "The Riddle","Genre": "Drama","Number of Theatres in Opening Weekend": "2168","Box Office Average per Cinema": "3209","Domestic Gross": "16.93","Foreign Gross": "","Worldwide Gross": "32.30","Budget ": "30.00","Market Profitability": "1.08","Opening Weekend": "7","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross-2": "16930884","Foreign Gross": "","worldwide": "32.3","Budget": "30000000","budget ": "30"},
   "row13": {"exclude": "y","Film": "Appaloosa","Major Studio": "","Rotten Tomatoes": "77","Audience Score": "55","Story": "Rescue","Genre": "Action","Number of Theatres in Opening Weekend": "","Box Office Average per Cinema": "","Domestic Gross": "20.07","Foreign Gross": "","Worldwide Gross": "25.90","Budget ": "20.00","Market Profitability": "1.30","Opening Weekend": "5","Oscar": "","Bafta": "","Source": "","": "","Domestic Gross-2": "20070952","Foreign Gross": "","worldwide": "25.9","Budget": "20000000","budget ": "20"},
+  "row14": {"exclude": "","Film": "The Dark Knight","Major Studio": "Warner Bros.","Rotten Tomatoes": "94","Audience Score": "96","Story": "Revenge","Genre": "Thriller","Number of Theatres in Opening Weekend": "4366","Box Office Average per Cinema": "36283","Domestic Gross": "530.92","Foreign Gross": "468.58","Worldwide Gross": "996.90","Budget ": "185.00","Market Profitability": "5.39","Opening Weekend": "158.4","Oscar": "Supporting Actor","Bafta": "Supporting Actor","Source": "","": "","Domestic Gross-2": "530917814","Foreign Gross": "","worldwide": "996.9","Budget": "185000000","budget ": "185"},
   }
 
   countryData = {"row0": {" Movie Title": "Pirates of the Caribbean: At World's End","Distributor": "BVI","Gross": "$91,119,039","Release": "5/25"},
   "row1": {" Movie Title": "Harry Potter and the Order of the Phoenix","Distributor": "WB","Gross": "$80,564,009","Release": "7/20"},
   "row2": {" Movie Title": "Hero (2007)","Distributor": "Toho","Gross": "$73,109,846","Release": "9/8"},
-  "row3": {" Movie Title": "Superbad","Distributor": "Sony","Gross": "$58,320,289","Release": "5/1"},
+  "row3": {" Movie Title": "Superbad","Distributor": "Sony"," Gross": "$58,320,289","Release": "5/1"},
   "row4": {" Movie Title": "Gekijôban Poketto Monsutâ Daiyamondo to Pâru Diaruga Tai Parukia Tai Dâkurai (Pokémon: Diamond and Pearl) (2007)","Distributor": "Toho","Gross": "$42,238,454","Release": "7/14"},
   "row5": {" Movie Title": "Always zoku san-chôme no yûhi","Distributor": "Toho","Gross": "$42,235,940","Release": "11/3"},
-  "row6": {" Movie Title": "Knocked Up ","Distributor": "Universal","Gross": "$40,268,674","Release": "12/14"}
+  "row6": {" Movie Title": "Knocked Up ","Distributor": "Universal","Gross": "$40,268,674","Release": "12/14"},
+  "row7": {" Movie Title": "The Dark Knight"," Gross": "$20,156,555"}
   }
 
   l = (d) => Movie.create({title: d.film, year:d.year, story:d.story,genre:d.genre,country:null,hollywood:true,distributor:d.distributor})
@@ -51,14 +53,15 @@ describe 'Extract', ->
       cnt++
 
     results = Extract.extractDomesticMovies(yearlyData,'us',2010,l)
-    expect(cnt).toEqual(12)
-    expect(results.length).toEqual(6)
+    expect(cnt).toEqual(13)
+    expect(results.length).toEqual(7)
     expect(o.key).toEqual('us') for o in results
     expect(o.year).toEqual(2010) for o in results
     expect(o.other).toEqual(0) for o in results
     expect(o.oldhollywood).toEqual(0) for o in results
     expect(o.othermoney).toEqual(0) for o in results
     expect(o.oldhollywoodmoney).toEqual(0) for o in results
+    expect(eval((o.hollywood for o in results).join('+'))).toEqual(13) # 13 total movies
     expect(results[0].genre).toEqual('Comedy')
     expect(results[0].hollywood).toEqual(5)
     expect(results[0].hollywoodmoney).toEqual((143.5 + 121.46 + 183.14 + 90.64 + 148.77)*1000000)
@@ -68,7 +71,7 @@ describe 'Extract', ->
 
   it 'can load country data', ->
     results = Extract.extractCountrySummary(countryData,Movie,'japan',2007)
-    expect(results.length).toEqual(3)
+    expect(results.length).toEqual(4)
     expect(o.year).toEqual(2007) for o in results
     expect(o.key).toEqual('japan') for o in results
     expect(results[0].hollywood).toEqual(0)
@@ -82,8 +85,9 @@ describe 'Extract', ->
 
   it 'can extra country movies', ->
     results = Extract.extractCountryMovies(countryData,Movie,2005)
-    expect(results.length).toEqual(7)
+    expect(results.length).toEqual(8)
     expect(results[0]).toEqual({title: "Pirates of the Caribbean: At World's End", money:91119039,hollywood:false,exists:false,distributor:'BVI',year:2005})
     expect(results[1]).toEqual({title: "Harry Potter and the Order of the Phoenix", money:80564009,hollywood:true,exists:true,distributor:'Warner Bros.',year:2007})
     expect(results[2]).toEqual({title: "Hero", money:73109846,hollywood:false,exists:false,distributor:'Toho',year:2007})
     expect(results[3]).toEqual({title: "Superbad", money:58320289,hollywood:true,exists:true,distributor:'Sony',year:2007})
+    expect(results[7]).toEqual({title: "The Dark Knight", money:20156555,hollywood:true,exists:true,distributor:'Warner Bros.',year:2007})

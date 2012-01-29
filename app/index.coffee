@@ -72,19 +72,19 @@ class App extends Spine.Controller
       Country.create(name: parts[0],region: v['Continent'],key: parts[1])
     Country.create(name: 'US & Canada',region: 'North America',key: 'unitedstates')
     $('#startuptext').text("Loading 2007 Hollywood movies...")
+    Movie.deleteAll()
+    Movieshowing.deleteAll()
     @loadIfZero(Movie,"data/2007.csv",@loadmovies(2007))
 
   loadmovies: (year) =>
     return (d) =>
       #console.log "loading movies"
-      Movie.deleteAll()
-      Movieshowing.deleteAll()
       usa = Country.findByAttribute('key','unitedstates')
       mkmov = (d) =>
-        m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre})
+        m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre,distributor:d.distributor})
         ms = usa.showings().create({year:d.year, boxoffice:d.domestic, movie_id:m.id})
       Extractor.extractDomesticMovies(d,'unitedstates',year,mkmov)
-      #console.log "Loaded #{year} Hollywood movies (count: #{Movie.count()})..."
+      console.log "Loaded #{year} Hollywood movies (count: #{Movie.count()})..."
       if year < 2011
         $('#startuptext').text("Loading #{year+1} Hollywood movies...")
         d3.csv("data/#{year+1}.csv", @loadmovies(year+1))

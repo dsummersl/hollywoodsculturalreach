@@ -42,8 +42,8 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
   for year in years
     console.log "#{year}"
     l = (d) =>
-      Movie.create({title: d.film?.replace(/"/g,''), year:d.year, story:d.story?.replace(/"/g,''),genre:d.genre?.replace(/"/g,''),country:null})
-      #console.log "Made movie for '#{d.film}' #{d.year}"
+      Movie.create({title: d.film?.replace(/"/g,''), hollywood: true, year:d.year, distributor: d.distributor, story:d.story?.replace(/"/g,''),genre:d.genre?.replace(/"/g,''),country:null})
+      console.log "Made movie for '#{d.film}' #{d.year}"
     console.log " - going to parse JSON"
     yearlyData = JSON.parse(fs.readFileSync("public/data/#{year}.json"))
     console.log " - parsed JSON"
@@ -57,6 +57,7 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
   for k,c of countries
     country = c['Country|key'][1]
     summaryData[country] = [] if country not in summaryData
+    movieData = []
     console.log "#{country}"
     for year in years
       console.log "  #{year}"
@@ -73,5 +74,8 @@ task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE
         results = Extractor.extractCountrySummary(movies,Movie,country,year)
         summaryData[country].push(s) for s in results
         console.log "    - read summary data"
+        movieData = movieData.concat Extractor.extractCountryMovies(movies,Movie,year)
+        console.log "    - read movie data"
+    fs.createWriteStream("public/data/#{country}.json").write(JSON.stringify(movieData))
   fs.createWriteStream('public/data/countrysummaries.json').write(JSON.stringify(summaryData))
   #console.log "Summary: #{JSON.stringify(summaryData)}"

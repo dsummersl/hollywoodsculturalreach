@@ -25,8 +25,7 @@ extractDomesticMovies = (data,key,year,listener)->
   secondrow = true
   for k,v of data
     if not firstrow and not secondrow
-      title = v['Film ']
-      title = v['Film'] if not title
+      title = v['Film '] or v['Film']
       title = title.trim()
       genre = v['Genre']
       overview = null
@@ -68,10 +67,10 @@ extractCountryMovies = (data,movies,year)->
       title = title.replace(/\(\d\d\d\d\)/,'')
       year = parseInt(matches[1])
     title = title.trim()
-    money = 0
-    money = v.Gross.replace(/\$/,'').replace(/,/g,'') if v.Gross
+    money = v['Gross'] or v[' Gross']
+    money = money.replace(/\$/,'').replace(/,/g,'') if money
     f = movies.findByAttribute('title',title)
-    #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
+    console.log "looking for '#{title}' and found '#{JSON.stringify(f)}"
     money = parseInt(money)
     hollywood = false
     hollywood = f.hollywood if f != null
@@ -99,8 +98,8 @@ extractCountrySummary = (data,movies,key,year)->
   unknownO = results[0]
   for k,v of data
     title = v[' Movie Title'].trim()
-    money = 0
-    money = v.Gross.replace(/\$/,'').replace(/,/g,'') if v.Gross
+    money = v['Gross'] or v[' Gross']
+    money = money.replace(/\$/,'').replace(/,/g,'') if money
     f = movies.findByAttribute('title',title)
     #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
     money = parseInt(money)
