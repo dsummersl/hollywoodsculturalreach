@@ -44,20 +44,26 @@ class Detailsection extends Spine.Controller
     # TODO short by movie title 
     hollywoods = []
     nothollywoods = []
+    hollywoodmoney = 0
+    nothollywoodmoney = 0
     for s in showings
       m = s.movie()
       if m.hollywood
+        #console.log "adding #{s.boxoffice} to us total for #{m.title}"
+        hollywoodmoney += s.boxoffice
         hollywoods.push m
       else
+        nothollywoodmoney += s.boxoffice
         nothollywoods.push m
     # TODO What to show...for #ds-summary
     # - show a pie chart breaking down the genre's and the distributors
     # - show the money amounts for total american exports. show non american.
     $('#ds-summary').text('')
+    # TODO format the string as money
     $('#ds-summary').append("""
     <ul class="unstyled">
-      <li>Hollywood movies: <span class="ds-rightside">#{hollywoods.length}</span></li>
-      <li>Non Hollywood movies: <span class="ds-rightside">#{nothollywoods.length}</span></li>
+      <li>#{hollywoods.length} Hollywood movies: <span class="ds-rightside">#{hollywoodmoney}</span></li>
+      <li>#{nothollywoods.length} Non Hollywood movies: <span class="ds-rightside">#{nothollywoodmoney}</span></li>
       <li><hr/></li>
     </ul>
     """)
@@ -69,12 +75,12 @@ class Detailsection extends Spine.Controller
         {
           name: 'Hollywood',
           size: hollywoods.length
-          text: ("<span class='ds-hollywood'>#{m.title}</span>" for m in hollywoods).join("<span class='ds-dash'>&mdash;</span>")
+          text: ("<span class='ds-hollywood'>#{m.title}</span>" for m in hollywoods).join("<span class='ds-dash'> &mdash; </span>")
         },
         {
           name: 'Non Hollywood',
           size: nothollywoods.length
-          text: ("<span class='ds-nothollywood'>#{m.title}</span>" for m in nothollywoods).join("<span class='ds-dash'>&mdash;</span>")
+          text: ("<span class='ds-nothollywood'>#{m.title}</span>" for m in nothollywoods).join("<span class='ds-dash'> &mdash; </span>")
         }
       ]
     treemap = d3.layout.treemap()

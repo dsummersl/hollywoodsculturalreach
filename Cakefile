@@ -21,13 +21,6 @@ task 'makeJSON', 'Make all the existing data into JSON', ->
   exec 'sh bin/convert_to_json.sh', execHandler
   # TODO verify that the data is actually good standing JSON
 
-task 'compressCSV', 'Probably no', ->
-  deflate = require 'deflate-js'
-  map = {}
-  for year in [2007..2011]
-    map[year] = deflate.deflate(fs.readFileSync("public/data/#{year}.csv"))
-  fs.createWriteStream("years.csv.deflate").write(JSON.stringify(map))
-
 task 'makeSummaries', 'Make Overview data - you must run this like this:\n\nNODE_PATH="app" cake makeJSON', ->
   Spine = require 'spine'
   Spine.Model.Local = {}

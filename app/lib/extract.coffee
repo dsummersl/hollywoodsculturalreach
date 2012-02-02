@@ -35,7 +35,7 @@ extractDomesticMovies = (data,key,year,listener)->
         overview = makeEmptyOverview(key,year,genre)
         results.push overview
       overview.hollywood++
-      val = parseFloat(v['Domestic Gross'])*1000000
+      val = parseFloat(v['Domestic Gross']) or parseFloat(v['Domestic Gross-2'])
       overview.hollywoodmoney += val if val
       #console.log "hollywood = #{overview.hollywoodmoney} for #{v['Domestic Gross']}"
       listener(
@@ -72,6 +72,7 @@ extractCountryMovies = (data,movies,year)->
     f = movies.findByAttribute('title',title)
     console.log "looking for '#{title}' and found '#{JSON.stringify(f)}"
     money = parseInt(money)
+    money = Math.round(money/100000)/10
     hollywood = false
     hollywood = f.hollywood if f != null
     exists = f != null
@@ -103,6 +104,7 @@ extractCountrySummary = (data,movies,key,year)->
     f = movies.findByAttribute('title',title)
     #console.log "looking for '#{title}' and found '#{f?.title}' = money = #{money} before it was #{v.Gross}"
     money = parseInt(money)
+    money = Math.round(money/100000)/10
     if f
       overview = null
       for o in results when o.year == year and o.genre == f.genre

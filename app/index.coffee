@@ -82,7 +82,9 @@ class App extends Spine.Controller
       usa = Country.findByAttribute('key','unitedstates')
       mkmov = (d) =>
         m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre,distributor:d.distributor})
-        ms = usa.showings().create({year:d.year, boxoffice:d.domestic, movie_id:m.id})
+        money = d.domestic
+        money = 0 if isNaN(money)
+        ms = usa.showings().create({year:d.year, boxoffice:money, movie_id:m.id})
       Extractor.extractDomesticMovies(d,'unitedstates',year,mkmov)
       #console.log "Loaded #{year} Hollywood movies (count: #{Movie.count()})..."
       if year < 2011
