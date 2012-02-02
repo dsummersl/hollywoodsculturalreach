@@ -25,7 +25,7 @@ do
       # the number of pages we have to get:
       tidy list.html | xml fo -H | xml sel -T -t -m '//a[contains(@href,"pagenum")]' -v @href -n | sort | uniq > additionalpages.txt
 
-      # some pages don't have yearly totals. I have to do it this way and then crawl week by week.
+      # TODO some pages don't have yearly totals. I have to do it this way and then crawl week by week.
       # gotta start here to see what weeks they have:
       # http://boxofficemojo.com/intl/ecuador/?yr=2009&p=.htm
       # and then visit each week's page:

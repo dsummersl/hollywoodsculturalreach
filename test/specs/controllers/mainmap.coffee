@@ -1,7 +1,7 @@
 require = window.require
 
 describe 'Mainmap', ->
-  require('d3/d3')
+  require('lib/d3.min')
   Mainmap = require('controllers/mainmap')
 
   it 'can find min and max keys', ->

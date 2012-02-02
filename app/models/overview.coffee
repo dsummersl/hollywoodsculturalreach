@@ -13,6 +13,12 @@ class Overview extends Spine.Model
   #   genre: [...,...] etc genre: 'love'
   #   story: [...,...] etc
   @totalHollyWoodRatio: (country,constraints={}) =>
+    return @computeRatio(country,constraints,((o)=>o.hollywood+o.oldhollywood),((o)=>o.hollywood+o.oldhollywood+o.other))
+
+  @totalRevenueRatio: (country,constraints={}) =>
+    return @computeRatio(country,constraints,((o)=>o.hollywoodmoney+o.oldhollywoodmoney),((o)=>o.hollywoodmoney+o.oldhollywoodmoney+o.othermoney))
+
+  @computeRatio: (country,constraints,adder,totaller) =>
     all = country.overviews().select((el) =>
       result = true
       result = result and el.year == constraints.year if constraints.year
@@ -22,9 +28,9 @@ class Overview extends Spine.Model
     )
     all = [] if not all
     hollywood = 0
-    hollywood+=o.hollywood+o.oldhollywood for o in all
+    hollywood+=adder(o) for o in all
     total = 0
-    total += o.hollywood+o.oldhollywood+o.other for o in all
+    total += totaller(o) for o in all
     return 0 if hollywood == total == 0
     return hollywood / total
 

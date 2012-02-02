@@ -2,6 +2,13 @@
 #mainmap svg
   border: 1px solid black
 */
+h1 {
+  font-family: 'times new roman';
+}
+hr {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
 .keytext {
   font-size: 8pt;
 }
@@ -12,4 +19,35 @@
 .keytext-invisible {
   font-size: 2pt;
   fill: #fff;
+}
+#ds-movies {
+  line-height: 11px;
+  font-size: 7pt;
+  text-align: justify;
+}
+.ds-hollywood {
+  color: #888;
+}
+.ds-nothollywood {
+  color: #888;
+}
+.ds-dash {
+  color: #888;
+}
+.ds-cell {
+  color: #aaa;
+  border: solid 2px #fff;
+  position: absolute;
+  text-indent: 2px;
+  overflow: hidden;
+  line-height: 12px;
+/*padding: 2px*/
+}
+.ds-rightside {
+  float: right;
+}
+#dl-desc {
+  font-family: 'times new roman, serif';
+  text-align: center;
+  color: #aaa;
 }

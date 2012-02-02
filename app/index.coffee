@@ -66,9 +66,10 @@ class App extends Spine.Controller
   loadcountries: (d) =>
     #@log "reloading countries..."
     Country.deleteAll()
+    exclude = ['israel','ecuador','indonesia','uae','bahrain'] # TODO need data for these.
     for k,v of d
       parts = v['Country|key'].split('|')
-      Country.create(name: parts[0],region: v['Continent'],key: parts[1])
+      Country.create(name: parts[0],region: v['Continent'],key: parts[1]) if parts[1] not in exclude
     Country.create(name: 'US & Canada',region: 'North America',key: 'unitedstates')
     $('#startuptext').text("Loading 2007 Hollywood movies...")
     Movie.deleteAll()

@@ -44,7 +44,7 @@ class Mapkey
       .text('# Countries')
     @sep = 1
     @bucketWidth = parseInt(@w / @numBuckets)
-    colors = d3.scale.linear().domain([0,@numBuckets]).range(Options.colors)
+    colors = d3.scale.linear().domain([0,@numBuckets]).range(Appdata.get('measure').colors)
     groups = d3.select('#m-keynodataavail')
       .selectAll('rect')
       .data([0])
@@ -150,7 +150,7 @@ class Mapkey
       .text(nodatabucket)
     ###
     d3.select('#m-xaxislabel')
-      .text(Appdata.get('measureDesc'))
+      .text(Appdata.get('measure').desc)
     groups = d3.select('#m-keygroupaxis')
       .selectAll('text')
       .data(buckets)

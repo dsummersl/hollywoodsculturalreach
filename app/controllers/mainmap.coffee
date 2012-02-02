@@ -30,7 +30,7 @@ class Mainmap extends Spine.Controller
   measureUpdated: (r) =>
     if @maploaded and r.key == 'measuredata'
       max = r.data[@findMaxKey(r.data)]
-      colors = d3.scale.linear().domain([0,max]).range(Options.colors)
+      colors = d3.scale.linear().domain([0,max]).range(Appdata.get('measure').colors)
       @mapkey.refresh(r.data)
       for c in Country.all()
         svgIds = c.getSVGIDs()
