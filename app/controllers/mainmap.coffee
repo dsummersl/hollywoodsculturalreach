@@ -13,9 +13,10 @@ class Mainmap extends Spine.Controller
       importNode = document.importNode(xml.documentElement, true)
       d3.select('#mainmap').node().appendChild(importNode)
       d3.select('#mainmap svg').attr('fill',Options.nodatacountries)
+      ###
       d3.select('#m-antarctica')
         .attr('fill','#ffffff')
-        #.attr('style','#555555')
+      ###
       for c in Country.all()
         svgIds = c.getSVGIDs()
         if svgIds

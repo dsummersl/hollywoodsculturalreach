@@ -3,7 +3,7 @@ Appdata = require 'models/appdata'
 Country = require 'models/country'
 Movieshowing = require 'models/movieshowing'
 Options = require 'lib/options'
-Overview = require 'models/overview'
+Measures = require 'lib/measures'
 
 # controls the filtering of the data (ie, only 2008 data).
 class Datalimiter extends Spine.Controller
@@ -44,19 +44,6 @@ class Datalimiter extends Spine.Controller
     <hr/>
     """)
 
-    @measures =
-      percentcounthollywood: # the percent of # of movies that are hollywood movies
-        compute: @computeHollyWood
-        viz: @hollywoodviz
-        desc: '% Hollywood Movies'
-        extendeddesc: 'The percentage of movies shown in a countries theatres that are from Hollywood.'
-        colors: ['#bbd3f9','#f1ee9c']
-      percentmoneyhollywood: # the percent of box office $s that are from hollywood movies
-        compute: @computeHollyWoodMoney
-        viz: @hollywoodviz
-        desc: '% Revenue Hollywood Movies'
-        extendeddesc: 'The percentage of revenue from movies shown in a countries theatres that are from Hollywood.'
-        colors: ['#bbd3f9','#f1ee9c']
 
     # Movies from 2007-2011
     $("#dl-year").append("<option>#{y}</option>") for y in Options.years
@@ -73,7 +60,7 @@ class Datalimiter extends Spine.Controller
     $("#dl-genre").append("<option>All</option>")
     $("#dl-genre").val('All')
 
-    $("#dl-measure").append("<option value='#{k}'>#{v.desc}</option>") for k,v of @measures
+    $("#dl-measure").append("<option value='#{k}'>#{v.desc}</option>") for k,v of Measures
 
     @updateDescription()
 
@@ -94,35 +81,18 @@ class Datalimiter extends Spine.Controller
   yearchanged: (e) =>
     Appdata.set('years',$(e.target).val())
     @updateDescription()
+    @changeMeasure(Appdata.get('measureKey'))
   genrechanged: (e) =>
     Appdata.set('genres',$(e.target).val())
     @updateDescription()
+    @changeMeasure(Appdata.get('measureKey'))
   measurechanged: (e) =>
     @changeMeasure($(e.target).val())
 
   changeMeasure: (m) =>
-    Appdata.set('measure',@measures[m])
-    @measures[m].compute()
-    @measures[m].viz()
-    
-  hollywoodviz: => # block.
-  computeHollyWood: =>
-    data = {}
-    year = null
-    year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-    genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
-    @log "filtering by #{year} and #{genre}"
-    data[c.key] = Overview.totalHollyWoodRatio(c,{year:year,genre:genre}) for c in Country.all()
-    #@log "DATA = #{JSON.stringify(data)}"
-    Appdata.set('measuredata',data)
-
-  computeHollyWoodMoney: =>
-    data = {}
-    year = null
-    year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'All'
-    genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
-    data[c.key] = Overview.totalRevenueRatio(c,{year:year,genre:genre}) for c in Country.all()
-    Appdata.set('measuredata',data)
+    Appdata.set('measure',Measures[m])
+    Appdata.set('measureKey',m)
+    Measures[m].compute()
 
   appupdate: (r) =>
     @computeHollyWood() if r.key == 'years'

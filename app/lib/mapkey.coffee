@@ -29,19 +29,25 @@ class Mapkey
       .attr('id','m-keynodataavail')
     @h = parseFloat($(id).attr('height'))
     @w = parseFloat($(id).attr('width'))
+    d3.select('#m-xaxis').style('stroke',Options.disabledcountries)
+    d3.select('#m-yaxis').style('stroke',Options.disabledcountries)
+    d3.select('#m-origin').attr('fill',Options.disabledcountries)
+    d3.selectAll('#m-nodataatalltext tspan').attr('fill',Options.disabledcountries)
+    d3.selectAll('#m-dataunavailable tspan').attr('fill',Options.disabledcountries)
     d3.select('#m-nodataatall')
       .attr('style',Options.nodatacountries)
       .attr('rx', 2)
     d3.select('#m-nodataavailable')
       .attr('style','') # clear away any style that might have already been there
-      .attr('fill','#000000')
+      .attr('fill',Options.disabledcountries)
       .attr('fill-opacity',0.0)
     d3.select('#m-keyunderxaxis')
       .attr('style','') # clear away any style that might have already been there
-      .attr('fill','#000000')
+      .attr('fill',Options.disabledcountries)
       .attr('fill-opacity',0.0)
     d3.select('#m-yaxislabel')
       .text('# Countries')
+      .attr('fill',Options.disabledcountries)
     @sep = 1
     @bucketWidth = parseInt(@w / @numBuckets)
     colors = d3.scale.linear().domain([0,@numBuckets]).range(Appdata.get('measure').colors)
@@ -93,12 +99,13 @@ class Mapkey
       .attr('class','keyxaxistext')
       .attr('x', (d,i)=> i*@bucketWidth+@bucketWidth/2.0-3)
       .attr('y', 5)
-      .attr('fill', "black")
+      .attr('fill',Options.disabledcountries)
       .attr('transform', (d,i)=> "rotate(90 #{i*@bucketWidth+@bucketWidth/2.0-3} 5)")
       .attr('text-anchor', "start")
       .text((d,i)=> "#{parseInt((i+1)/@numBuckets*100)}%")
- 
+
   refresh: (data) ->
+    colors = d3.scale.linear().domain([0,@numBuckets]).range(Appdata.get('measure').colors)
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
     max = 0
@@ -124,6 +131,7 @@ class Mapkey
       .duration(600)
       .attr('y', bucketYH)
       .attr('height', bucketY)
+      .attr('fill', (d,i) => colors(i))
     ###
     groups = d3.select('#m-keygroup')
       .selectAll('text')
@@ -150,6 +158,7 @@ class Mapkey
       .text(nodatabucket)
     ###
     d3.select('#m-xaxislabel')
+      .attr('fill',Options.disabledcountries)
       .text(Appdata.get('measure').desc)
     groups = d3.select('#m-keygroupaxis')
       .selectAll('text')

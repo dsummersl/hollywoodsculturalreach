@@ -36,12 +36,12 @@
    inkscape:window-height="752"
    id="namedview4483"
    showgrid="false"
-   inkscape:zoom="1.2735935"
-   inkscape:cx="640.14729"
-   inkscape:cy="62.891373"
+   inkscape:zoom="5.094374"
+   inkscape:cx="392.2426"
+   inkscape:cy="113.33918"
    inkscape:window-x="0"
    inkscape:window-y="0"
-   inkscape:window-maximized="1"
+   inkscape:window-maximized="0"
    inkscape:current-layer="g4680" />
 
 <path
@@ -1508,15 +1508,14 @@
    sodipodi:rx="5.5520601"
    sodipodi:cy="664.39758"
    sodipodi:cx="232.07611"
-   id="path3696"
-   style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+   id="m-origin"
    sodipodi:type="arc" /><path
    inkscape:connector-curvature="0"
-   id="path4466"
+   id="m-xaxis"
    d="m 330.05094,560.15894 440.43903,0 0,0 z"
    style="fill:none;stroke:#000000;stroke-width:1.0210973px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /><path
    inkscape:connector-curvature="0"
-   id="path4468"
+   id="m-yaxis"
    d="m 361.24215,560.7263 0,-106.78446 z"
    style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /><text
    inkscape:label="#text4487"
@@ -1524,12 +1523,13 @@
    id="m-xaxislabel"
    y="563.51416"
    x="772.8219"
-   style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+   style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
    xml:space="preserve"><tspan
      y="563.51416"
      x="772.8219"
      id="tspan4489"
      sodipodi:role="line">x axis</tspan></text>
+
 
 
 <text
@@ -1539,7 +1539,7 @@
    x="-451.37564"
    xml:space="preserve"
    sodipodi:linespacing="125%"
-   style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+   style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
    transform="matrix(0,-1,1,0,0,0)"><tspan
      y="363.72507"
      x="-451.37564"
@@ -1547,9 +1547,10 @@
      sodipodi:role="line">yaxis</tspan></text>
 
 
+
 <text
    sodipodi:linespacing="80.000001%"
-   id="text4533"
+   id="m-dataunavailable"
    y="573.98279"
    x="342.02142"
    style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:80.00000119%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
@@ -1562,6 +1563,7 @@
      y="581.98279"
      x="342.02142"
      sodipodi:role="line">unavailable</tspan></text>
+
 
 
 <g
@@ -1577,7 +1579,7 @@
    style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:80.00000119%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
    x="295.44907"
    y="531.26678"
-   id="text4541"
+   id="m-nodataatalltext"
    sodipodi:linespacing="80.000001%"><tspan
      sodipodi:role="line"
      id="tspan4543"
@@ -1591,6 +1593,7 @@
      x="295.44907"
      y="547.26678"
      id="tspan4547">at all</tspan></text>
+
 
 </g>
 </g></svg>
