@@ -67,7 +67,7 @@ class Detailsection extends Spine.Controller
     $('#ds-summary').append("""
     <ul class="unstyled">
       <li>#{hollywoods.length} Hollywood movies: <span class="ds-rightside">#{@sprintmoney(hollywoodmoney)}</span></li>
-      <li>#{nothollywoods.length} Non Hollywood movies: <span class="ds-rightside">#{nothollywoodmoney}</span></li>
+      <li>#{nothollywoods.length} other movies: <span class="ds-rightside">#{nothollywoodmoney}</span></li>
       <li><hr/></li>
     </ul>
     """)

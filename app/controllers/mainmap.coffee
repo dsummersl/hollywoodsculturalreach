@@ -21,8 +21,14 @@ class Mainmap extends Spine.Controller
         svgIds = c.getSVGIDs()
         if svgIds
           for id in svgIds
-            fn = (key) => return => Appdata.set('country',key)
-            d3.select(id).on('click', fn(c.key))
+            fn = (c) => return =>
+              key = c.key
+              if Appdata.get('country')?
+                oldc = Country.findByAttribute('key',Appdata.get('country'))
+                $(id).attr('class','') for id in oldc.getSVGIDs()
+              Appdata.set('country',key)
+              $(id).attr('class','mm-selected') for id in c.getSVGIDs()
+            d3.select(id).on('click', fn(c))
       @mapkey = new Mapkey('#m-key',20)
       @maploaded = true
       @measureUpdated({key:'measuredata', data: Appdata.get('measuredata')})
