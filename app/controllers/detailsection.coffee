@@ -39,6 +39,10 @@ class Detailsection extends Spine.Controller
       else
         @updateDetails(showings)
 
+  sprintmoney: (m) ->
+    return $.sprintf('$%.1f bil',m/1000) if m > 1000
+    return $.sprintf('$%.1f mil',m)
+
   updateDetails: (showings) =>
     # TODO filter by the current filters
     # TODO short by movie title 
@@ -62,7 +66,7 @@ class Detailsection extends Spine.Controller
     # TODO format the string as money
     $('#ds-summary').append("""
     <ul class="unstyled">
-      <li>#{hollywoods.length} Hollywood movies: <span class="ds-rightside">#{hollywoodmoney}</span></li>
+      <li>#{hollywoods.length} Hollywood movies: <span class="ds-rightside">#{@sprintmoney(hollywoodmoney)}</span></li>
       <li>#{nothollywoods.length} Non Hollywood movies: <span class="ds-rightside">#{nothollywoodmoney}</span></li>
       <li><hr/></li>
     </ul>

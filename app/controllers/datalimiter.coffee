@@ -11,6 +11,7 @@ class Datalimiter extends Spine.Controller
   constructor: ->
     super
     $('#datalimiter').append("""
+    <a href="#" id="dl-change" class="btn" style="float: right;">?</a>
     <div id="dl-desc">... description ...</div>
     <div class="modal" id="dl-modifydialog" style="display: none;">
       <div class="modal-header"><h3>Map options</h3></div>
@@ -54,6 +55,8 @@ class Datalimiter extends Spine.Controller
     usa = Country.findByAttribute('key','unitedstates')
     #console.log "showings = #{ms.movie().genre}" for ms in usa.showings().all()
     genres.push(ms.movie().genre) for ms in usa.showings().all() when ms.movie().genre not in genres
+    genres = genres.sort()
+    #console.log "movie #{ms.movie().title} genre is #{ms.movie().genre}" for ms in usa.showings().all() when ms.movie().genre == ''
     # TODO alphabetize
     $("#dl-genre").append("<option>#{g}</option>") for g in genres
     #$("#dl-genre").append("<option>Unknown</option>")
@@ -62,8 +65,6 @@ class Datalimiter extends Spine.Controller
 
     $("#dl-measure").append("<option value='#{k}'>#{v.desc}</option>") for k,v of Measures
 
-    @updateDescription()
-
     $("#dl-change").click => $('#dl-modifydialog').fadeIn()
     $("#dl-closemodifydialog").click => $('#dl-modifydialog').fadeOut()
     $("#dl-year").change(@yearchanged)
@@ -71,31 +72,36 @@ class Datalimiter extends Spine.Controller
     $("#dl-measure").change(@measurechanged)
 
     @changeMeasure('percentcounthollywood')
+    @updateDescription()
   
   updateDescription: =>
-    if Appdata.get('years')
-      $('#dl-desc').html("<span id='dl-change'>Hollywood movies in #{Appdata.get('years')}, countries are colored by percent of Hollywood movies<span>")
-    else # show all years
-      $('#dl-desc').html("<span id='dl-change'>Hollywood movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, countries are colored by percent of Hollywood movies<span>")
+    #console.log "genres = #{Appdata.get('genres')?} for #{Appdata.get('genres')}"
+    #console.log "years = #{Appdata.get('years')?} for #{Appdata.get('years')}"
+    str = "Hollywood movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
+    if Appdata.get('years')? and Appdata.get('genres')?
+      str = "Hollywood #{Appdata.get('genres')} movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
+    if Appdata.get('genres')?
+      str = "Hollywood #{Appdata.get('genres')} movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
+    if Appdata.get('years')?
+      str = "Hollywood movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
+    #console.log "new string = '#{str}'"
+    $('#dl-desc').html(str)
 
   yearchanged: (e) =>
     Appdata.set('years',$(e.target).val())
-    @updateDescription()
     @changeMeasure(Appdata.get('measureKey'))
+    @updateDescription()
   genrechanged: (e) =>
     Appdata.set('genres',$(e.target).val())
-    @updateDescription()
     @changeMeasure(Appdata.get('measureKey'))
+    @updateDescription()
   measurechanged: (e) =>
     @changeMeasure($(e.target).val())
+    @updateDescription()
 
   changeMeasure: (m) =>
     Appdata.set('measure',Measures[m])
     Appdata.set('measureKey',m)
     Measures[m].compute()
 
-  appupdate: (r) =>
-    @computeHollyWood() if r.key == 'years'
-    @computeHollyWood() if r.key == 'genres'
-    
 module.exports = Datalimiter

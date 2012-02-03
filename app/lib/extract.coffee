@@ -70,7 +70,7 @@ extractCountryMovies = (data,movies,year)->
     money = v['Gross'] or v[' Gross']
     money = money.replace(/\$/,'').replace(/,/g,'') if money
     f = movies.findByAttribute('title',title)
-    console.log "looking for '#{title}' and found '#{JSON.stringify(f)}"
+    #console.log "looking for '#{title}' and found '#{JSON.stringify(f)}"
     money = parseInt(money)
     money = Math.round(money/100000)/10
     hollywood = false

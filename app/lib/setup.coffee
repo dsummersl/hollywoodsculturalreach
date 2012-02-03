@@ -5,6 +5,7 @@ require('jqueryify')
 require 'lib/d3.min'
 require 'lib/d3.csv.min'
 require 'lib/d3.layout.min'
+require 'lib/sprintf'
 
 require('spine')
 require('spine/lib/relation')

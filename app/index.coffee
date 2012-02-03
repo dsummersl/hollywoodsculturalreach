@@ -81,7 +81,9 @@ class App extends Spine.Controller
       #console.log "loading movies"
       usa = Country.findByAttribute('key','unitedstates')
       mkmov = (d) =>
-        m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:d.genre,distributor:d.distributor})
+        genre = d.genre
+        genre = 'Unknown' if genre == ''
+        m = Movie.create({title: d.film, hollywood: true, year:d.year, story:d.story,genre:genre,distributor:d.distributor})
         money = d.domestic
         money = 0 if isNaN(money)
         ms = usa.showings().create({year:d.year, boxoffice:money, movie_id:m.id})
