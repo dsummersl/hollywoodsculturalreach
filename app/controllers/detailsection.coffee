@@ -32,7 +32,9 @@ class Detailsection extends Spine.Controller
           for row in d
             m = Movie.create(row)
             # TODO money looks likeit might be zero for everybody
-            ms = country.showings().create({year:d.year, boxoffice:d.money, movie_id:m.id})
+            s = country.showings().create({year:row.year, boxoffice:row.money, movie_id:m.id})
+            #console.log "adding #{s.boxoffice} to us total for #{m.title}"
+            #console.log "row = #{JSON.stringify(d)}
           $('#startupdialog').fadeOut()
           showings = country.showings().all()
           @updateDetails(showings)
@@ -53,7 +55,6 @@ class Detailsection extends Spine.Controller
     for s in showings
       m = s.movie()
       if m.hollywood
-        #console.log "adding #{s.boxoffice} to us total for #{m.title}"
         hollywoodmoney += s.boxoffice
         hollywoods.push m
       else
@@ -67,7 +68,7 @@ class Detailsection extends Spine.Controller
     $('#ds-summary').append("""
     <ul class="unstyled">
       <li>#{hollywoods.length} Hollywood movies: <span class="ds-rightside">#{@sprintmoney(hollywoodmoney)}</span></li>
-      <li>#{nothollywoods.length} other movies: <span class="ds-rightside">#{nothollywoodmoney}</span></li>
+      <li>#{nothollywoods.length} other movies: <span class="ds-rightside">#{@sprintmoney(nothollywoodmoney)}</span></li>
       <li><hr/></li>
     </ul>
     """)
