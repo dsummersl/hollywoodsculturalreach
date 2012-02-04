@@ -1,5 +1,6 @@
 Spine = require 'spine'
 Country = require 'models/country'
+Appdata = require 'models/appdata'
 
 require 'spine/lib/relation' # just a little something I seem to need to do Cakefile(see makeJSON) relations...
 
@@ -27,16 +28,11 @@ class Overview extends Spine.Model
   #
   # When limited by year and genre the number would be of all movies for the year
   @computeRatio: (country,constraints,adder,totaller) =>
-    filter = (el) =>
-      result = true
-      result = result and el.year == constraints.year if constraints.year?
-      result = result and el.genre == constraints.genre if constraints.genre?
-      return result
     # for some reason I have to re-import the country to use it:
     usa = require('models/country').findByAttribute('key','unitedstates')
-    allusa = usa.overviews().select(filter)
+    allusa = @filter(usa.overviews(),constraints)
     allusa = [] if not allusa
-    all = country.overviews().select(filter)
+    all = @filter(country.overviews(),constraints)
     all = [] if not all
     #console.log "os = #{JSON.stringify(os)}" for os in all
     hollywood = 0
@@ -47,5 +43,19 @@ class Overview extends Spine.Model
     total += totaller(o) for o in allusa
     return 0 if hollywood == total == 0
     return hollywood / total
+
+  @filter: (overviews,constraints) =>
+    filter = (el) =>
+      result = true
+      result = result and el.year == constraints.year if constraints.year?
+      result = result and el.genre == constraints.genre if constraints.genre?
+      return result
+    return overviews.select(filter)
+
+  @getConstraints: =>
+      year = null
+      year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'All'
+      genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
+      return {year:year,genre:genre}
 
 module.exports = Overview

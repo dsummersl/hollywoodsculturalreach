@@ -8,11 +8,7 @@ measures =
   percentcounthollywood: # the percent of # of movies that are hollywood movies
     compute: =>
       data = {}
-      year = null
-      year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'all'
-      genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
-      #@log "filtering by #{year} and #{genre}"
-      data[c.key] = Overview.totalHollyWoodRatio(c,{year:year,genre:genre}) for c in Country.all()
+      data[c.key] = Overview.totalHollyWoodRatio(c,Overview.getConstraints()) for c in Country.all()
       #@log "DATA = #{JSON.stringify(data)}"
       Appdata.set('measuredata',data)
     desc: '% Hollywood Movies'
@@ -21,10 +17,7 @@ measures =
   percentmoneyhollywood: # the percent of box office $s that are from hollywood movies
     compute: =>
       data = {}
-      year = null
-      year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'All'
-      genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
-      data[c.key] = Overview.totalRevenueRatio(c,{year:year,genre:genre}) for c in Country.all()
+      data[c.key] = Overview.totalRevenueRatio(c,Overview.getConstraints()) for c in Country.all()
       Appdata.set('measuredata',data)
     desc: '% Revenue Hollywood Movies'
     extendeddesc: 'colored by the revenue percentage shown in each country\'s theatres.'

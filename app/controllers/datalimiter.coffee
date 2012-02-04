@@ -57,7 +57,6 @@ class Datalimiter extends Spine.Controller
     genres.push(ms.movie().genre) for ms in usa.showings().all() when ms.movie().genre not in genres
     genres = genres.sort()
     #console.log "movie #{ms.movie().title} genre is #{ms.movie().genre}" for ms in usa.showings().all() when ms.movie().genre == ''
-    # TODO alphabetize
     $("#dl-genre").append("<option>#{g}</option>") for g in genres
     #$("#dl-genre").append("<option>Unknown</option>")
     $("#dl-genre").append("<option>All</option>")
@@ -75,14 +74,14 @@ class Datalimiter extends Spine.Controller
     @updateDescription()
   
   updateDescription: =>
-    #console.log "genres = #{Appdata.get('genres')?} for #{Appdata.get('genres')}"
-    #console.log "years = #{Appdata.get('years')?} for #{Appdata.get('years')}"
+    years = Appdata.get('years') if Appdata.get('years') != 'All'
+    genres = Appdata.get('genres') if Appdata.get('genres') != 'All'
     str = "Hollywood movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
-    if Appdata.get('years')? and Appdata.get('genres')?
+    if years? and genres?
       str = "Hollywood #{Appdata.get('genres')} movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
-    if Appdata.get('genres')?
+    if genres?
       str = "Hollywood #{Appdata.get('genres')} movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
-    if Appdata.get('years')?
+    if years?
       str = "Hollywood movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
     #console.log "new string = '#{str}'"
     $('#dl-desc').html(str)

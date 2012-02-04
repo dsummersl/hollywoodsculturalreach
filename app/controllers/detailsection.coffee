@@ -3,6 +3,7 @@ Country = require('models/country')
 Appdata = require 'models/appdata'
 Movie = require 'models/movie'
 Options = require 'lib/options'
+Overview = require 'models/overview'
 
 # information about a specific country, a table of actual movies.
 class Detailsection extends Spine.Controller
@@ -20,12 +21,12 @@ class Detailsection extends Spine.Controller
     """)
     
   appupdate: (r) =>
-    if r.key == 'country'
-      country = Country.findByAttribute('key',r.data)
+    if r.key == 'country' or r.key == 'years' or r.key == 'genres'
+      country = Country.findByAttribute('key',Appdata.get('country'))
       $('#ds-title').text(country.name)
       $('#ds-movies').text('')
-      showings = country.showings().all()
-      if showings.length == 0
+      showings = country.showings()
+      if showings.all().length == 0
         $('#startuptext').text("Loading #{country.name} data...")
         $('#startupdialog').fadeIn()
         $.getJSON "data/#{country.key}.json", (d) =>
@@ -36,8 +37,7 @@ class Detailsection extends Spine.Controller
             #console.log "adding #{s.boxoffice} to us total for #{m.title}"
             #console.log "row = #{JSON.stringify(d)}
           $('#startupdialog').fadeOut()
-          showings = country.showings().all()
-          @updateDetails(showings)
+          @updateDetails(country.showings())
       else
         @updateDetails(showings)
 
@@ -48,11 +48,12 @@ class Detailsection extends Spine.Controller
   updateDetails: (showings) =>
     # TODO filter by the current filters
     # TODO short by movie title 
+    constrained = Overview.filter(showings,Overview.getConstraints())
     hollywoods = []
     nothollywoods = []
     hollywoodmoney = 0
     nothollywoodmoney = 0
-    for s in showings
+    for s in constrained
       m = s.movie()
       if m.hollywood
         hollywoodmoney += s.boxoffice
