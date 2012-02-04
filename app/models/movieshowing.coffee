@@ -13,4 +13,14 @@ class Movieshowing extends Spine.Model
   
   movie: -> Movie.find(@movie_id)
 
+  # find by movie and country
+  @findByMC: (movie,country) ->
+    results = @select((el)=>
+      return true if el.movie_id == movie.id and el.country_id == country.id
+      return false
+    )
+    throw "There was more than one showing (#{results.length}), there should be no more than one" if results?.length > 1
+    return results[0] if results?.length == 1
+    return null
+
 module.exports = Movieshowing

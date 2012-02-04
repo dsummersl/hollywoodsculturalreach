@@ -78,6 +78,7 @@ extractCountryMovies = (data,movies,year)->
     exists = f != null
     distributor = v['Distributor']
     distributor = f.distributor if f != null
+    # TODO put in distributor of unknown if its not known
     year = f.year if f != null
     results.push({title: title, money:money,hollywood:hollywood,exists:exists,distributor:distributor,year:year})
   return results
