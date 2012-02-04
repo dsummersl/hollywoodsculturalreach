@@ -16,7 +16,7 @@ class Detailsection extends Spine.Controller
       <h2 id="ds-title">Title</h2>
       <div id="ds-summary"></div>
     </div>
-    <div class="span12" id="ds-movies">
+    <div class="span8" id="ds-movies">
     </div>
     """)
     
@@ -103,7 +103,10 @@ class Detailsection extends Spine.Controller
       .data(treemap.nodes)
       .enter()
       .append('div')
-      .attr('class','ds-cell')
+      .attr('class',(d) =>
+         return 'ds-cell' if d.size > 0
+         return 'ds-cell-empty'
+      )
       .style('background', (d)=>
         return Appdata.get('measure').colors[1] if not d.children and d.name == 'Hollywood'
         return Appdata.get('measure').colors[0]

@@ -11,7 +11,7 @@ class Datalimiter extends Spine.Controller
   constructor: ->
     super
     $('#datalimiter').append("""
-    <a href="#" id="dl-change" class="btn" style="float: right;">?</a>
+    <a href="#" id="dl-change" class="btn" style="float: right;"><i class="icon-pencil"></i></a>
     <div id="dl-desc">... description ...</div>
     <div class="modal" id="dl-modifydialog" style="display: none;">
       <div class="modal-header"><h3>Map options</h3></div>
