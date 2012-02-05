@@ -5,6 +5,18 @@ Overview = require 'models/overview'
 measures =
   # TODO of all the hollywood movies, what percent played in the foreign country?
   #desc: '% Hollywood Movies'
+  countmovies: # the percent of # of movies that are hollywood movies
+    compute: =>
+      data = {}
+      for c in Country.all()
+        sum = 0
+        sum += o.other + o.hollywood + o.oldhollywood for o in Overview.filter(c.overviews(),Overview.getConstraints())
+        data[c.key] = sum
+      Appdata.set('measuredata',data)
+    desc: '# Movies'
+    extendeddesc: ' colored by total # movies shown in each country.'
+    colors: ['#bbd3f9','#f1ee9c'] # 217, 58
+  ###
   percentcounthollywood: # the percent of # of movies that are hollywood movies
     compute: =>
       data = {}
@@ -22,7 +34,6 @@ measures =
     desc: '% Revenue Hollywood Movies'
     extendeddesc: 'colored by the revenue percentage shown in each country\'s theatres.'
     colors: ['#bbbef9','#d7f19c'] # 237, 78
-  ###
   percentcounthollywoodincountry: # the percent of # of movies that are hollywood movies vs all countries movies
     compute: =>
       data = {}

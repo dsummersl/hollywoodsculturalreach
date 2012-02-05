@@ -70,7 +70,7 @@ class Datalimiter extends Spine.Controller
     $("#dl-genre").change(@genrechanged)
     $("#dl-measure").change(@measurechanged)
 
-    @changeMeasure('percentcounthollywood')
+    @changeMeasure(Options.initialmeasure)
     @updateDescription()
   
   updateDescription: =>

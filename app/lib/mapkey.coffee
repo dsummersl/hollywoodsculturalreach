@@ -89,6 +89,7 @@ class Mapkey
     ###
 
   refresh: (data) ->
+    $(".mk-selected").attr('class','') if @previousSelection?
     colors = d3.scale.linear().domain([0,@numBuckets]).range(Appdata.get('measure').colors)
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
@@ -133,11 +134,13 @@ class Mapkey
     d3.select('#m-yaxislabel')
       .attr('fill',Options.disabledcountries)
       .text(Appdata.get('measure').desc)
+    $("rect[movie-key='#{@previousSelection}']").attr('class','mk-selected') if @previousSelection?
 
   # update any selected country information - just listen for any appdata mentions..
   updateSelection: (r) ->
     if r.key == 'country'
-      $("rect[movie-key='#{@previousSelection}']").attr('class','') if @previousSelection
+      console.log "previous selection = #{@previousSelection}"
+      $("rect[movie-key='#{@previousSelection}']").attr('class','') if @previousSelection?
       $("rect[movie-key='#{r.data}']").attr('class','mk-selected')
       @previousSelection = r.data
 
