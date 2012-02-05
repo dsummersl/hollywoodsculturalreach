@@ -101,7 +101,7 @@ class Mapkey
     nodatabucket = 0
     buckets[i] = c.key for c,i in Country.all()
     buckets = buckets.sort((a,b)=> data[a] - data[b])
-    heightRange = d3.scale.linear().domain([0,max]).range([0,@h])
+    heightRange = d3.scale.linear().domain([0,Math.max(Math.abs(min),max)]).range([0,@h])
     bucketYH = (d) => 1 + heightRange(Math.abs(data[d]))
     bucketY = (d) =>
       return @h - heightRange(data[d]) if data[d] >= 0
