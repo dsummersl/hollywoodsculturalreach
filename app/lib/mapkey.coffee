@@ -27,6 +27,7 @@ class Mapkey
     @h = parseFloat($(id).attr('height'))
     @w = parseFloat($(id).attr('width'))
     d3.select('#m-xaxis').style('stroke',Options.disabledcountries)
+    d3.select('#m-xaxis').style('visibility','hidden')
     d3.select('#m-yaxis').style('stroke',Options.disabledcountries)
     d3.select('#m-origin').attr('fill',Options.disabledcountries)
     d3.selectAll('#m-nodataatalltext tspan').attr('fill',Options.disabledcountries)
@@ -90,16 +91,21 @@ class Mapkey
 
   refresh: (data) ->
     $(".mk-selected").attr('class','') if @previousSelection?
-    colors = d3.scale.linear().domain([0,@numBuckets]).range(Appdata.get('measure').colors)
     buckets = []
     buckets.push(0) for nothing in [1..@numBuckets]
+    min = 0
+    min = v for k,v of data when v < min
     max = 0
     max = v for k,v of data when v > max
+    colors = Appdata.get('measure').colors(data)
     nodatabucket = 0
     buckets[i] = c.key for c,i in Country.all()
     buckets = buckets.sort((a,b)=> data[a] - data[b])
-    bucketY = d3.scale.linear().domain([0,max]).range([0,@h])
-    bucketYH = (d) => @h - bucketY(data[d])
+    heightRange = d3.scale.linear().domain([0,max]).range([0,@h])
+    bucketYH = (d) => 1 + heightRange(Math.abs(data[d]))
+    bucketY = (d) =>
+      return @h - heightRange(data[d]) if data[d] >= 0
+      return @h
     keyx = d3.scale.linear().domain([0,1]).range([0,@w])
     #console.log "bucket width = #{@bucketWidth} for total width = #{@w} max is #{max}"
     #console.log "the buckets = #{JSON.stringify(buckets)}"
@@ -108,9 +114,9 @@ class Mapkey
       .data(buckets)
       .transition()
       .duration(600)
-      .attr('y', bucketYH)
-      .attr('height', (d) => bucketY(data[d]))
-      .attr('fill', (d,i) => colors(i))
+      .attr('y', bucketY)
+      .attr('height', bucketYH)
+      .attr('fill', (d) => colors(data[d]))
       .attr('data-original-title', (d) => Country.findByAttribute('key',d).name)
       .attr('movie-key', String)
     ### TODO make a x and y axis

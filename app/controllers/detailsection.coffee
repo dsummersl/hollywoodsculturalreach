@@ -124,8 +124,10 @@ class Detailsection extends Spine.Controller
          return 'ds-cell-empty'
       )
       .style('background', (d)=>
-        return Appdata.get('measure').colors[1] if not d.children and d.name == 'Hollywood'
-        return Appdata.get('measure').colors[0]
+        #return Appdata.get('measure').colors[1] if not d.children and d.name == 'Hollywood'
+        #return Appdata.get('measure').colors[0]
+        return '#aa0000' if not d.children and d.name == 'Hollywood'
+        return '#00bb00'
       )
       .style('left',(d)=> d.x+'px')
       .style('top',(d)=> d.y+'px')
