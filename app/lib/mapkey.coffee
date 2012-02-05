@@ -60,7 +60,7 @@ class Mapkey
       me = Appdata.get('measure')
       return """
       <ul class="unstyled">
-        <li>#{me.desc}: <span class="ds-rightside">#{$.sprintf('%.2f',md[key])}</span></li>
+        <li>#{me.desc}: <span class="ds-rightside">#{me.formatData(md[key])}</span></li>
       </ul>
       """
     $('#m-keygroup rect').popover({placement: 'top', content: popupfn})
