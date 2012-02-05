@@ -75,16 +75,6 @@ measures =
         return negcolors(d)
     formatData: (d) -> Appdata.sprintmoney(d)
   ###
-  percentmoneyhollywoodincountry: # the percent of box office $s that are from hollywood movies vs all countries movies
-    compute: =>
-      data = {}
-      year = null
-      year = parseInt(Appdata.get('years')) if Appdata.get('years') and Appdata.get('years') != 'All'
-      genre = Appdata.get('genres') if Appdata.get('genres') and Appdata.get('genres') != 'All'
-      data[c.key] = Overview.totalRevenueRatio(c,{year:year,genre:genre}) for c in Country.all()
-      Appdata.set('measuredata',data)
-    desc: '% Revenue Hollywood Movies'
-    extendeddesc: 'colored by the revenue percentage shown in each country\'s theatres.'
     #colors: ['#f6bbf9','#9cf1b6'] # 297,138
     #colors: ['#......','#9cf1d2'] # ???,158
   ###

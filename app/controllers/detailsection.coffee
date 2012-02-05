@@ -5,6 +5,7 @@ Movie = require 'models/movie'
 Movieshowing = require 'models/movieshowing'
 Options = require 'lib/options'
 Overview = require 'models/overview'
+Genrebreakout = require 'lib/genrebreakout'
 
 # information about a specific country, a table of actual movies.
 class Detailsection extends Spine.Controller
@@ -13,18 +14,39 @@ class Detailsection extends Spine.Controller
     Appdata.bind('update',@appupdate)
     $('#detailsection').append("""
     <hr/>
-    <div class="span4">
+    <div class="span6">
       <h2 id="ds-title">Title</h2>
       <div id="ds-summary"></div>
     </div>
-    <div class="span8" id="ds-movies">
-    </div>
-    <div id="ds-moviedetails" style="display: none;">
-      <p>Change <u>how much</u> information is displayed:</p>
+    <div class="span6" id="ds-genres">
     </div>
     """)
+    @genres = new Genrebreakout('#ds-genres')
     
   appupdate: (r) =>
+    console.log "update details"
+    if r.key == 'country' or r.key == 'years' or r.key == 'genres'
+      country = Country.findByAttribute('key',Appdata.get('country'))
+      showings = country.showings()
+      if showings.all().length == 0
+        $('#startuptext').text("Loading #{country.name} data...")
+        $('#startupdialog').fadeIn()
+        $.getJSON "data/#{country.key}.json", (d) =>
+          for row in d
+            m = Movie.findByAttribute('title',row.title)
+            if not m?
+              row.genre = 'Unknown'
+              row.story = 'Unknown'
+              m = Movie.create(row)
+            s = country.showings().create({year:row.year, boxoffice:row.money, movie_id:m.id})
+            #console.log "adding #{s.boxoffice} to us total for #{m.title}"
+            #console.log "row = #{JSON.stringify(d)}
+          $('#startupdialog').fadeOut()
+          @genres.refresh(country.showings())
+      else
+        @genres.refresh(showings)
+
+  old_appupdate: (r) =>
     if r.key == 'country' or r.key == 'years' or r.key == 'genres'
       country = Country.findByAttribute('key',Appdata.get('country'))
       $('#ds-title').text(country.name)
@@ -82,7 +104,7 @@ class Detailsection extends Spine.Controller
       <li><hr/></li>
     </ul>
     """)
-    w = 600
+    w = 700
     h = 400
     #<div id='#{m.id.replace('#','')}' style='visibility: hidden;'>My content</div>
     hs = []
