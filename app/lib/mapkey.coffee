@@ -11,6 +11,7 @@ class Mapkey
     # So the data should be equal to the number of buckets I want for the
     # percentages
     @numBuckets = Country.count()
+    @previousSelection = null
     d3.select(id)
       .attr('style','') # clear away any style that might have already been there
       .attr('fill','#000000')
@@ -52,10 +53,7 @@ class Mapkey
       .attr('fill-opacity',1.0)
       .attr('x', (d,i)=> i*@bucketWidth+@sep)
       .attr('width', @bucketWidth-2*@sep)
-      .on('click', (d) =>
-        # TODO css change it so that its highlighted
-        Appdata.set('country',d)
-      )
+      .on('click', (d) => Appdata.set('country',d))
     popupfn = ->
       key = $(@).attr('movie-key')
       md = Appdata.get('measuredata')
@@ -135,5 +133,12 @@ class Mapkey
     d3.select('#m-yaxislabel')
       .attr('fill',Options.disabledcountries)
       .text(Appdata.get('measure').desc)
+
+  # update any selected country information - just listen for any appdata mentions..
+  updateSelection: (r) ->
+    if r.key == 'country'
+      $("rect[movie-key='#{@previousSelection}']").attr('class','') if @previousSelection
+      $("rect[movie-key='#{r.data}']").attr('class','mk-selected')
+      @previousSelection = r.data
 
 module.exports = Mapkey

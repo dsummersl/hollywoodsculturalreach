@@ -116,7 +116,7 @@ class App extends Spine.Controller
     @mainmap = new Mainmap()
     @datalimiter = new Datalimiter()
     @detailsection = new Detailsection()
-    Appdata.set('country','unitedstates')
+    @checkData( (=> @mainmap.maploaded),500,(=> Appdata.set('country','unitedstates')))
 
   ###
   # Checks an array of data for existance called via function. when they all exist the

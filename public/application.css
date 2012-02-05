@@ -34,14 +34,17 @@ hr {
 .ds-dash {
   color: #888;
 }
+.ds-cell-empty {
+  padding: 0px;
+}
 .ds-cell {
   color: #aaa;
   border: solid 2px #fff;
   position: absolute;
-  text-indent: 2px;
-  overflow: hidden;
+  overflow: scroll;
   line-height: 12px;
-/*padding: 2px*/
+  padding: 2px;
+  padding-bottom: 0px;
 }
 .ds-rightside {
   float: right;
@@ -50,4 +53,9 @@ hr {
   font-family: 'times new roman, serif';
   text-align: center;
   color: #aaa;
+}
+.mm-selected {
+  stroke: #bbb;
+  stroke-width: 1;
+  stroke-dasharray: 3, 1;
 }

@@ -26,7 +26,8 @@ class Mainmap extends Spine.Controller
     Appdata.bind('update',@measureUpdated)
 
   measureUpdated: (r) =>
-    if @maploaded and r.key == 'measuredata'
+    return if !@maploaded
+    if r.key == 'measuredata'
       max = r.data[@findMaxKey(r.data)]
       colors = d3.scale.linear().domain([0,max]).range(Appdata.get('measure').colors)
       @mapkey.refresh(r.data)
@@ -46,13 +47,14 @@ class Mainmap extends Spine.Controller
               .attr('fill',Options.disabledcountries)
         else
           @log "No mapping for #{c.name} (#{c.key})."
-    if @maploaded and r.key == 'country'
+    if r.key == 'country'
       c = Country.findByAttribute('key',r.data)
       if @previousSelection?
         oldc = Country.findByAttribute('key',@previousSelection)
         $(id).attr('class','') for id in oldc.getSVGIDs()
       $(id).attr('class','mm-selected') for id in c.getSVGIDs()
       @previousSelection = r.data
+    @mapkey.updateSelection(r)
 
   findMaxKey: (d) ->
     maxKey = null
