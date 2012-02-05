@@ -133,7 +133,7 @@ class Detailsection extends Spine.Controller
       .style('height',(d)=> d.dy+'px')
       .html((d)=> d.text)
     popupfn = ->
-      console.log "painting content: #{$(@).attr('movie-id')}"
+      #console.log "painting content: #{$(@).attr('movie-id')}"
       #console.log "id = #{$(@).attr('class')}"
       #console.log "country = #{Appdata.get('country')}"
       m = Movie.find($(@).attr('movie-id'))

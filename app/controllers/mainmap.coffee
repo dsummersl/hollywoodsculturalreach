@@ -8,28 +8,19 @@ Mapkey = require "lib/mapkey"
 class Mainmap extends Spine.Controller
   constructor: ->
     super
+    @previousSelection = null
     @maploaded = false
     d3.xml "img/World_map_-_low_resolution.svg", "image/svg+xml", (xml)=>
       importNode = document.importNode(xml.documentElement, true)
       d3.select('#mainmap').node().appendChild(importNode)
       d3.select('#mainmap svg').attr('fill',Options.nodatacountries)
-      ###
-      d3.select('#m-antarctica')
-        .attr('fill','#ffffff')
-      ###
       for c in Country.all()
         svgIds = c.getSVGIDs()
         if svgIds
           for id in svgIds
-            fn = (c) => return =>
-              key = c.key
-              if Appdata.get('country')?
-                oldc = Country.findByAttribute('key',Appdata.get('country'))
-                $(id).attr('class','') for id in oldc.getSVGIDs()
-              Appdata.set('country',key)
-              $(id).attr('class','mm-selected') for id in c.getSVGIDs()
+            fn = (c) => => Appdata.set('country',c.key)
             d3.select(id).on('click', fn(c))
-      @mapkey = new Mapkey('#m-key',20)
+      @mapkey = new Mapkey('#m-key')
       @maploaded = true
       @measureUpdated({key:'measuredata', data: Appdata.get('measuredata')})
     Appdata.bind('update',@measureUpdated)
@@ -55,6 +46,13 @@ class Mainmap extends Spine.Controller
               .attr('fill',Options.disabledcountries)
         else
           @log "No mapping for #{c.name} (#{c.key})."
+    if @maploaded and r.key == 'country'
+      c = Country.findByAttribute('key',r.data)
+      if @previousSelection?
+        oldc = Country.findByAttribute('key',@previousSelection)
+        $(id).attr('class','') for id in oldc.getSVGIDs()
+      $(id).attr('class','mm-selected') for id in c.getSVGIDs()
+      @previousSelection = r.data
 
   findMaxKey: (d) ->
     maxKey = null
