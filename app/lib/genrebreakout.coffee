@@ -52,8 +52,6 @@ class Genrebreakout
     """
 
   refresh: (constrained) =>
-
-
     $('#gb-genre1').html(@genretext(null))
     $('#gb-genre2').html(@genretext(null))
     $('#gb-genre3').html(@genretext(null))

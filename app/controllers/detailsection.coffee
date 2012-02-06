@@ -63,7 +63,7 @@ class Detailsection extends Spine.Controller
             #console.log "adding #{s.boxoffice} to us total for #{m.title}"
             #console.log "row = #{JSON.stringify(d)}
           constrained = Overview.filter(country.showings(),Overview.getConstraints())
-          console.log "constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
+          #console.log "constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
           @genres.refresh(constrained)
           @revenues.refresh(constrained)
           $('.ds-movie').popover({placement: 'top', content: popupfn})
@@ -72,7 +72,7 @@ class Detailsection extends Spine.Controller
           $('#startupdialog').fadeOut()
       else
         constrained = Overview.filter(showings,Overview.getConstraints())
-        console.log "cached constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
+        #console.log "cached constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
         @genres.refresh(constrained)
         @revenues.refresh(constrained)
         $('.ds-movie').popover({placement: 'top', content: popupfn})

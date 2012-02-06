@@ -108,7 +108,7 @@ class App extends Spine.Controller
         for summary in yearData
           country.overviews().create(summary)
       @currentRMIs--
-      @log 'loaded all the summary data'
+      #@log 'loaded all the summary data'
     @checkData(@rmiIsZero,1000,@dataloaded)
 
   dataloaded: =>
@@ -121,10 +121,10 @@ class App extends Spine.Controller
     else
       $('#welcomedialog').fadeOut()
 
-    @log "Countries: #{Country.count()}"
-    @log "Movies: #{Movie.count()}"
-    @log "Movieshowing: #{Movieshowing.count()}"
-    @log "Overviews: #{Overview.count()}"
+    #@log "Countries: #{Country.count()}"
+    #@log "Movies: #{Movie.count()}"
+    #@log "Movieshowing: #{Movieshowing.count()}"
+    #@log "Overviews: #{Overview.count()}"
     @mainmap = new Mainmap()
     @datalimiter = new Datalimiter()
     @detailsection = new Detailsection()

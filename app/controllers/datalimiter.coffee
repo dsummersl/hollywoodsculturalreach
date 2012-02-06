@@ -63,7 +63,7 @@ class Datalimiter extends Spine.Controller
     $("#dl-genre").val('All')
 
     $("#dl-measure").append("<option value='#{k}'>#{v.desc}</option>") for k,v of Measures
-    console.log "initial measure = #{Options.initialmeasure}"
+    #console.log "initial measure = #{Options.initialmeasure}"
     #$("#dl-measure option[value='#{Options.initialmeasure}']").attr('selected','selected')
     $("#dl-measure").val(Options.initialmeasure)
 

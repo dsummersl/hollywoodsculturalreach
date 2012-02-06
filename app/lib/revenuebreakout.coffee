@@ -19,7 +19,7 @@ class Revenuebreakout
     @m = 10
     @svg = d3.select('#rb-graph').append('svg')
       .attr('width',@w+@margin+@m*2)
-      .attr('height',@h+@m*2)
+      .attr('height',@h+@m*2+10)
     @graphtop = @svg.append('g')
       .attr('transform', "translate(#{@m},#{@m})")
     @graphbottom = @svg.append('g')
@@ -77,6 +77,7 @@ class Revenuebreakout
     nh = []
     hMoney = 0
     nhMoney = 0
+    #console.log "revenue total = #{constrained.length}"
     for s in constrained
       m = s.movie()
       maxMoney = s.boxoffice if s.boxoffice > maxMoney
@@ -86,6 +87,8 @@ class Revenuebreakout
       else
         nh.push s
         nhMoney += s.boxoffice
+    #console.log "h total = #{h.length}"
+    #console.log "nh total = #{nh.length}"
 
     h = h.sort((a,b)=>a.boxoffice-b.boxoffice)
     nh = nh.sort((a,b)=>a.boxoffice-b.boxoffice)
@@ -104,13 +107,13 @@ class Revenuebreakout
       s.runup = s.boxoffice + runup
       runup += s.boxoffice
 
-    yRange = d3.scale.linear().domain([0,hMoney+nhMoney]).range([0,@h])
+    yRange = d3.scale.linear().domain([0,hMoney+nhMoney]).range([5,@h])
     xRange = d3.scale.linear().domain([0,Math.max(h.length,nh.length)]).range([0,@w])
 
     common = ->
       @.attr('data-original-title',(d)=>"#{d.movie().title} <small>#{d.movie().year} (#{d.movie().genre})</small>")
       .attr('movie-id',(d)=>d.movie().id)
-      .attr('width', 2)
+      .attr('width', 4)
       .attr('fill', (d)=>
         return "#eeeeee" if d.movie().hollywood
         return "#cccccc"
@@ -242,6 +245,86 @@ class Revenuebreakout
         else
           m = top[top.length-1]
         return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+      )
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    lines = []
+    lines.push 0 if ymarks.length > 1
+
+    ymarkgraphtext = @graph.selectAll('.rb-xaxis-line1')
+      .data(lines)
+    ymarkgraphtext.enter()
+      .append('line')
+      .attr('class','rb-xaxis-line1')
+      .attr('y1' , @h+10)
+      .attr('y2' , @h+10)
+      .attr('x1' ,(d,i)=> xRange(bottom.length-1))
+      .attr('x2' ,(d,i)=> return xRange(bottom.length-top.length)+2)
+      .attr('stroke',Options.disabledcountries)
+      .text((d,i)=>
+        return bottom.length if ymarks.length == 1 or i == 0
+        return top.length
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('y1' , @h+10)
+      .attr('y2' , @h+10)
+      .attr('x1' ,(d,i)=> xRange(bottom.length-1))
+      .attr('x2' ,(d,i)=> return xRange(bottom.length-top.length)+2)
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    ymarkgraphtext = @graph.selectAll('.rb-xaxis-bg')
+      .data(lines)
+    ymarkgraphtext.enter()
+      .append('rect')
+      .attr('class','rb-xaxis-bg')
+      .attr('y' , @h+5)
+      .attr('x' ,(d,i)=> return xRange(bottom.length-top.length/2) - 15)
+      .attr('height' , 10)
+      .attr('width' , 30)
+      .attr('fill','white')
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('x' ,(d,i)=> return xRange(bottom.length-top.length/2) - 15)
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    ymarkgraphtext = @graph.selectAll('.rb-xaxis-text1')
+      .data(ymarks)
+    ymarkgraphtext.enter()
+      .append('text')
+      .attr('class','rb-xaxis-text1')
+      .attr('x' ,(d,i)=>
+        return xRange(bottom.length-1)+4 if ymarks.length == 1 or i == 0
+        return xRange(bottom.length-top.length/2)+2
+      )
+      .attr('y', (d,i)=>@h+15)
+      .attr('fill',Options.disabledcountries)
+      .attr('text-anchor', (d,i)=>
+        return "start" if ymarks.length == 1 or i == 0
+        return "middle"
+      )
+      .text((d,i)=>
+        return bottom.length if ymarks.length == 1 or i == 0
+        return top.length
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('x' ,(d,i)=>
+        return xRange(bottom.length-1)+4 if ymarks.length == 1 or i == 0
+        return xRange(bottom.length-top.length/2)+2
+      )
+      .text((d,i)=>
+        return bottom.length if ymarks.length == 1 or i == 0
+        return top.length
       )
     ymarkgraphtext.exit()
       .transition()
