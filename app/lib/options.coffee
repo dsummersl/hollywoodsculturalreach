@@ -6,4 +6,4 @@ module.exports =
   # what to color countries that don't have data
   nodatacountries: '#eeeeee'
   # what measure to show when the map loads
-  initialmeasure: 'countmovies'
+  initialmeasure: 'othervshollywood'

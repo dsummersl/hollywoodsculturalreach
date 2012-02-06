@@ -63,6 +63,9 @@ class Datalimiter extends Spine.Controller
     $("#dl-genre").val('All')
 
     $("#dl-measure").append("<option value='#{k}'>#{v.desc}</option>") for k,v of Measures
+    console.log "initial measure = #{Options.initialmeasure}"
+    #$("#dl-measure option[value='#{Options.initialmeasure}']").attr('selected','selected')
+    $("#dl-measure").val(Options.initialmeasure)
 
     $("#dl-change").click => $('#dl-modifydialog').fadeIn()
     $("#dl-closemodifydialog").click => $('#dl-modifydialog').fadeOut()
@@ -70,6 +73,7 @@ class Datalimiter extends Spine.Controller
     $("#dl-genre").change(@genrechanged)
     $("#dl-measure").change(@measurechanged)
 
+    
     @changeMeasure(Options.initialmeasure)
     @updateDescription()
   
