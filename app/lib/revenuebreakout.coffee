@@ -111,8 +111,10 @@ class Revenuebreakout
     xRange = d3.scale.linear().domain([0,Math.max(h.length,nh.length)]).range([0,@w])
 
     common = ->
+      # TODO we've having a problem here with the ms.id and movie id...someimtes then don't seiralize correctly. Very weird.
+      # but it works fine on the genre breakout screen.
       @.attr('data-original-title',(d)=>"#{d.movie().title} <small>#{d.movie().year} (#{d.movie().genre})</small>")
-      .attr('movie-id',(d)=>d.movie().id)
+      .attr('ms-id',(d)=>d.id)
       .attr('width', 4)
       .attr('fill', (d)=>
         return "#eeeeee" if d.movie().hollywood

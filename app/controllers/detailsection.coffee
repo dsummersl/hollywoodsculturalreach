@@ -24,10 +24,10 @@ class Detailsection extends Spine.Controller
   appupdate: (r) =>
     popupfn = ->
       try
-        m = Movie.find($(@).attr('movie-id'))
+        ms = Movieshowing.find($(@).attr('ms-id'))
+        m = ms.movie()
         c = Country.findByAttribute('key',Appdata.get('country'))
         usa = Country.findByAttribute('key','unitedstates')
-        ms = Movieshowing.findByMC(m,c)
         usams = Movieshowing.findByMC(m,usa)
         usaboxoffice = ""
         usaboxoffice = "<li>US Box Office: <span class='ds-rightside'>#{Appdata.sprintmoney(usams.boxoffice)}</span></li>" if usams?

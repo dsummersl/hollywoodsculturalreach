@@ -38,7 +38,7 @@ class Genrebreakout
     hs = []
     for s in list
       m = s.movie()
-      hs.push "<a class='ds-movie' data-original-title=\"#{m.title} <small>#{m.year} (#{m.genre})</small>\" movie-id='#{m.id}'>#{m.title}</a>"
+      hs.push "<a class='ds-movie' data-original-title=\"#{m.title} <small>#{m.year} (#{m.genre})</small>\" ms-id='#{s.id}'>#{m.title}</a>"
     return hs.join("<span class='ds-dash'> &mdash; </span>")
 
   makeComments: (list,total) ->
