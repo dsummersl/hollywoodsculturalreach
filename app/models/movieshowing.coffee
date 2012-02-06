@@ -11,7 +11,9 @@ class Movieshowing extends Spine.Model
   #@hasOne 'movie', Movie
   #@extend Spine.Model.Local
   
-  movie: -> Movie.find(@movie_id)
+  movie: =>
+    @movieinstance = Movie.find(@movie_id) if not @movieinstance?
+    return @movieinstance
 
   # find by movie and country
   @findByMC: (movie,country) ->

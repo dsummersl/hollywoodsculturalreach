@@ -104,6 +104,7 @@ class Genrebreakout
   # extract a key from the map, and return the key if there is a biggest.
   # otherwise return null
   extractBiggest: (map)->
+    # TODO something isn't right here b/c there are lots of comedies and I'm not seeing them here.
     sizes = {}
     sizes[k] = v.length for k,v of map
     max = 0
