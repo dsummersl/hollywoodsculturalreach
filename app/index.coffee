@@ -113,9 +113,14 @@ class App extends Spine.Controller
 
   dataloaded: =>
     $('#startupdialog').fadeOut()
-    $('#welcomedialog').fadeIn()
-    $('.tabs a:first').tab('show')
-    $('#welcomedialog-close').click => $('#welcomedialog').fadeOut()
+
+    if not @getUrlVars().skipintro?
+      $('#welcomedialog').fadeIn()
+      $('.tabs a:first').tab('show')
+      $('#welcomedialog-close').click => $('#welcomedialog').fadeOut()
+    else
+      $('#welcomedialog').fadeOut()
+
     @log "Countries: #{Country.count()}"
     @log "Movies: #{Movie.count()}"
     @log "Movieshowing: #{Movieshowing.count()}"
