@@ -15,7 +15,7 @@ measures =
     desc: 'Hollywood - Others'
     extendeddesc: ' colored by the difference of Hollywood and non-Hollywood movie revenue for movies shown in each country.'
     colors: (data) =>
-      colors = ['#e1bbf9','#9ff19c'] # 277,118
+      colors = ['#bbd3f9','#f1ee9c'] # 217, 58
       min = 0
       min = v for k,v of data when v < min
       max = 0
@@ -37,7 +37,7 @@ measures =
     desc: '# Movies'
     extendeddesc: ' colored by total # movies shown in each country.'
     colors: (data) =>
-      colors = ['#bbd3f9','#f1ee9c'] # 217, 58
+      colors = ['#eee', '#e1bbf9'] # 277
       max = 0
       max = v for k,v of data when v > max
       return d3.scale.linear().domain([0,max]).range(colors)
@@ -53,7 +53,7 @@ measures =
     desc: '# Hollywood Movies'
     extendeddesc: ' colored by total # Hollywood movies shown in each country.'
     colors: (data) =>
-      colors = ['#bbbef9','#d7f19c'] # 237, 78
+      colors = ['#eee', '#bbbef9'] # 237, 78
       max = 0
       max = v for k,v of data when v > max
       return d3.scale.linear().domain([0,max]).range(colors)
