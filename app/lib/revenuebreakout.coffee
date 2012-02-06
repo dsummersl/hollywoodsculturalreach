@@ -253,6 +253,37 @@ class Revenuebreakout
       .duration(600)
       .remove()
 
+    ymarkgraphtext = @graph.selectAll('.rb-ymark-text3')
+      .data(ymarks)
+    ymarkgraphtext.enter()
+      .append('text')
+      .attr('class','rb-ymark-text3')
+      .attr('x', @w+@margin)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4+30)
+      .attr('fill',Options.disabledcountries)
+      .attr('text-anchor', "end")
+      .text((d,i)=>
+        if ymarks.length == 1 or i == 0
+          m = bottom[bottom.length-2]
+        else
+          m = top[top.length-2]
+        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4+30)
+      .text((d,i)=>
+        if ymarks.length == 1 or i == 0
+          m = bottom[bottom.length-2]
+        else
+          m = top[top.length-2]
+        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+      )
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
     lines = []
     lines.push 0 if ymarks.length > 1
 
@@ -276,6 +307,31 @@ class Revenuebreakout
       .attr('y2' , @h+10)
       .attr('x1' ,(d,i)=> xRange(bottom.length-1))
       .attr('x2' ,(d,i)=> return xRange(bottom.length-top.length)+2)
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    ymarkgraphtext = @graph.selectAll('.rb-xaxis-line2')
+      .data(lines)
+    ymarkgraphtext.enter()
+      .append('line')
+      .attr('class','rb-xaxis-line2')
+      .attr('y1' , @h+2)
+      .attr('y2' , @h+15)
+      .attr('x1' ,(d,i)=> return xRange(bottom.length-top.length)+2)
+      .attr('x2' ,(d,i)=> return xRange(bottom.length-top.length)+2)
+      .attr('stroke',Options.disabledcountries)
+      .text((d,i)=>
+        return bottom.length if ymarks.length == 1 or i == 0
+        return top.length
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('y1' , @h+5)
+      .attr('y2' , @h+15)
+      .attr('x1' ,(d,i)=> return xRange(bottom.length-top.length)+1)
+      .attr('x2' ,(d,i)=> return xRange(bottom.length-top.length)+1)
     ymarkgraphtext.exit()
       .transition()
       .duration(600)
