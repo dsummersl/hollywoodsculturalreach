@@ -48,7 +48,10 @@ class Overview extends Spine.Model
     filter = (el) =>
       result = true
       result = result and el.year == constraints.year if constraints.year?
-      result = result and el.genre == constraints.genre if constraints.genre?
+      if el instanceof Overview
+        result = result and el.genre == constraints.genre if constraints.genre?
+      else # its a Movieshowing
+        result = result and el.movie().genre == constraints.genre if constraints.genre?
       return result
     return overviews.select(filter)
 

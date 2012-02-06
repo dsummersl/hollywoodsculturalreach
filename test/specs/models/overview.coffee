@@ -4,12 +4,16 @@ Spine.Model.Ajax = {}
 Country = require('models/country')
 Overview = require('models/overview')
 Movieshowing = require('models/movieshowing')
+Movie = require('models/movie')
+Appdata = require('models/appdata')
 
 describe 'Overview', ->
   usa = Country.create({name: 'United States',region:'everywhere',key:'unitedstates'})
   usa.overviews().create({year:2010,genre:'Unknown', other:1,hollywood:2,oldhollywood:3,othermoney:1,hollywoodmoney:20,oldhollywoodmoney:15})
   usa.overviews().create({year:2010,genre:'Comedy', other:2,hollywood:3,oldhollywood:4,othermoney:2,hollywoodmoney:30,oldhollywoodmoney:15})
   usa.overviews().create({year:2011,genre:'Unknown', other:1,hollywood:4,oldhollywood:0,othermoney:1,hollywoodmoney:40,oldhollywoodmoney:0})
+  m = Movie.create({title: 'one', hollywood: true, year:2008, story:'Unknown',genre:'Unknown',distributor:'Unknown'})
+  ms = usa.showings().create({year:2008, boxoffice:15.5, movie_id:m.id})
 
   c2 = Country.create({name: 'test2',region:'everywhere',key:'test2'})
   c2.overviews().create({year:2010,genre:'Unknown', other:1,hollywood:2,oldhollywood:8,othermoney:1,hollywoodmoney:20,oldhollywoodmoney:40})
@@ -48,3 +52,9 @@ describe 'Overview', ->
     expect(Overview.totalRevenueRatio(c2,{year: 2010})).toEqual(10 / 11)
     expect(Overview.totalRevenueRatio(c3)).toEqual(0)
     ###
+
+  it 'constrains properly', ->
+    expect(Overview.getConstraints()).toEqual({year: null})
+    Appdata.set('genres','Unknown')
+    expect(Overview.getConstraints()).toEqual({year: null, genre: 'Unknown'})
+    expect(Overview.filter(usa.showings(),Overview.getConstraints()).length).toEqual(1)

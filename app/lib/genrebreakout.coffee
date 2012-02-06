@@ -53,10 +53,15 @@ class Genrebreakout
     (#{$.sprintf('%.1f',percent*100)}%)
     """
 
-  refresh: (showings) =>
+  refresh: (constrained) =>
+
+
+    $('#gb-genre1').html('')
+    $('#gb-genre2').html('')
+    $('#gb-genre3').html('')
+
     maxHeight = 400
     minHeight = 40
-    constrained = Overview.filter(showings,Overview.getConstraints())
     genres = {}
     unknowns = []
     total = 0
@@ -72,9 +77,11 @@ class Genrebreakout
     genre1 = @extractBiggest(genres)
     genre2 = @extractBiggest(genres)
     genre3 = @extractBiggest(genres)
+    ###
     genre4 = @extractBiggest(genres)
     genre5 = @extractBiggest(genres)
     genre6 = @extractBiggest(genres)
+    ###
     # TODO would like to do the top 6 genres - then just lump the rest of the movies together
     $('#gb-genre1').html(@genretext(genre1)) if genre1?
     $('#gb-genre2').html(@genretext(genre2)) if genre2?

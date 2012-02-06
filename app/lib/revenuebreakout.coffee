@@ -68,12 +68,11 @@ class Revenuebreakout
       .text('# Movies')
 
 
-  refresh: (showings) =>
+  refresh: (constrained) =>
     country = Country.findByAttribute('key',Appdata.get('country'))
     $('#rb-country').text("Box Office totals in #{country.name}")
     $('#rb-bottomsummary').html("Box office totals in #{country.name} ordered from lowest box office movies to highest, grouped by Hollywood (light gray) vs Non-Hollywood (dark).")
 
-    constrained = Overview.filter(showings,Overview.getConstraints())
     h = []
     nh = []
     hMoney = 0

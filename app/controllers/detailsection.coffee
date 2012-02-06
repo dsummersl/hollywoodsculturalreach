@@ -62,15 +62,19 @@ class Detailsection extends Spine.Controller
             s = country.showings().create({year:row.year, boxoffice:row.money, movie_id:m.id})
             #console.log "adding #{s.boxoffice} to us total for #{m.title}"
             #console.log "row = #{JSON.stringify(d)}
-          @genres.refresh(country.showings())
-          @revenues.refresh(country.showings())
+          constrained = Overview.filter(country.showings(),Overview.getConstraints())
+          console.log "constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
+          @genres.refresh(constrained)
+          @revenues.refresh(constrained)
           $('.ds-movie').popover({placement: 'top', content: popupfn})
           $('.rb-bottom').popover({placement: 'top', content: popupfn})
           $('.rb-top').popover({placement: 'top', content: popupfn})
           $('#startupdialog').fadeOut()
       else
-        @genres.refresh(showings)
-        @revenues.refresh(showings)
+        constrained = Overview.filter(showings,Overview.getConstraints())
+        console.log "cached constrained to #{JSON.stringify(Overview.getConstraints())}: #{constrained.length}"
+        @genres.refresh(constrained)
+        @revenues.refresh(constrained)
         $('.ds-movie').popover({placement: 'top', content: popupfn})
         $('.rb-bottom').popover({placement: 'top', content: popupfn})
         $('.rb-top').popover({placement: 'top', content: popupfn})

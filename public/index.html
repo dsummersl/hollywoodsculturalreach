@@ -50,5 +50,90 @@
     <div class="modal-body"><p id="startuptext">Please wait while some data is loaded...</p></div>
     <div class="modal-footer"></div>
   </div>
+  <div class="modal" id="welcomedialog" style="visibility: none;">
+    <div class="modal-body">
+      <ul class='tabs nav nav-tabs' id="wd-tabs">
+        <li><a href="#wd-instructions" data-toggle="tab">Instructions</a></li>
+        <li><a href="#wd-faq" data-toggle="tab">Commentary</a></li>
+        <li><a href="#wd-about" data-toggle="tab">About</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="wd-instructions">
+          <p>
+          When a movie is released by Hollywood it is watched Domestically and
+          Internationally. But not all movies are released everywhere, and movies
+          are received with varying levels of acclaim. Use this page to find out
+          where movies are popular. See how strong Hollywood's dominance
+          is of foreign movie houses.
+          </p>
+
+
+          <h4>Instructions Above</h4>
+
+
+          <ul>
+            <li>Click on the pencil in the upper right corner to focus on specific
+            times/genres and modify how the main map is colored.</li> 
+            <li>Hover your mouse over the barchart just under Africa to see a brief
+            summary, click on a bar to focus on that country's information. Better
+            yet, just click on a country directly to focus in on its details on the
+            bottom part of this page.</li>
+          </ul>
+
+          <h4>Instructions Below</h4>
+
+          <ul>
+            <li>The <i>Lower Left</i> part of the page shows you all of a county's
+            Hollywood and Non-Hollywood movies arranged by their box office
+            earnings. Look there to compare how different movies faired. Hover your
+            mouse over the graphics to see movie details.</li>
+            <li>See what kinds of movies are popular in the country on the <i>Lower
+              Right</i> section of the page. The three most popular genres (along
+            with their movies) are listed at the top, and the remaining proportion
+            of Hollywood to Non-Hollywood movies is displayed as well.</li>
+          </ul>
+
+          <b>Designed for Chrome/Safari</b>
+        </div>
+        <div id="wd-faq" class="tab-pane">
+          As I developed this application I had several questions that I wanted
+          to be able to answer myself. Here are a few below...
+          <ul>
+            <li><b>Why are there all of these gray countries?</b> The only
+            comprehensive online source of foreign box office numbers that I
+            could find were at <a href="http://boxofficemojo.com">boxofficemojo.com</a>. But they
+            didn't have all the countries. Most notably the majority of Africa,
+            and the Middle East. I looked thru a number of countries and found
+            some common themes:
+              <ul>
+                <li>War?: Angola and Chad are examples I found. Chad had one theatre that been closed in 1984. It <a href="http://www.dawn.com/2011/04/10/chads-only-cinema-dusts-off-its-silver-screen.html">reopened in 2011</a> but doesn't have an online presence.</li>
+                <li>One Theatre: Several countres in Africa appear to only have on theatre. Examples I found: Botswana, Kazakhstan, <a href="http://cinematreasures.org/theaters/gabon">Gabon</a>.</li>
+                <li>Illegal: In Saudi Arabia. Apparently people go to Bahrain...but...see my next comment...</li>
+                <li>Different Data: boxofficemojo has more data for these countries, but its in a legacy format I think. I didn't have time to write a scraper for them: Bahrain, Israel, indonesia, UAE, Bahrain</li>
+              </ul>
+            </li>
+            <li><b>Which countries watch fewer Hollywood movies than non-Hollywood?</b> By selecting the <i>pencil</i> in the upper right corner you can select 'Hollywood - Others' option. Countries that spend more money on non-Hollywood movies are colored green. India I expected - Bollywood, anyone!? But Japan?!</li>
+            <li><b>What is the top grossing non-Hollywood movie?</b> Click on the <i>pencil</i> and color by 'Movie Revenue'. Next to the US it appears that Japan, UK, France, and Germany spend the most on movies. Perusing the top box office movies for those countries I found <a href="http://en.wikipedia.org/wiki/Bienvenue_chez_les_Ch'tis">Bienvenue chez les Ch'tis</a> at $193 million in France.</li>
+            <li><b>What Hollywood movies do well abroad? ie, what aspect of American culture do other countries want to watch?</b>Just randomly clicking around the Action and Comedy movies are Hollywoods most popular genres (in terms of number of movies people watch).</li>
+            <li><b>What foreign country likes Romances?</b>I clicked on the pencie, and chose the 'Romance' genre and colored by the # Movies. I have always had a secret hope that Japan would be most keen on them. But no: UK, Germany, etc.</li>
+          </ul>
+        </div>
+        <div id="wd-about" class="tab-pane">
+          Comments on this application:
+          <ul>
+            <li>Developed with the <a href="http://spinejs.com">Spine
+              framework</a>, using <a href="http://coffeescript.org/">Coffeescript</a> for most
+            backend/frontend data munging. Additional tools: <a href="http://jquery.com/">jQuery</a>, <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>, and <a href="http://mbostock.github.com/d3/">D3</a>.
+            </li>
+            <li>For additional country data I scraped the <a href="http://boxofficemojo.com">boxofficemojo.com</a> website.</li>
+            <li>The SVG map is from <a href="http://en.wikipedia.org/wiki/Wikipedia:Blank_maps#World">wikipedia</a>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="welcomedialog-close" class="btn large primary">Close</a>
+    </div>
+  </div>
 </body>
 </html>

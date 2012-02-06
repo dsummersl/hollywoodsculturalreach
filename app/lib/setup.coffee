@@ -9,6 +9,7 @@ require 'lib/sprintf'
 require 'lib/bootstrap.min'
 require 'lib/bootstrap-tooltip'
 require 'lib/bootstrap-popover'
+require 'lib/bootstrap-tab'
 
 require('spine')
 require('spine/lib/relation')
