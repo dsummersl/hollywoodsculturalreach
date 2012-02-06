@@ -5,6 +5,7 @@ Appdata = require 'models/appdata'
 class Genrebreakout
   constructor: (id) ->
     $(id).append("""
+    <h3>Top Genres</h3>
     <div class="gb-tier">
       <div class="gb-tier" id="gb-row1">
         <div id="gb-genre1" class="gb-col">one</div>
@@ -71,6 +72,10 @@ class Genrebreakout
     genre1 = @extractBiggest(genres)
     genre2 = @extractBiggest(genres)
     genre3 = @extractBiggest(genres)
+    genre4 = @extractBiggest(genres)
+    genre5 = @extractBiggest(genres)
+    genre6 = @extractBiggest(genres)
+    # TODO would like to do the top 6 genres - then just lump the rest of the movies together
     $('#gb-genre1').html(@genretext(genre1)) if genre1?
     $('#gb-genre2').html(@genretext(genre2)) if genre2?
     $('#gb-genre3').html(@genretext(genre3)) if genre3?
@@ -113,7 +118,7 @@ class Genrebreakout
     for k,v of sizes when v > max
       biggest = k
       val = map[biggest]
-      v = max
+      max = v
     delete map[biggest] if biggest?
     return [biggest,val] if biggest?
     return null

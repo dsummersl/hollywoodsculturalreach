@@ -14,7 +14,6 @@ class Detailsection extends Spine.Controller
     super
     Appdata.bind('update',@appupdate)
     $('#detailsection').append("""
-    <hr/>
     <div class="span6" id="ds-revenues"></div>
     <div class="span6" id="ds-genres"></div>
     """)
