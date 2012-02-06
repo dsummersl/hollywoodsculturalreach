@@ -10,55 +10,58 @@ class Revenuebreakout
     <div>
       <h2 id="rb-country">Country</h2>
       <div id="rb-graph"></div>
+      <div id="rb-bottomsummary"></div>
     </div>
     """)
-    @h = 500
-    @w = 450
+    @h = 400
+    @w = 350
+    @margin = 100
+    @m = 10
     @svg = d3.select('#rb-graph').append('svg')
-      .attr('width',@w+20)
-      .attr('height',@h+20)
+      .attr('width',@w+@margin+@m*2)
+      .attr('height',@h+@m*2)
     @graphtop = @svg.append('g')
-      .attr('transform', 'translate(10,10)')
+      .attr('transform', "translate(#{@m},#{@m})")
     @graphbottom = @svg.append('g')
-      .attr('transform', 'translate(10,10)')
+      .attr('transform', "translate(#{@m},#{@m})")
     @graph = @svg.append('g')
-      .attr('transform', 'translate(10,10)')
+      .attr('transform', "translate(#{@m},#{@m})")
     # y axis
     @graph.append('line')
       .attr('x1',0)
-      .attr('y1',10)
+      .attr('y1',@m)
       .attr('x2',0)
       .attr('y2',@h)
       .style('stroke',Options.disabledcountries)
     @graph.append('line')
       .attr('x1',0)
-      .attr('y1',10)
+      .attr('y1',@m)
       .attr('x2',-4)
-      .attr('y2',20)
+      .attr('y2',@m*2)
       .style('stroke',Options.disabledcountries)
     @graph.append('text')
       .attr('class','rb-keytext')
-      .attr('x', 0)
+      .attr('x', 25)
       .attr('y', 5)
       .attr('fill',Options.disabledcountries)
       .attr('text-anchor', "middle")
-      .text('$')
+      .text('movie total')
     # x axis
     @graph.append('line')
       .attr('x1',0)
       .attr('y1',@h)
-      .attr('x2',@w-50)
+      .attr('x2',@w+@margin-50)
       .attr('y2',@h)
       .style('stroke',Options.disabledcountries)
     @graph.append('line')
-      .attr('x1',@w-50)
+      .attr('x1',@w+@margin-50)
       .attr('y1',@h)
-      .attr('x2',@w-60)
+      .attr('x2',@w+@margin-60)
       .attr('y2',@h+4)
       .style('stroke',Options.disabledcountries)
     @graph.append('text')
       .attr('class','rb-keytext')
-      .attr('x', @w-20)
+      .attr('x', @w+@margin-20)
       .attr('y', @h+4)
       .attr('fill',Options.disabledcountries)
       .attr('text-anchor', "middle")
@@ -68,6 +71,7 @@ class Revenuebreakout
   refresh: (showings) =>
     country = Country.findByAttribute('key',Appdata.get('country'))
     $('#rb-country').text(country.name)
+    $('#rb-bottomsummary').html("Box office totals in #{country.name} ordered from lowest box office movies to highest.")
 
     constrained = Overview.filter(showings,Overview.getConstraints())
     h = []
@@ -103,51 +107,6 @@ class Revenuebreakout
 
     yRange = d3.scale.linear().domain([0,hMoney+nhMoney]).range([0,@h])
     xRange = d3.scale.linear().domain([0,Math.max(h.length,nh.length)]).range([0,@w])
-
-    ###
-    console.log "@h = #{@h}"
-    console.log "top money and bottom money = #{hMoney} and #{nhMoney}"
-    console.log "bottom count and top count = #{bottom.length} #{top.length}"
-
-    poly = @graph.selectAll('.rb-top-poly')
-      .data([0])
-    points =[]
-    if top.length > 0
-      points = ["#{xRange(bottom.length)},#{@h}"]
-      points.push "#{xRange(bottom.length-i)},#{@h-yRange(s.runup)}" for s,i in top by 10
-      points.push ["#{xRange(bottom.length-top.length)},#{@h-yRange(top[top.length-1].runup)}"]
-      points.push ["#{xRange(bottom.length-top.length)},#{@h}"]
-      poly.enter()
-        .append('polygon')
-        .attr('class','rb-top-poly')
-        .attr('points',points.join(' '))
-      poly.exit()
-        .transition()
-        .duration(600)
-        .remove()
-    poly.transition()
-      .duration(600)
-      .attr('points',points.join(' '))
-
-    poly = @graph.selectAll('.rb-bottom-poly')
-      .data([0])
-    points = []
-    if bottom.length > 0
-      points.push "#{xRange(i)},#{@h-yRange(s.runup)}" for s,i in bottom by 10
-      points.push ["#{xRange(bottom.length-1)},#{@h-yRange(bottom[bottom.length-1].runup)}"]
-      points.push ["#{xRange(bottom.length-1)},#{@h}"]
-      poly.enter()
-        .append('polygon')
-        .attr('class','rb-bottom-poly')
-        .attr('points',points.join(' '))
-      poly.exit()
-        .transition()
-        .duration(600)
-        .remove()
-    poly.transition()
-      .duration(600)
-      .attr('points',points.join(' '))
-    ###
 
     common = ->
       @.attr('data-original-title',(d)=>"#{d.movie().title} <small>#{d.movie().year} (#{d.movie().genre})</small>")
@@ -202,5 +161,93 @@ class Revenuebreakout
       .transition()
       .duration(600)
       .remove()
+
+    ymarks = []
+    ymarks.push(bottom[bottom.length-1]) if bottom.length > 0
+    ymarks.push(top[top.length-1]) if top.length > 0
+    ymarkgraph = @graph.selectAll('.rb-ymark')
+      .data(ymarks)
+    ymarkgraph.enter()
+      .append('line')
+      .attr('class','rb-ymark')
+      .style('stroke',Options.disabledcountries)
+      .style('stroke-dasharray','3, 3')
+      .attr('x1',(d,i)=>
+        return xRange(bottom.length-1)+2 if ymarks.length == 1 or i == 0
+        return xRange(bottom.length-top.length)+2
+      )
+      .attr('x2',(d,i)=> return xRange(bottom.length-1)+20)
+      .attr('y1', (d,i)=>@h-yRange(d.runup))
+      .attr('y2', (d,i)=>@h-yRange(d.runup))
+    ymarkgraph.transition()
+      .duration(600)
+      .attr('x1',(d,i)=>
+        return xRange(bottom.length-1)+2 if ymarks.length == 1 or i == 0
+        return xRange(bottom.length-top.length)+2
+      )
+      .attr('x2',(d,i)=> return xRange(bottom.length-1)+20)
+      .attr('y1', (d,i)=>@h-yRange(d.runup))
+      .attr('y2', (d,i)=>@h-yRange(d.runup))
+    ymarkgraph.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    ymarkgraphtext = @graph.selectAll('.rb-ymark-text')
+      .data(ymarks)
+    ymarkgraphtext.enter()
+      .append('text')
+      .attr('class','rb-ymark-text')
+      .attr('x', @w+@margin)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4)
+      .attr('fill',Options.disabledcountries)
+      .attr('text-anchor', "end")
+      .text((d,i)=>
+        return Appdata.sprintmoney(bottom[bottom.length-1].boxoffice) if ymarks.length == 1 or i == 0
+        return Appdata.sprintmoney(top[top.length-1].boxoffice)
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4)
+      .text((d,i)=>
+        return Appdata.sprintmoney(bottom[bottom.length-1].runup) if ymarks.length == 1 or i == 0
+        return Appdata.sprintmoney(top[top.length-1].runup)
+      )
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
+    ymarkgraphtext = @graph.selectAll('.rb-ymark-text2')
+      .data(ymarks)
+    ymarkgraphtext.enter()
+      .append('text')
+      .attr('class','rb-ymark-text2')
+      .attr('x', @w+@margin)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4+15)
+      .attr('fill',Options.disabledcountries)
+      .attr('text-anchor', "end")
+      .text((d,i)=>
+        if ymarks.length == 1 or i == 0
+          m = bottom[bottom.length-1]
+        else
+          m = top[top.length-1]
+        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+      )
+    ymarkgraphtext.transition()
+      .duration(600)
+      .attr('y', (d,i)=>@h-yRange(d.runup)+4+15)
+      .text((d,i)=>
+        if ymarks.length == 1 or i == 0
+          m = bottom[bottom.length-1]
+        else
+          m = top[top.length-1]
+        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+      )
+    ymarkgraphtext.exit()
+      .transition()
+      .duration(600)
+      .remove()
+
 
 module.exports = Revenuebreakout
