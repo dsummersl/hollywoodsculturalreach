@@ -4,6 +4,7 @@ Appdata = require 'models/appdata'
 Movie = require 'models/movie'
 Movieshowing = require 'models/movieshowing'
 Options = require 'lib/options'
+Extras = require 'lib/extrahollywoods'
 Overview = require 'models/overview'
 Genrebreakout = require 'lib/genrebreakout'
 Revenuebreakout = require 'lib/revenuebreakout'
@@ -44,15 +45,20 @@ class Detailsection extends Spine.Controller
       country = Country.findByAttribute('key',Appdata.get('country'))
       $('#startupdialog').fadeIn()
       showings = country.showings()
+      $('#startuptext').text("Loading #{country.name} data...")
       if showings.all().length == 0
-        $('#startuptext').text("Loading #{country.name} data...")
         $.getJSON "data/#{country.key}.json", (d) =>
           for row in d
-            m = Movie.findByAttribute('title',row.title)
-            if not m?
+            title = row.title.toLowerCase()
+            title = Extras.alternatemappings[title] if Extras.alternatemappings[title]?
+            m = Movie.select((el) => return el.title.toLowerCase() == title)
+            if m.length == 0
               row.genre = 'Unknown'
               row.story = 'Unknown'
               m = Movie.create(row)
+              #console.log "making new movie: #{m.title} - alternate? #{Extras.alternatemappings[row.title.toLowerCase()]}"
+            else
+              m = m[0]
             s = country.showings().create({year:row.year, boxoffice:row.money, movie_id:m.id})
             #console.log "adding #{s.boxoffice} to us total for #{m.title}"
             #console.log "row = #{JSON.stringify(d)}
@@ -61,12 +67,13 @@ class Detailsection extends Spine.Controller
           $('.ds-movie').popover({placement: 'top', content: popupfn})
           $('.rb-bottom').popover({placement: 'top', content: popupfn})
           $('.rb-top').popover({placement: 'top', content: popupfn})
+          $('#startupdialog').fadeOut()
       else
         @genres.refresh(showings)
         @revenues.refresh(showings)
         $('.ds-movie').popover({placement: 'top', content: popupfn})
         $('.rb-bottom').popover({placement: 'top', content: popupfn})
         $('.rb-top').popover({placement: 'top', content: popupfn})
-      $('#startupdialog').fadeOut()
+        $('#startupdialog').fadeOut()
 
 module.exports = Detailsection

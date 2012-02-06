@@ -2,6 +2,7 @@ require('lib/setup')
 
 Spine = require('spine')
 Extractor = require('lib/extract')
+Extras = require 'lib/extrahollywoods'
 
 Country = require 'models/country'
 Movie = require 'models/movie'
@@ -93,6 +94,9 @@ class App extends Spine.Controller
         $('#startuptext').text("Loading #{year+1} Hollywood movies...")
         d3.csv("data/#{year+1}.csv", @loadmovies(year+1))
       else
+        for e in Extras.extras
+          m = Movie.create(e)
+          ms = usa.showings().create({year:e.year, boxoffice:e.boxoffice, movie_id:m.id})
         $('#startuptext').text("Loading summary data...")
         d3.csv("data/countryfiles.csv", @domesticmoviesloaded)
 
