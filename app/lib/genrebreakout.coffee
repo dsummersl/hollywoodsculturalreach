@@ -13,28 +13,26 @@ class Genrebreakout
         <div id="gb-genre3" class="gb-col">three</div>
         <div id="gb-genre-totals" class="gb-comment">comment</div>
       </div>
-      <div class="gb-tier" id="gb-row2">
-        <div id="gb-genre-hollywood">hollywood</div>
-        <div id="gb-genre-hollywood-totals" class="gb-comment">comment</div>
-      </div>
-      <div class="gb-tier" id="gb-row3">
-        <div id="gb-genre-nothollywood">not hollywood</div>
-        <div id="gb-genre-nothollywood-totals" class="gb-comment">comment</div>
+      <div class="gb-tier" id="gb-row1">
+        <div id="gb-genre4" class="gb-col">one</div>
+        <div id="gb-genre5" class="gb-col">two</div>
+        <div id="gb-genre6" class="gb-col">three</div>
+        <div id="gb-genre2-totals" class="gb-comment">comment</div>
       </div>
     </div>
     """)
 
   genretext: (winner) ->
-    return """
-      <center><h4>#{winner[0]}</h4></center>
-      <div class="gb-winner">#{@makeMovieText(winner[1])}</div>
-    """
-
-  otherstext: (description,list,height) ->
-    return """
-      <h4>#{description}</h4>
-      <div class="gb-bulk" height="#{height}px">#{@makeMovieText(list)}</div>
-    """
+    if winner?
+      return """
+        <center><h4>#{winner[0]}</h4></center>
+        <div class="gb-winner">#{@makeMovieText(winner[1])}</div>
+      """
+    else
+      return """
+        <center><h4>...</h4></center>
+        <div class="gb-winner"></div>
+      """
 
   makeMovieText: (list) ->
     hs = []
@@ -56,14 +54,14 @@ class Genrebreakout
   refresh: (constrained) =>
 
 
-    $('#gb-genre1').html('')
-    $('#gb-genre2').html('')
-    $('#gb-genre3').html('')
+    $('#gb-genre1').html(@genretext(null))
+    $('#gb-genre2').html(@genretext(null))
+    $('#gb-genre3').html(@genretext(null))
+    $('#gb-genre4').html(@genretext(null))
+    $('#gb-genre5').html(@genretext(null))
+    $('#gb-genre6').html(@genretext(null))
 
-    maxHeight = 400
-    minHeight = 40
     genres = {}
-    unknowns = []
     total = 0
     for s in constrained
       m = s.movie()
@@ -71,46 +69,32 @@ class Genrebreakout
       if m.hollywood
         genres[m.genre] = [] if not genres[m.genre]?
         genres[m.genre].push s
-      else
-        unknowns.push s
 
     genre1 = @extractBiggest(genres)
     genre2 = @extractBiggest(genres)
     genre3 = @extractBiggest(genres)
-    ###
     genre4 = @extractBiggest(genres)
     genre5 = @extractBiggest(genres)
     genre6 = @extractBiggest(genres)
-    ###
-    # TODO would like to do the top 6 genres - then just lump the rest of the movies together
     $('#gb-genre1').html(@genretext(genre1)) if genre1?
     $('#gb-genre2').html(@genretext(genre2)) if genre2?
     $('#gb-genre3').html(@genretext(genre3)) if genre3?
+    $('#gb-genre4').html(@genretext(genre4)) if genre4?
+    $('#gb-genre5').html(@genretext(genre5)) if genre5?
+    $('#gb-genre6').html(@genretext(genre6)) if genre6?
     allwinners = []
     allwinners = allwinners.concat genre1[1] if genre1?
     allwinners = allwinners.concat genre2[1] if genre2?
     allwinners = allwinners.concat genre3[1] if genre3?
     $('#gb-genre-totals').html(@makeComments(allwinners,total))
+    allwinners = []
+    allwinners = allwinners.concat genre4[1] if genre4?
+    allwinners = allwinners.concat genre5[1] if genre5?
+    allwinners = allwinners.concat genre6[1] if genre6?
+    $('#gb-genre2-totals').html(@makeComments(allwinners,total))
 
-    rest = []
-    rest = rest.concat(v) for k,v of genres
-
-    #row1height = parseInt(allwinners.length/total*400)
-    row1height = 60
-    row2height = Math.max(minHeight,parseInt(d3.sum(v.length for k,v of genres)/total*400))
-    row3height = Math.max(minHeight,parseInt(unknowns.length/total*400))
-
-    $('#gb-genre-hollywood').html(@otherstext('Hollywood',rest,row2height))
-    $('#gb-genre-hollywood-totals').html(@makeComments(rest,total))
-
-    $('#gb-genre-nothollywood').html(@otherstext('Not Hollywood',unknowns,row3height))
-    $('#gb-genre-nothollywood-totals').html(@makeComments(unknowns,total))
-
-    $('.gb-winner').css('height', "#{row1height}px")
-    $('#gb-genre-hollywood .gb-bulk').css('height', "#{row2height}px")
-    $('#gb-genre-nothollywood .gb-bulk').css('height', "#{row3height}px")
-    $('#gb-genre-hollywood .gb-bulk').css('background', "#eee")
-    $('#gb-genre-nothollywood .gb-bulk').css('background', "#ccc")
+    rowheight = 200
+    $('.gb-winner').css('height', "#{rowheight}px")
 
 
   # extract a key from the map, and return the key if there is a biggest.
