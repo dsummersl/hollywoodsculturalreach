@@ -111,6 +111,9 @@
           As I developed this application I had several questions that I wanted
           to be able to answer myself. Here are a few below...
           <ul>
+            <li><b>What does Hollywood vs Non-Hollywood mean?</b> I've taken an initial dataset from the <a href="http://www.informationisbeautifulawards.com/challenge/">Information Is Beautiful January, 2012 Challenge</a>. It consisted of five
+            years of Hollywood titles, with box office information, genre, story, etc. I augmented this set with International box office information from <a href="http://boxofficemojo.com">boxofficemojo.com</a>. These movies that weren't on the original set are probably of International origin, although this isn't garuanteed. I've fixed several glaring mistakes, but several movies of definite
+            Hollywood origin (particularly very unsuccessful in the box office) appear as Non-Hollywood.
             <li><b>Why are there all of these gray countries?</b> The only
             comprehensive online source of foreign box office numbers that I
             could find were at <a href="http://boxofficemojo.com">boxofficemojo.com</a>. But they
@@ -121,7 +124,7 @@
                 <li>War?: Angola and Chad are examples I found. Chad had one theatre that been closed in 1984. It <a href="http://www.dawn.com/2011/04/10/chads-only-cinema-dusts-off-its-silver-screen.html">reopened in 2011</a> but doesn't have an online presence.</li>
                 <li>One Theatre: Several countres in Africa appear to only have on theatre. Examples I found: Botswana, Kazakhstan, <a href="http://cinematreasures.org/theaters/gabon">Gabon</a>.</li>
                 <li>Illegal: In Saudi Arabia. Apparently people go to Bahrain...but...see my next comment...</li>
-                <li>Different Data: boxofficemojo has more data for these countries, but its in a legacy format I think. I didn't have time to write a scraper for them: Bahrain, Israel, indonesia, UAE, Bahrain</li>
+                <li>Different Data: boxofficemojo has more data for some countries, but in a legacy format. I didn't haven't yet written a scraper for them. They include: Bahrain, Israel, indonesia, UAE, Bahrain</li>
               </ul>
             </li>
             <li><b>Which countries watch fewer Hollywood movies than non-Hollywood?</b> By selecting the <i>pencil</i> in the upper right corner you can select 'Hollywood - Others' option. Countries that spend more money on non-Hollywood movies are colored green. India I expected - Bollywood, anyone!? But Japan?!</li>
