@@ -67,7 +67,7 @@ class App extends Spine.Controller
   loadcountries: (d) =>
     #@log "reloading countries..."
     Country.deleteAll()
-    exclude = ['israel','ecuador','indonesia','uae','bahrain'] # TODO need data for these.
+    exclude = []
     for k,v of d
       parts = v['Country|key'].split('|')
       Country.create(name: parts[0],region: v['Continent'],key: parts[1]) if parts[1] not in exclude

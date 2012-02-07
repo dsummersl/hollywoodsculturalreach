@@ -17,6 +17,9 @@ if __name__ == '__main__':
           continue
         result = result + "\"row%d\": {" % cnt
         for i in range(len(columns)):
+            if len(row) < i+1:
+                result = result + "\"badrow\":\"\""
+                continue
             parts = row[i].split('|')
             if len(parts) > 1:
                 result = result + "\"%s\": [" % (columns[i])

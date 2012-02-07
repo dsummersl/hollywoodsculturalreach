@@ -1,0 +1,63 @@
+Continent,Country|key
+Africa,Egypt|egypt
+Africa,Ghana|ghana
+Africa,Kenya|kenya
+Africa,Nigeria|nigeria
+Africa,South Africa|southafrica
+Africa,Bahrain|bahrain
+Asia,China|china
+Asia,Hong Kong|hongkong
+Asia,India|india
+Asia,Indonesia|indonesia
+Asia,Israel|israel
+Asia,Japan|japan
+Asia,Lebanon|lebanon
+Asia,Malaysia|malaysia
+Asia,Philippines|philippines
+Asia,Singapore|singapore
+Asia,South Korea|korea
+Asia,Taiwan|taiwan
+Asia,Thailand|thailand
+Asia,United Arab Emirates|uae
+Europe,Austria|austria
+Europe,Belgium|belgium
+Europe,Bulgaria|bulgaria
+Europe,Croatia|croatia
+Europe,Czech Republic|czech
+Europe,Denmark|denmark
+Europe,Estonia|estonia
+Europe,Finland|finland
+Europe,France|france
+Europe,Germany|germany
+Europe,Greece|greece
+Europe,Hungary|hungary
+Europe,Iceland|iceland
+Europe,Italy|italy
+Europe,Latvia|latvia
+Europe,Lithuania|lithuania
+Europe,Netherlands|netherlands
+Europe,Norway|norway
+Europe,Poland|poland
+Europe,Portugal|portugal
+Europe,Romania|romania
+Europe,Russia - CIS|cis
+Europe,Serbia|serbia
+Europe,Slovakia|slovakia
+Europe,Slovenia|slovenia
+Europe,Spain|spain
+Europe,Sweden|sweden
+Europe,Turkey|turkey
+Europe,Ukraine|ukraine
+Europe,United Kingdom|uk
+Latin America,Argentina|argentina
+Latin America,Bolivia|bolivia
+Latin America,Brazil|brazil
+Latin America,Chile|chile
+Latin America,Colombia|colombia
+Latin America,Ecuador|ecuador
+Latin America,Mexico|mexico
+Latin America,Peru|peru
+Latin America,Uruguay|uruguay
+Latin America,Venezuela|venezuela
+Oceana,Australia|australia
+Oceana,New Zealand|newzealand
