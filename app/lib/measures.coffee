@@ -3,7 +3,6 @@ Country = require 'models/country'
 Overview = require 'models/overview'
 
 measures =
-  # TODO of all the hollywood movies, what percent played in the foreign country?
   othervshollywood:
     compute: =>
       data = {}
@@ -13,7 +12,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: 'Hollywood - Others'
-    extendeddesc: ' colored by the difference of Hollywood and non-Hollywood movie revenue for movies shown in each country.'
+    extendeddesc: ' colored by the difference btwn Hollywood and non-Hollywood revenue of movies shown in the country.'
     colors: (data) =>
       colors = ['#bbd3f9','#f1ee9c'] # 217, 58
       min = 0
@@ -35,7 +34,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: '# Movies'
-    extendeddesc: ' colored by total # movies shown in each country.'
+    extendeddesc: ' colored by total # movies shown in the country.'
     colors: (data) =>
       colors = ['#eee', '#e1bbf9'] # 277
       max = 0
@@ -51,7 +50,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: '# Hollywood Movies'
-    extendeddesc: ' colored by total # Hollywood movies shown in each country.'
+    extendeddesc: ' colored by total # Hollywood movies shown in the country.'
     colors: (data) =>
       colors = ['#eee', '#bbbef9'] # 237, 78
       max = 0
@@ -67,7 +66,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: 'Movie Revenue'
-    extendeddesc: ' colored by total revenue of movies shown in each country.'
+    extendeddesc: ' colored by total revenue of movies shown in the country.'
     colors: (data) =>
       colors = ['#cdbbf9','#bbf19c'] # 257, 98
       max = 0
