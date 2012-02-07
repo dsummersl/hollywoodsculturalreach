@@ -12,7 +12,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: 'Hollywood - Others'
-    extendeddesc: ' colored by the difference btwn Hollywood and non-Hollywood revenue of movies shown in the country.'
+    extendeddesc: ' colored by the difference btwn Hollywood and non-Hollywood revenue for movies shown in the country.'
     colors: (data) =>
       colors = ['#bbd3f9','#f1ee9c'] # 217, 58
       min = 0
@@ -36,23 +36,23 @@ measures =
     desc: '# Movies'
     extendeddesc: ' colored by total # movies shown in the country.'
     colors: (data) =>
-      colors = ['#eee', '#e1bbf9'] # 277
+      colors = ['#eee', '#bbbef9'] # 237, 78
       max = 0
       max = v for k,v of data when v > max
       return d3.scale.linear().domain([0,max]).range(colors)
     formatData: (d) -> $.sprintf('%d',d)
-  counthollywoodmovies:
+  oldhollywoodmovies:
     compute: =>
       data = {}
       for c in Country.all()
         sum = 0
-        sum += o.hollywood + o.oldhollywood for o in Overview.filter(c.overviews(),Overview.getConstraints())
+        sum += o.oldhollywood for o in Overview.filter(c.overviews(),Overview.getConstraints())
         data[c.key] = sum
       Appdata.set('measuredata',data)
-    desc: '# Hollywood Movies'
-    extendeddesc: ' colored by total # Hollywood movies shown in the country.'
+    desc: '# Old Hollywood Movies'
+    extendeddesc: ' colored by total # old Hollywood movies shown in the country (released in a previous year).'
     colors: (data) =>
-      colors = ['#eee', '#bbbef9'] # 237, 78
+      colors = ['#eee', '#e1bbf9'] # 277
       max = 0
       max = v for k,v of data when v > max
       return d3.scale.linear().domain([0,max]).range(colors)
@@ -66,7 +66,7 @@ measures =
         data[c.key] = sum
       Appdata.set('measuredata',data)
     desc: 'Movie Revenue'
-    extendeddesc: ' colored by total revenue of movies shown in the country.'
+    extendeddesc: ' colored by total revenue for movies shown in the country.'
     colors: (data) =>
       colors = ['#cdbbf9','#bbf19c'] # 257, 98
       max = 0

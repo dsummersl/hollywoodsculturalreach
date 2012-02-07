@@ -80,13 +80,13 @@ class Datalimiter extends Spine.Controller
   updateDescription: =>
     years = Appdata.get('years') if Appdata.get('years') != 'All'
     genres = Appdata.get('genres') if Appdata.get('genres') != 'All'
-    str = "Hollywood movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
+    str = "Movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
     if years? and genres?
-      str = "Hollywood #{Appdata.get('genres')} movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
+      str = "#{Appdata.get('genres')} movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
     if genres?
-      str = "Hollywood #{Appdata.get('genres')} movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
+      str = "#{Appdata.get('genres')} movies from #{Options.years[0]} &mdash; #{Options.years[Options.years.length-1]}, #{Appdata.get('measure').extendeddesc}"
     if years?
-      str = "Hollywood movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
+      str = "Movies in #{Appdata.get('years')}, #{Appdata.get('measure').extendeddesc}"
     #console.log "new string = '#{str}'"
     $('#dl-desc').html(str)
 

@@ -267,7 +267,8 @@ class Revenuebreakout
           m = bottom[bottom.length-2]
         else
           m = top[top.length-2]
-        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}"
+        return "#{m.movie().title} - #{Appdata.sprintmoney(m.boxoffice)}" if m?
+        return ""
       )
     ymarkgraphtext.transition()
       .duration(600)

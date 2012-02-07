@@ -144,9 +144,9 @@ class Mapkey
 
   # update any selected country information - just listen for any appdata mentions..
   updateSelection: (r) ->
-    if r.key == 'country'
-      $("rect[movie-key='#{@previousSelection}']").attr('class','') if @previousSelection?
-      $("rect[movie-key='#{r.data}']").attr('class','mk-selected')
-      @previousSelection = r.data
+    c = Appdata.get('country')
+    $('.mk-selected').attr('class','') if @previousSelection?
+    $("rect[movie-key='#{c}']").attr('class','mk-selected')
+    @previousSelection = c
 
 module.exports = Mapkey
