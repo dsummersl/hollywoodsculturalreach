@@ -35,6 +35,7 @@ module.exports = {
     {title: 'The Seeker: The Dark Is Rising', hollywood: true, year: 2006, story: 'Unknown',genre: 'Fantasy',distributor: 'Unknown', boxoffice: 8.8},
     {title: 'Tinker, Tailor, Soldier, Spy', hollywood: true, year: 2012, story: 'Unknown',genre: 'Thriller',distributor: 'Unknown', boxoffice: 21.2},
     {title: 'Cats & Dogs: The Revenge of Kitty Galore', hollywood: true, year: 2010, story: 'Unknown',genre: 'Comedy',distributor: 'Unknown', boxoffice: 43.6},
+    {title: 'The Lion King', hollywood: true, year: 1994, story: 'Unknown',genre: 'Animation',distributor: 'Buena Vista', boxoffice: 312.9},
     #{title: '', hollywood: true, year: 2006, story: 'Unknown',genre: 'Unknown',distributor: 'Unknown', boxoffice: 0},
   ]
   # some movies were named slightly differently
@@ -54,4 +55,7 @@ module.exports = {
     'crazy, stupid, love.':'crazy, stupid, love'
     'happy feet two': 'happy feet 2'
     'cats & dogs: revenge of kitty galore': 'cats & dogs: the revenge of kitty galore'
+    'the lion king (in 3d)': 'the lion king'
+    'g.i. joe': 'g.i. joe: the rise of cobra'
+    'saw 3d': 'saw 3-d'
 }
