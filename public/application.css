@@ -1,0 +1,156 @@
+/*
+#mainmap svg
+  border: 1px solid black
+*/
+h1 {
+  font-family: 'times new roman';
+}
+hr {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+.keytext {
+  font-size: 8pt;
+}
+.keyxaxistext {
+  font-size: 7pt;
+  fill: #aaa;
+}
+.keytext-invisible {
+  font-size: 2pt;
+  fill: #fff;
+}
+#ds-movies {
+  line-height: 11px;
+  font-size: 7pt;
+  text-align: justify;
+}
+# TODO remove,
+.ds-hollywood {
+  color: #888;
+}
+# TODO remove,
+.ds-nothollywood {
+  color: #888;
+}
+.ds-movie {
+  color: #888;
+}
+.ds-dash {
+  color: #888;
+}
+.ds-cell-empty {
+  padding: 0px;
+}
+.ds-cell {
+  color: #aaa;
+  border: solid 2px #fff;
+  position: absolute;
+  overflow: hidden;
+  line-height: 12px;
+  padding: 2px;
+  padding-bottom: 0px;
+}
+.ds-rightside {
+  float: right;
+}
+#gb-genre1 .gb-winner {
+  background: #e6a9ec;
+}
+#gb-genre2 .gb-winner {
+  background: #f9b7ff;
+}
+#gb-genre3 .gb-winner {
+  background: #fac7ff;
+}
+#gb-genre4 .gb-winner {
+  background: #fc0;
+}
+#gb-genre5 .gb-winner {
+  background: #fc6;
+}
+#gb-genre6 .gb-winner {
+  background: #fca;
+}
+.gb-tier {
+  width: 100%;
+  clear: both;
+}
+.gb-col {
+  width: 28%;
+  float: left;
+}
+.gb-bulk {
+  color: #aaa;
+  overflow: hidden;
+  line-height: 12px;
+  font-size: 8pt;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 2px;
+  margin: 1px;
+  width: 83%;
+  float: left;
+/*
+  position: absolute
+  border: solid 2px #fff
+  padding-bottom: 0px
+  */
+}
+.gb-comment {
+  width: 15%;
+  float: left;
+  color: #aaa;
+  line-height: 12px;
+  font-size: 8pt;
+  text-align: right;
+}
+.gb-winner {
+  color: #aaa;
+  overflow: hidden;
+  line-height: 12px;
+  font-size: 8pt;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 2px;
+  margin: 1px;
+  margin: 2px;
+}
+.rb-bottom {
+  stroke: none;
+}
+.rb-top {
+  stroke: none;
+}
+.rb-top-poly {
+  fill: #ffc0cb;
+}
+.rb-bottom-poly {
+  fill: #808080;
+}
+.rb-keytext {
+  font-size: 10pt;
+  font-weight: bold;
+}
+#dl-change {
+  margin: 5px;
+}
+#dl-desc {
+  font-family: 'times new roman, serif';
+  text-align: center;
+  color: #aaa;
+}
+.mm-selected {
+  stroke: #888;
+  stroke-width: 1;
+  stroke-dasharray: 5, 2;
+}
+.mk-selected {
+  stroke: #bbb;
+  stroke-width: 1;
+  stroke-dasharray: 3, 1;
+}
