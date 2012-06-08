@@ -1,5 +1,6 @@
+An interractive visualation of Hollywood budget information. This app was
+designed for the Information is Beautiful Hollywood blockbuster's competition
 
-TODO
+(see: http://www.informationisbeautifulawards.com/2012/02/hollywood-dataviz-challenge-interactive-shortlist/).
 
-Rewrite CSVtoJSON.py so that it generates one header file and then uses arrays
-for all the row data (should make files significantly smaller as JSON).
+You can see the final product at http://hollywood.pinedesk.biz
